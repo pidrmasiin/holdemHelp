@@ -29,7 +29,7 @@ public class Main {
         HandsValues values = new HandsValues();
         values.drawCardsToHand();
         System.out.println(values.getHand());
-        values.setCardsToHand(cards.getCard(0), cards.getCard(11), cards.getCard(12), cards.getCard(10), cards.getCard(9));
+        values.setCardsToHand(cards.getCard(13), cards.getCard(22), cards.getCard(25), cards.getCard(24), cards.getCard(23));
         System.out.println(values.getHand());
         if(values.checkFlush()){
             System.out.println("väri");
@@ -40,7 +40,9 @@ public class Main {
             System.out.println("suora");
         }
         System.out.println(values.getHand());
-
+        if (values.checkRoyalFlush()){
+            System.out.println("värisuora");
+        }
     }
 
 }

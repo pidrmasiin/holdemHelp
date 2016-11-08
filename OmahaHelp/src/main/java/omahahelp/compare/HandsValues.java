@@ -65,27 +65,30 @@ public class HandsValues implements Comparator<Card> {
         return false;
     }
 
+    public boolean checkRoyalFlush() {
+        if (this.checkFlush() && this.checkStraight()) {
+            return true;
+        }
+        return false;
+    }
+
     public boolean checkStraight() {
         this.organizeHand();
-        System.out.println(hand.getCard(4).getNumber() + "häh");
         if (hand.getCard(0).getNumber() == 1 && hand.getCard(4).getNumber() == 13) {
             return this.smallStraigth(1, 1);
         }
-
         return this.smallStraigth(0, 0);
-
     }
 
     public boolean smallStraigth(int x, int id) {
         this.organizeHand();
         int number = 0;
-
         while (x < this.hand.sum()) {
             number = this.hand.getCard(x).getNumber();
             number++;
             if (x < 4 && number == this.hand.getCard(x + 1).getNumber()) {
                 id++;
-                System.out.println(number);
+
             }
             if (id == 4) {
                 return true;
