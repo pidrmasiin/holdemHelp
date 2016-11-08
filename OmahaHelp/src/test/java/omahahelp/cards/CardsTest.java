@@ -1,10 +1,12 @@
+package omahahelp.cards;
+
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
 
-import omahahelp.omahahelp.Cards;
+import omahahelp.cards.Cards;
 import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Before;
@@ -51,10 +53,18 @@ public class CardsTest {
     public void rightCards() {
         Cards cards = new Cards();
         cards.addCards();
-        assertEquals(cards.getCard(0), "1x1");
-        assertEquals(cards.getCard(12), "13x1");
-        assertEquals(cards.getCard(15), "3x2");
-        assertEquals(cards.getCard(31), "6x3");
-        assertEquals(cards.getCard(51), "13x4");
+        assertEquals(cards.getCard(0).toString(), "1x1");
+        assertEquals(cards.getCard(12).toString(), "13x1");
+        assertEquals(cards.getCard(15).toString(), "3x2");
+        assertEquals(cards.getCard(31).toString(), "6x3");
+        assertEquals(cards.getCard(51).toString(), "13x4");
+    }
+    
+     @Test
+    public void sumRightAfterCreatingPlayersCards() {
+        Cards cards = new Cards();
+        cards.addCards();
+        PlayersCards pCards = new PlayersCards(cards, cards.getCard(1), cards.getCard(3));
+        assertEquals(cards.sum(), 50);
     }
 }

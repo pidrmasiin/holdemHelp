@@ -3,10 +3,10 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package omahahelp.omahahelp;
+package omahahelp.cards;
 
 import java.util.ArrayList;
-import omahahelp.omahahelp.Card;
+import omahahelp.cards.Card;
 
 /**
  *
@@ -14,10 +14,11 @@ import omahahelp.omahahelp.Card;
  */
 public class Cards {
 
-    private ArrayList cards;
+    private ArrayList<Card> cards;
 
     public Cards() {
         this.cards = new ArrayList<Card>();
+        
     }
 
     public void addCards() {
@@ -27,26 +28,38 @@ public class Cards {
             if (x < 14) {
                 Card card = new Card(x, z);
                 this.cards.add(card);
-            }else{
+            } else {
                 z += 1;
                 x = 1;
                 Card card = new Card(x, z);
                 this.cards.add(card);
             }
             x += 1;
-            
+
         }
     }
-    
-    public ArrayList printCards(){
+
+    public ArrayList getCards() {
         return this.cards;
     }
-    
-    public int sum(){
+
+    public int sum() {
         return cards.size();
     }
-    
-    public String getCard(int x){
+
+    public String getCardString(int x) {
         return cards.get(x).toString();
+    }
+
+    public Card getCard(int x) {
+        return cards.get(x);
+    }
+
+    public void eraseCards(Card x) {
+        if (this.cards.contains(x)) {
+            cards.remove(x);
+        } else {
+            System.out.println("Kortti ei ole pakassa");
+        }
     }
 }
