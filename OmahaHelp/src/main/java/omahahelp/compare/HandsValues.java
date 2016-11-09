@@ -65,7 +65,7 @@ public class HandsValues implements Comparator<Card> {
         return false;
     }
 
-    public boolean checkRoyalFlush() {
+    public boolean checkStarightFlush() {
         if (this.checkFlush() && this.checkStraight()) {
             return true;
         }
@@ -94,6 +94,25 @@ public class HandsValues implements Comparator<Card> {
                 return true;
             }
             x++;
+        }
+        return false;
+    }
+
+    public boolean sameOfKind(int many) {
+        this.organizeHand();
+        int check = 0;
+        int number = this.hand.getCard(0).getNumber();
+        int idx = 0;
+        while (idx < this.hand.sum()) {
+            if (number == this.hand.getCard(idx).getNumber()) {
+                System.out.println("moi");
+                check++;
+            }
+            number = this.hand.getCard(idx).getNumber();
+            idx++;
+        }
+        if (check == many) {
+            return true;
         }
         return false;
     }

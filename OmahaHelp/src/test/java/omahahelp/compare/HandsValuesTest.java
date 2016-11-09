@@ -68,4 +68,24 @@ public class HandsValuesTest {
         values.setCardsToHand(cards.getCard(12), cards.getCard(11), cards.getCard(0), cards.getCard(10), cards.getCard(9));
         assertEquals(values.checkStraight(), true);
     }
+    
+    @Test
+    public void sameOfKindTest() {
+        Cards cards = new Cards();
+        cards.addCards();
+        HandsValues values = new HandsValues();
+        values.setCardsToHand(cards.getCard(18), cards.getCard(5), cards.getCard(44), cards.getCard(34), cards.getCard(31));
+        assertEquals(values.sameOfKind(4), true);
+        values.setCardsToHand(cards.getCard(46), cards.getCard(3), cards.getCard(5), cards.getCard(2), cards.getCard(4));
+        assertEquals(values.sameOfKind(4), false);
+        values.setCardsToHand(cards.getCard(0), cards.getCard(13), cards.getCard(1), cards.getCard(26), cards.getCard(39));
+        assertEquals(values.sameOfKind(4), true);
+        values.setCardsToHand(cards.getCard(19), cards.getCard(5), cards.getCard(44), cards.getCard(34), cards.getCard(31));
+        assertEquals(values.sameOfKind(3), true);
+        values.setCardsToHand(cards.getCard(46), cards.getCard(3), cards.getCard(5), cards.getCard(2), cards.getCard(4));
+        assertEquals(values.sameOfKind(3), false);
+        
+    }
+    
+    
 }

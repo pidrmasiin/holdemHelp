@@ -28,20 +28,13 @@ public class Main {
 
         HandsValues values = new HandsValues();
         values.drawCardsToHand();
+        
+       values.setCardsToHand(cards.getCard(8), cards.getCard(13), cards.getCard(1), cards.getCard(26), cards.getCard(39));
         System.out.println(values.getHand());
-        values.setCardsToHand(cards.getCard(13), cards.getCard(22), cards.getCard(25), cards.getCard(24), cards.getCard(23));
-        System.out.println(values.getHand());
-        if (values.checkFlush()) {
-            System.out.println("väri");
-        }
-
-        if (values.checkStraight()) {
-            System.out.println("suora");
-        }
-        System.out.println(values.getHand());
-        if (values.checkRoyalFlush()) {
-            System.out.println("värisuora");
-        }
+       
+       if (values.sameOfKind(3)){
+           System.out.println("neloset");
+       }System.out.println(values.getHand());
     }
 
 }
