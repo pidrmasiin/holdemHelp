@@ -12,3 +12,7 @@ Ainakin alussa asetettujen hold'em käsien vertailun uskon pystyväni hoitamaan.
 [Tuntinkirjanpito](https://github.com/pidrmasiin/omahahelp/blob/master/dokumentaatio/tuntikirjanpito.md)
 
 [Luokkakaavio](https://github.com/pidrmasiin/omahahelp/blob/master/dokumentaatio/Luokkakaavio.png)
+
+[Pits](https://github.com/pidrmasiin/omahahelp/tree/master/dokumentaatio/pit-reports)
+
+[Checkstyle](https://github.com/pidrmasiin/omahahelp/blob/master/dokumentaatio/checkstyle.html)
