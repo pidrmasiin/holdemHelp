@@ -10,3 +10,7 @@ Ainakin alussa asetettujen hold'em käsien vertailun uskon pystyväni hoitamaan.
 -Omien korttien lisääminen
 -Vastustajan korttien lisääminen
 ```
+
+**Luokkakaavio**: 
+
+![Luokkakaavio](https://github.com/pidrmasiin/omahahelp/blob/master/dokumentaatio/Luokkakaavio.png?raw=true)
