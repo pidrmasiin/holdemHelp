@@ -4,6 +4,8 @@
 Ainakin alussa asetettujen hold'em käsien vertailun uskon pystyväni hoitamaan. 
 
 **Dokumentaatio**
+```
+[Aiheenmäärittelyä](https://github.com/pidrmasiin/omahahelp/blob/master/dokumentaatio/aiheenmaarittelya.md)
 
- [Aiheenmäärittelyä](https://github.com/pidrmasiin/omahahelp/blob/master/dokumentaatio/aiheenmaarittelya.md)
- [Tuntinkirjanpito](https://github.com/pidrmasiin/omahahelp/blob/master/dokumentaatio/tuntikirjanpito.md)
+[Tuntinkirjanpito](https://github.com/pidrmasiin/omahahelp/blob/master/dokumentaatio/tuntikirjanpito.md)
+```
