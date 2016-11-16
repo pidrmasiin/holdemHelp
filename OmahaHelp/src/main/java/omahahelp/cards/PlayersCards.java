@@ -5,26 +5,29 @@
  */
 package omahahelp.cards;
 
+import omahahelp.compare.Values;
+
 /**
  *
  * @author petteri
  */
 public class PlayersCards {
 
-    private Cards cards;
+   
     private Card cardA;
     private Card cardB;
 
     public PlayersCards(Cards cards, Card a, Card b) {
-        this.cards = cards;
-        if (this.cards.getCards().contains(b) & this.cards.getCards().contains(a)) {
-            this.cardB = b;
-            cards.eraseCards(b);
+        
+        if (cards.getCardsContainsCardandEraseCard(a) && cards.getCardsContainsCardandEraseCard(b)) {
             this.cardA = a;
-            cards.eraseCards(a);
+            this.cardB = b;
+            System.out.println("hoid");
         } else {
             System.out.println("kortti pöydällä tai vastustajan kädessä");
         }
     }
+
+    
 
 }

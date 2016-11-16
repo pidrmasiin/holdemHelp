@@ -53,7 +53,7 @@ public class CardsTest {
     public void rightCards() {
         Cards cards = new Cards();
         cards.addCards();
-        assertEquals(cards.getCard(0).toString(), "1x1");
+        assertEquals(cards.getCard(0).toString(), "14x1");
         assertEquals(cards.getCard(12).toString(), "13x1");
         assertEquals(cards.getCard(15).toString(), "3x2");
         assertEquals(cards.getCard(31).toString(), "6x3");
@@ -66,5 +66,17 @@ public class CardsTest {
         cards.addCards();
         PlayersCards pCards = new PlayersCards(cards, cards.getCard(1), cards.getCard(3));
         assertEquals(cards.sum(), 50);
+    }
+    
+    @Test
+    public void getCardsContainsCardandEraseCardTest(){
+        Cards cards = new Cards();
+        cards.addCards();
+        Card a = new Card(14, 1);
+        Card d = new Card(4, 1);
+        assertEquals(cards.getCardsContainsCardandEraseCard(a), true);
+        assertEquals(cards.getCardsContainsCardandEraseCard(a), false);
+        assertEquals(cards.getCardsContainsCardandEraseCard(d), true);
+        assertEquals(cards.getCardsContainsCardandEraseCard(d), false);
     }
 }

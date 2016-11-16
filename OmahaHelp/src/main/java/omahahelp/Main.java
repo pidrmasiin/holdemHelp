@@ -5,9 +5,11 @@
  */
 package omahahelp;
 
+import omahahelp.cards.Card;
 import omahahelp.cards.Cards;
 import omahahelp.cards.PlayersCards;
 import omahahelp.compare.HandsValues;
+import omahahelp.compare.Values;
 import omahahelp.deal.Draw;
 
 /**
@@ -23,18 +25,10 @@ public class Main {
         // TODO code application logic here
         Cards cards = new Cards();
         cards.addCards();
-
-        Draw draw = new Draw(cards);
-
-        HandsValues values = new HandsValues();
-        values.drawCardsToHand();
+        Values values = new Values();
         
-       values.setCardsToHand(cards.getCard(8), cards.getCard(13), cards.getCard(1), cards.getCard(26), cards.getCard(39));
-        System.out.println(values.getHand());
-       
-       if (values.sameOfKind(3)){
-           System.out.println("neloset");
-       }System.out.println(values.getHand());
-    }
+               values.setCardsToHand(cards.getCard(14), cards.getCard(2), cards.getCard(13), cards.getCard(17), cards.getCard(30));
+        System.out.println(values.checkSames());
 
+    }
 }

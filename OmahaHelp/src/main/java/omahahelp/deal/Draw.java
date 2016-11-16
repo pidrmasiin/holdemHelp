@@ -16,7 +16,7 @@ import omahahelp.cards.Cards;
  */
 public class Draw {
 
-    private Cards cards;
+    public Cards cards;
 
     public Draw(Cards cards) {
         this.cards = cards;

@@ -14,24 +14,35 @@ import omahahelp.cards.Card;
  */
 public class Cards {
 
-    private ArrayList<Card> cards;
+    public ArrayList<Card> cards;
 
     public Cards() {
         this.cards = new ArrayList<Card>();
-        
+
     }
 
     public void addCards() {
         int x = 1;
         int z = 1;
+        int y = 0;
         while (cards.size() < 52) {
+            if (x == 1) {
+                y = 14;
+            } else {
+                y = x;
+            }
             if (x < 14) {
-                Card card = new Card(x, z);
+                Card card = new Card(y, z);
                 this.cards.add(card);
             } else {
                 z += 1;
                 x = 1;
-                Card card = new Card(x, z);
+                if (x == 1) {
+                    y = 14;
+                } else {
+                    y = x;
+                }
+                Card card = new Card(y, z);
                 this.cards.add(card);
             }
             x += 1;
@@ -54,6 +65,15 @@ public class Cards {
     public Card getCard(int x) {
         return cards.get(x);
     }
+    
+    public boolean getCardsContainsCardandEraseCard(Card a){
+        for(int x = 0; x<this.cards.size();x++){
+            if(this.cards.get(x).getNumber()==a.getNumber() && this.cards.get(x).getSuit() == a.getSuit()){
+                this.eraseCards(this.getCard(x));
+                return true;
+            }
+        }return false;
+    }
 
     public void eraseCards(Card x) {
         if (this.cards.contains(x)) {
@@ -62,4 +82,5 @@ public class Cards {
             System.out.println("Kortti ei ole pakassa");
         }
     }
+
 }
