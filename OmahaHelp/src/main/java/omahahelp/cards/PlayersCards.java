@@ -13,12 +13,11 @@ import omahahelp.compare.Values;
  */
 public class PlayersCards {
 
-   
     private Card cardA;
     private Card cardB;
 
     public PlayersCards(Cards cards, Card a, Card b) {
-        
+
         if (cards.getCardsContainsCardandEraseCard(a) && cards.getCardsContainsCardandEraseCard(b)) {
             this.cardA = a;
             this.cardB = b;
@@ -27,7 +26,5 @@ public class PlayersCards {
             System.out.println("kortti pöydällä tai vastustajan kädessä");
         }
     }
-
-    
 
 }

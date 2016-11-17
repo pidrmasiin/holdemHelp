@@ -70,7 +70,7 @@ public class ValuesTest {
         values.setCardsToHand(cards.getCard(14), cards.getCard(2), cards.getCard(13), cards.getCard(16), cards.getCard(30));
         assertEquals(values.checkStraight(), true);
     }
-    
+
     @Test
     public void fourOfKindCheckTest() {
         Cards cards = new Cards();
@@ -82,10 +82,10 @@ public class ValuesTest {
         assertEquals(values.checkFourofKind(), false);
         values.setCardsToHand(cards.getCard(46), cards.getCard(51), cards.getCard(12), cards.getCard(25), cards.getCard(38));
         assertEquals(values.checkFourofKind(), true);
-       
+
     }
-    
-     @Test
+
+    @Test
     public void threeOfKindCheckTest() {
         Cards cards = new Cards();
         cards.addCards();
@@ -96,10 +96,10 @@ public class ValuesTest {
         assertEquals(values.checkThreeOfKind(), false);
         values.setCardsToHand(cards.getCard(46), cards.getCard(51), cards.getCard(12), cards.getCard(25), cards.getCard(38));
         assertEquals(values.checkThreeOfKind(), false);
-       
+
     }
-    
-     @Test
+
+    @Test
     public void twoPairsTest() {
         Cards cards = new Cards();
         cards.addCards();
@@ -110,10 +110,10 @@ public class ValuesTest {
         assertEquals(values.checkTwoPairs(), false);
         values.setCardsToHand(cards.getCard(46), cards.getCard(51), cards.getCard(12), cards.getCard(25), cards.getCard(38));
         assertEquals(values.checkTwoPairs(), false);
-       
+
     }
-    
-      @Test
+
+    @Test
     public void pairTest() {
         Cards cards = new Cards();
         cards.addCards();
@@ -124,12 +124,7 @@ public class ValuesTest {
         assertEquals(values.checkPair(), true);
         values.setCardsToHand(cards.getCard(46), cards.getCard(51), cards.getCard(12), cards.getCard(25), cards.getCard(38));
         assertEquals(values.checkPair(), false);
-       
+
     }
-
-
-   
-
-    
 
 }

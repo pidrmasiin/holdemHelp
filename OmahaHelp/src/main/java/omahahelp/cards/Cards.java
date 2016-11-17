@@ -65,14 +65,15 @@ public class Cards {
     public Card getCard(int x) {
         return cards.get(x);
     }
-    
-    public boolean getCardsContainsCardandEraseCard(Card a){
-        for(int x = 0; x<this.cards.size();x++){
-            if(this.cards.get(x).getNumber()==a.getNumber() && this.cards.get(x).getSuit() == a.getSuit()){
+
+    public boolean getCardsContainsCardandEraseCard(Card a) {
+        for (int x = 0; x < this.cards.size(); x++) {
+            if (this.cards.get(x).getNumber() == a.getNumber() && this.cards.get(x).getSuit() == a.getSuit()) {
                 this.eraseCards(this.getCard(x));
                 return true;
             }
-        }return false;
+        }
+        return false;
     }
 
     public void eraseCards(Card x) {

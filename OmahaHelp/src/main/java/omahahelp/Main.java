@@ -26,8 +26,8 @@ public class Main {
         Cards cards = new Cards();
         cards.addCards();
         Values values = new Values();
-        
-               values.setCardsToHand(cards.getCard(14), cards.getCard(2), cards.getCard(13), cards.getCard(17), cards.getCard(30));
+
+        values.setCardsToHand(cards.getCard(14), cards.getCard(2), cards.getCard(13), cards.getCard(17), cards.getCard(30));
         System.out.println(values.checkSames());
 
     }

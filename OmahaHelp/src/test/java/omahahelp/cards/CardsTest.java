@@ -5,7 +5,6 @@ package omahahelp.cards;
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-
 import omahahelp.cards.Cards;
 import org.junit.After;
 import org.junit.AfterClass;
@@ -59,17 +58,17 @@ public class CardsTest {
         assertEquals(cards.getCard(31).toString(), "6x3");
         assertEquals(cards.getCard(51).toString(), "13x4");
     }
-    
-     @Test
+
+    @Test
     public void sumRightAfterCreatingPlayersCards() {
         Cards cards = new Cards();
         cards.addCards();
         PlayersCards pCards = new PlayersCards(cards, cards.getCard(1), cards.getCard(3));
         assertEquals(cards.sum(), 50);
     }
-    
+
     @Test
-    public void getCardsContainsCardandEraseCardTest(){
+    public void getCardsContainsCardandEraseCardTest() {
         Cards cards = new Cards();
         cards.addCards();
         Card a = new Card(14, 1);

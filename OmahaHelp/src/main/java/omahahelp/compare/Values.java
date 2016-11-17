@@ -12,17 +12,13 @@ import omahahelp.cards.Card;
 import omahahelp.cards.Cards;
 import omahahelp.deal.Draw;
 
-/**
- *
- * @author petteri
- */
 public class Values implements Comparator<Card> {
+
     private HandsValues value;
     private Cards hand;
 
     public Values() {
         this.hand = new Cards();
-
     }
 
     public void setCardsToHand(Card a, Card b, Card c, Card d, Card e) {
@@ -42,10 +38,6 @@ public class Values implements Comparator<Card> {
         this.hand.getCards().addAll(draw.drawFlop());
         this.hand.getCards().add(draw.drawCard());
         this.hand.getCards().add(draw.drawCard());
-    }
-
-    public ArrayList getHand() {
-        return hand.getCards();
     }
 
     public boolean checkFlush() {
@@ -73,13 +65,13 @@ public class Values implements Comparator<Card> {
     public boolean checkStraight() {
         this.organizeHand();
         if (hand.getCard(0).getNumber() == 2 && hand.getCard(4).getNumber() == 14) {
-            return this.highStraigth(this.hand.sum()-1, 1);
+            return this.highStraigth(this.hand.sum() - 1, 1);
         }
         return this.highStraigth(this.hand.sum(), 0);
     }
 
     public boolean highStraigth(int y, int id) {
-        int x =  0;
+        int x = 0;
         this.organizeHand();
         int number = 0;
         while (x < y) {
@@ -87,7 +79,6 @@ public class Values implements Comparator<Card> {
             number++;
             if (x < 4 && number == this.hand.getCard(x + 1).getNumber()) {
                 id++;
-
             }
             if (id == 4) {
                 return true;
@@ -107,7 +98,6 @@ public class Values implements Comparator<Card> {
             idx++;
         }
         return help;
-
     }
 
     public ArrayList<HandsValues> checkSames() {
@@ -191,18 +181,17 @@ public class Values implements Comparator<Card> {
         }
         return 0;
     }
-    
-    public void setHandsValues(){
+
+    public void setHandsValues() {
         this.value = new HandsValues(this.getType(), this.checkSames().get(0).getValue());
     }
-    
-    public int getHandValue(){
+
+    public int getHandValue() {
         return this.value.getHandValue();
     }
-    
+
     @Override
     public int compare(Card o1, Card o2) {
         return o1.getNumber() - o2.getNumber();
     }
-
 }
