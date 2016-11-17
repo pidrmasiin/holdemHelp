@@ -5,6 +5,11 @@ Omaha-avustaja, mutta voi olla, että joudun tyytymään vastaavan hold'em-avust
 
 Ainakin alussa asetettujen hold'em käsien vertailun uskon pystyväni hoitamaan. 
 
+[Htmlpreview Checkstyle](https://htmlpreview.github.io/?https://github.com/pidrmasiin/omahahelp/blob/master/dokumentaatio/checkstyle.html)
+
+[Htmlpreview pit](https://htmlpreview.github.io/?https://github.com/pidrmasiin/omahahelp/blob/master/dokumentaatio/pit-reports/201611171654/index.html)
+
+
 **Dokumentaatio**
 
 [Aiheenmäärittelyä](https://github.com/pidrmasiin/omahahelp/blob/master/dokumentaatio/aiheenmaarittelya.md)
