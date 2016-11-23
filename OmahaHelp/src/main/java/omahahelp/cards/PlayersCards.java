@@ -16,7 +16,13 @@ public class PlayersCards {
     private Card cardA;
     private Card cardB;
 
-    public PlayersCards(Cards cards, Card a, Card b) {
+    /**
+     * Asetetaan pakasta pelaajalle kortit, jos pakassa kyseiset kortit.
+     * @param cards valitaan pakka, josta vedetään
+     * @param a pakasta otettu kortti
+     * @param b pakasta otettu kortti
+     */
+    public PlayersCards(Deck cards, Card a, Card b) {
 
         if (cards.getCardsContainsCardandEraseCard(a) && cards.getCardsContainsCardandEraseCard(b)) {
             this.cardA = a;
@@ -25,6 +31,19 @@ public class PlayersCards {
         } else {
             System.out.println("kortti pöydällä tai vastustajan kädessä");
         }
+    }
+    
+    public Card getCardA(){
+        return this.cardA;
+    }
+    
+    public Card getCardB(){
+        return this.cardB;
+    }
+    
+    @Override
+    public String toString(){
+        return this.cardA.toString() + " & " + this.cardB.toString();
     }
 
 }

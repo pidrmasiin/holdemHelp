@@ -9,18 +9,27 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
 import omahahelp.cards.Card;
-import omahahelp.cards.Cards;
+import omahahelp.cards.Card.Suit;
+import omahahelp.cards.Deck;
 import omahahelp.deal.Draw;
 
 public class Values implements Comparator<Card> {
 
     private HandsValues value;
-    private Cards hand;
+    private Deck hand;
 
     public Values() {
-        this.hand = new Cards();
+        this.hand = new Deck();
     }
 
+    /**
+     * Luodaan 5-kortin pakka, jonka arvoa luokassa määritellään.
+     * @param a pakan 1. kortti
+     * @param b pakan 2. kortti
+     * @param c pakan 3. kortti    
+     * @param d pakan 4. kortti
+     * @param e pakan 5. kortti
+     */
     public void setCardsToHand(Card a, Card b, Card c, Card d, Card e) {
         this.hand.getCards().clear();
         this.hand.getCards().add(a);
@@ -30,9 +39,12 @@ public class Values implements Comparator<Card> {
         this.hand.getCards().add(e);
     }
 
+    /**
+     * Arvotaan kortit 5-kortin pakkaan.
+     */
     public void drawCardsToHand() {
         this.hand.getCards().clear();
-        Cards cards = new Cards();
+        Deck cards = new Deck();
         cards.addCards();
         Draw draw = new Draw(cards);
         this.hand.getCards().addAll(draw.drawFlop());
@@ -40,8 +52,12 @@ public class Values implements Comparator<Card> {
         this.hand.getCards().add(draw.drawCard());
     }
 
+    /**
+     * Katsotaan muodostaako pakka värin
+     * @return true, jos muodostaa.
+     */
     public boolean checkFlush() {
-        int suit = 0;
+        Suit suit = this.hand.getCard(0).getSuit();
         int id = 0;
         for (int idx = 0; idx < this.hand.sum(); idx++) {
             suit = this.hand.getCard(idx).getSuit();
@@ -55,6 +71,10 @@ public class Values implements Comparator<Card> {
         return false;
     }
 
+    /**
+     * Katsotaan muodostaako pakka värisuoran
+     * @return true, jos muodostaa.
+     */
     public boolean checkStarightFlush() {
         if (this.checkFlush() && this.checkStraight()) {
             return true;
@@ -62,6 +82,11 @@ public class Values implements Comparator<Card> {
         return false;
     }
 
+    /**
+     * Katsotaan muodostaako pakka suoran. Koska ässä tuottaa ongelmia, 
+     * tarkastetaan onko ässää ja tarkastetaan suora sen mukaan.
+     * @return true, jos muodostaa.
+     */
     public boolean checkStraight() {
         this.organizeHand();
         if (hand.getCard(0).getNumber() == 2 && hand.getCard(4).getNumber() == 14) {
@@ -70,11 +95,17 @@ public class Values implements Comparator<Card> {
         return this.highStraigth(this.hand.sum(), 0);
     }
 
+    /**
+     * Järjestetään pakka pienemmästä suurimpaan ja tarkasteaan suoraa alkupäästä.
+     * @param y pakan koko, jos ässä vähennetään koosta 1.
+     * @param id 0, jos ässä lisätään yksi, jotta päästään leikkuriin.
+     * @return true, jos haluttu määrä kortteja muodostaa suoran.
+     */
     public boolean highStraigth(int y, int id) {
-        int x = 0;
+
         this.organizeHand();
         int number = 0;
-        while (x < y) {
+        for (int x = 0; x < y; x++) {
             number = this.hand.getCard(x).getNumber();
             number++;
             if (x < 4 && number == this.hand.getCard(x + 1).getNumber()) {
@@ -83,19 +114,15 @@ public class Values implements Comparator<Card> {
             if (id == 4) {
                 return true;
             }
-            x++;
         }
         return false;
     }
 
     public ArrayList<Integer> helpToCheckSames() {
-
         this.organizeHand();
         ArrayList help = new ArrayList<>();
-        int idx = 0;
-        while (idx < this.hand.sum()) {
+        for (int idx = 0; idx < this.hand.sum(); idx++) {
             help.add(this.hand.getCard(idx).getNumber());
-            idx++;
         }
         return help;
     }
@@ -106,9 +133,8 @@ public class Values implements Comparator<Card> {
         ArrayList help = new ArrayList<>();
         help = this.helpToCheckSames();
         ArrayList out = new ArrayList<HandsValues>();
-        int x = 0;
         int y = 4;
-        while (x < 5) {
+        for (int x = 0; x < 5; x++) {
             int check = (int) help.get(y);
             for (int idx = 0; idx < help.size(); idx++) {
                 if ((int) help.get(idx) == check) {
@@ -124,7 +150,7 @@ public class Values implements Comparator<Card> {
             }
             sames = 0;
             y--;
-            x++;
+
         }
         Collections.sort(out, (HandsValues o1, HandsValues o2) -> o2.getType() - o1.getType());
         return out;
@@ -182,11 +208,9 @@ public class Values implements Comparator<Card> {
         return 0;
     }
 
-    public void setHandsValues() {
-        this.value = new HandsValues(this.getType(), this.checkSames().get(0).getValue());
-    }
 
     public int getHandValue() {
+        this.value = new HandsValues(this.getType(), this.checkSames().get(0).getValue());
         return this.value.getHandValue();
     }
 

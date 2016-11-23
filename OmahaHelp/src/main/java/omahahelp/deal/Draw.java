@@ -8,7 +8,8 @@ package omahahelp.deal;
 import java.util.ArrayList;
 import java.util.Random;
 import omahahelp.cards.Card;
-import omahahelp.cards.Cards;
+import static omahahelp.cards.Card.Suit.SPADES;
+import omahahelp.cards.Deck;
 
 /**
  *
@@ -16,14 +17,14 @@ import omahahelp.cards.Cards;
  */
 public class Draw {
 
-    public Cards cards;
+    public Deck cards;
 
-    public Draw(Cards cards) {
+    public Draw(Deck cards) {
         this.cards = cards;
     }
 
     public Card drawCard() {
-        Card a = new Card(13, 13);
+        Card a = new Card(15, SPADES);
         Random randomGenerator = new Random();
         if (this.cards.getCards().isEmpty()) {
             System.out.println("Pakka tyhjä");

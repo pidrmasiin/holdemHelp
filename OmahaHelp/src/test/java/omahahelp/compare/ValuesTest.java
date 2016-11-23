@@ -5,7 +5,7 @@
  */
 package omahahelp.compare;
 
-import omahahelp.cards.Cards;
+import omahahelp.cards.Deck;
 import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Before;
@@ -47,7 +47,7 @@ public class ValuesTest {
     // public void hello() {}
     @Test
     public void flushCheckTest() {
-        Cards cards = new Cards();
+        Deck cards = new Deck();
         cards.addCards();
         Values values = new Values();
         values.setCardsToHand(cards.getCard(9), cards.getCard(1), cards.getCard(2), cards.getCard(3), cards.getCard(4));
@@ -58,7 +58,7 @@ public class ValuesTest {
 
     @Test
     public void straightCheckTest() {
-        Cards cards = new Cards();
+        Deck cards = new Deck();
         cards.addCards();
         Values values = new Values();
         values.setCardsToHand(cards.getCard(1), cards.getCard(3), cards.getCard(5), cards.getCard(2), cards.getCard(4));
@@ -73,7 +73,7 @@ public class ValuesTest {
 
     @Test
     public void fourOfKindCheckTest() {
-        Cards cards = new Cards();
+        Deck cards = new Deck();
         cards.addCards();
         Values values = new Values();
         values.setCardsToHand(cards.getCard(1), cards.getCard(3), cards.getCard(5), cards.getCard(2), cards.getCard(4));
@@ -87,7 +87,7 @@ public class ValuesTest {
 
     @Test
     public void threeOfKindCheckTest() {
-        Cards cards = new Cards();
+        Deck cards = new Deck();
         cards.addCards();
         Values values = new Values();
         values.setCardsToHand(cards.getCard(46), cards.getCard(0), cards.getCard(12), cards.getCard(25), cards.getCard(38));
@@ -101,7 +101,7 @@ public class ValuesTest {
 
     @Test
     public void twoPairsTest() {
-        Cards cards = new Cards();
+        Deck cards = new Deck();
         cards.addCards();
         Values values = new Values();
         values.setCardsToHand(cards.getCard(2), cards.getCard(18), cards.getCard(5), cards.getCard(15), cards.getCard(9));
@@ -115,7 +115,7 @@ public class ValuesTest {
 
     @Test
     public void pairTest() {
-        Cards cards = new Cards();
+        Deck cards = new Deck();
         cards.addCards();
         Values values = new Values();
         values.setCardsToHand(cards.getCard(2), cards.getCard(18), cards.getCard(5), cards.getCard(15), cards.getCard(9));

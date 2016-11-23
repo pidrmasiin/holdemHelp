@@ -6,7 +6,7 @@
 package omahahelp.deal;
 
 import omahahelp.cards.Card;
-import omahahelp.cards.Cards;
+import omahahelp.cards.Deck;
 import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Before;
@@ -46,7 +46,7 @@ public class DrawTest {
     // public void hello() {}
     @Test
     public void sumRightAfterDraw() {
-        Cards cards = new Cards();
+        Deck cards = new Deck();
         cards.addCards();
         Draw draw = new Draw(cards);
         draw.drawCard();
@@ -55,7 +55,7 @@ public class DrawTest {
 
     @Test
     public void sumRightAfterDrawFlop() {
-        Cards cards = new Cards();
+        Deck cards = new Deck();
         cards.addCards();
         Draw draw = new Draw(cards);
         draw.drawFlop();
@@ -64,13 +64,13 @@ public class DrawTest {
 
     @Test
     public void rightStringAfterAllDrawed() {
-        Cards cards = new Cards();
+        Deck cards = new Deck();
         cards.addCards();
         Draw draw = new Draw(cards);
         for (int idx = 1; idx <= 52; ++idx) {
             draw.drawCard();
         }
 
-        assertEquals(draw.drawCard().toString(), "13x13");
+        assertEquals(draw.drawCard().toString(), "15 of SPADES");
     }
 }
