@@ -5,6 +5,12 @@
  */
 package gui;
 
+import omahahelp.cards.Card;
+import omahahelp.cards.Deck;
+import omahahelp.cards.PlayersCards;
+import omahahelp.compare.Compare;
+import omahahelp.compare.Values;
+
 /**
  *
  * @author petteri
@@ -16,6 +22,7 @@ public class GUI extends javax.swing.JFrame {
      */
     public GUI() {
         initComponents();
+
     }
 
     /**
@@ -27,40 +34,62 @@ public class GUI extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jTextField1 = new javax.swing.JTextField();
-        jLabel1 = new javax.swing.JLabel();
-        jTextField2 = new javax.swing.JTextField();
-        jButton1 = new javax.swing.JButton();
-        jLabel3 = new javax.swing.JLabel();
-        jLabel2 = new javax.swing.JLabel();
-        jLabel4 = new javax.swing.JLabel();
-        jTextField3 = new javax.swing.JTextField();
-        jTextField4 = new javax.swing.JTextField();
+        ownCard1 = new javax.swing.JTextField();
+        enemysCard1 = new javax.swing.JTextField();
+        countOdds = new javax.swing.JButton();
+        ownCard2 = new javax.swing.JTextField();
+        enemysCard2 = new javax.swing.JTextField();
+        instructionsToSetCards = new javax.swing.JLabel();
+        modelOfCard1 = new javax.swing.JLabel();
+        modelOfCard2 = new javax.swing.JLabel();
+        modelOfCard3 = new javax.swing.JLabel();
+        modelOfCard4 = new javax.swing.JLabel();
+        ownWins = new javax.swing.JLabel();
+        ties = new javax.swing.JLabel();
+        enemysWins = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jTextField1.setText("jTextField1");
-        jTextField1.addActionListener(new java.awt.event.ActionListener() {
+        ownCard1.setText("2 of HEARTS");
+        ownCard1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField1ActionPerformed(evt);
+                ownCard1ActionPerformed(evt);
             }
         });
 
-        jLabel1.setText("Oma kortti");
+        enemysCard1.setText("2 of DIAMONDS");
 
-        jTextField2.setText("jTextField2");
+        countOdds.setText("Näytä suhteet flopin jälkeen");
+        countOdds.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                countOddsActionPerformed(evt);
+            }
+        });
 
-        jButton1.setText("jButton1");
+        ownCard2.setText("2 of SPADES");
+        ownCard2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ownCard2ActionPerformed(evt);
+            }
+        });
 
-        jLabel3.setText("Vastustajan Kortti");
+        enemysCard2.setText("2 of CLUBS");
 
-        jLabel2.setText("Oma kortti");
+        instructionsToSetCards.setText("Aseta kortit muodossa \"x of SUIT\". ( x = 2-14) (SUIT  = HEARTS/DIAMONDS/CLUBS/SPADES)  ");
 
-        jLabel4.setText("Vastustajan Kortti");
+        modelOfCard1.setText("Vastus(x of SUIT)");
 
-        jTextField3.setText("jTextField2");
+        modelOfCard2.setText("Korttisi (x of SUIT)");
 
-        jTextField4.setText("jTextField2");
+        modelOfCard3.setText("Korttisi (x of SUIT)");
+
+        modelOfCard4.setText("Vastus(x of SUIT)");
+
+        ownWins.setText("Voittosi ");
+
+        ties.setText("Tasurit");
+
+        enemysWins.setText("Vastustajan voitot");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -68,59 +97,103 @@ public class GUI extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jButton1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(26, 26, 26)
-                                .addComponent(jLabel1)
-                                .addGap(18, 18, 18)
-                                .addComponent(jLabel2)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 46, Short.MAX_VALUE)
-                                .addComponent(jLabel3)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED))
-                            .addGroup(layout.createSequentialGroup()
-                                .addContainerGap()
-                                .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(18, 18, 18)
-                                .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(30, 30, 30)))
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(12, 12, 12)
-                                .addComponent(jTextField4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addComponent(jLabel4))
-                        .addGap(12, 12, 12)))
+                    .addComponent(countOdds, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addGroup(layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(instructionsToSetCards)
+                        .addGap(0, 0, Short.MAX_VALUE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(26, 26, 26)
+                        .addComponent(ownWins, javax.swing.GroupLayout.PREFERRED_SIZE, 206, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(ties, javax.swing.GroupLayout.PREFERRED_SIZE, 117, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(enemysWins, javax.swing.GroupLayout.PREFERRED_SIZE, 241, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(ownCard1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(ownCard2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(enemysCard1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(enemysCard2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(modelOfCard3)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(modelOfCard2)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(modelOfCard1)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(modelOfCard4)))
                 .addContainerGap())
         );
+
+        layout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {enemysCard1, enemysCard2, modelOfCard1, modelOfCard2, modelOfCard3, modelOfCard4, ownCard1, ownCard2});
+
+        layout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {enemysWins, ownWins, ties});
+
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(63, 63, 63)
+                .addContainerGap()
+                .addComponent(instructionsToSetCards, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(20, 20, 20)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel1)
-                    .addComponent(jLabel3)
-                    .addComponent(jLabel2)
-                    .addComponent(jLabel4))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                    .addComponent(modelOfCard1)
+                    .addComponent(modelOfCard2)
+                    .addComponent(modelOfCard3)
+                    .addComponent(modelOfCard4))
+                .addGap(9, 9, 9)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jTextField4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(enemysCard1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(enemysCard2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(ownCard2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(ownCard1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jButton1)
-                .addContainerGap(146, Short.MAX_VALUE))
+                .addComponent(countOdds)
+                .addGap(44, 44, 44)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(ownWins, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(ties)
+                    .addComponent(enemysWins, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(58, Short.MAX_VALUE))
         );
+
+        layout.linkSize(javax.swing.SwingConstants.VERTICAL, new java.awt.Component[] {enemysWins, ownWins, ties});
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jTextField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField1ActionPerformed
+    private void ownCard1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ownCard1ActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField1ActionPerformed
+    }//GEN-LAST:event_ownCard1ActionPerformed
+
+    private void ownCard2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ownCard2ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_ownCard2ActionPerformed
+
+    private void countOddsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_countOddsActionPerformed
+        // TODO add your handling code here:
+        Deck deck = new Deck();
+        deck.addCards();
+
+        String cardA = ownCard1.getText();
+        String cardB = ownCard2.getText();
+        String cardC = enemysCard1.getText();
+        String cardD = enemysCard2.getText();
+        Card a = deck.getCardByString(cardA);
+        Card b = deck.getCardByString(cardB);
+        Card c = deck.getCardByString(cardC);
+        Card d = deck.getCardByString(cardD);
+        PlayersCards handA = new PlayersCards(deck, a, b);
+        PlayersCards handB = new PlayersCards(deck, c, d);
+        Compare compare = new Compare(handA, handB, deck);
+        compare.addWinsAndFlopsToHashMaps();
+        ownWins.setText("Voittosi: " + compare.getAwins() + "/" + compare.getMap().size());
+        ties.setText("Tasurit: " + compare.getTies() + "/" + compare.getMap().size());
+        enemysWins.setText("Vastustajan voitot:" + compare.getbWins() + "/" + compare.getMap().size());
+
+    }//GEN-LAST:event_countOddsActionPerformed
 
     /**
      * @param args the command line arguments
@@ -158,14 +231,18 @@ public class GUI extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
-    private javax.swing.JTextField jTextField1;
-    private javax.swing.JTextField jTextField2;
-    private javax.swing.JTextField jTextField3;
-    private javax.swing.JTextField jTextField4;
+    private javax.swing.JButton countOdds;
+    private javax.swing.JTextField enemysCard1;
+    private javax.swing.JTextField enemysCard2;
+    private javax.swing.JLabel enemysWins;
+    private javax.swing.JLabel instructionsToSetCards;
+    private javax.swing.JLabel modelOfCard1;
+    private javax.swing.JLabel modelOfCard2;
+    private javax.swing.JLabel modelOfCard3;
+    private javax.swing.JLabel modelOfCard4;
+    private javax.swing.JTextField ownCard1;
+    private javax.swing.JTextField ownCard2;
+    private javax.swing.JLabel ownWins;
+    private javax.swing.JLabel ties;
     // End of variables declaration//GEN-END:variables
 }

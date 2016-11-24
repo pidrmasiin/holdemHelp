@@ -28,30 +28,21 @@ public class Main {
      */
     public static void main(String[] args) {
         // TODO code application logic here
-        Deck cards = new Deck();
-        cards.addCards();
-        Card cardA = new Card(13, SPADES);
-        Card cardB = new Card(3, SPADES);
-        Card cardC = new Card(2, SPADES);
-        Card cardD = new Card(14, SPADES);
-        PlayersCards handA = new PlayersCards(cards, cardA, cardB);
-        PlayersCards handB = new PlayersCards(cards, cardC, cardD);
-        Compare compare = new Compare(handA, handB, cards);
-        System.out.println(cards.sum());
-        compare.helpToAddFlopsToHashMaps();
-
-        System.out.println(compare.getMap().keySet().size());
-        System.out.println(compare.getCards().sum());
-        System.out.println("");
-        System.out.println("");
-
-        System.out.println(handA.toString() + ":" + compare.getAwins());
-        System.out.println(handB.toString() + ":" + compare.getbWins());
-        System.out.println("Ties:" + compare.getTies());
-        int yhteensa = +compare.getTies() + compare.getbWins() + compare.getAwins();
-        System.out.println("Yhteensä: " + yhteensa);
-
-        System.out.println(handA.toString() + ": " + compare.getOddsForAwins() + " % ");
+        Deck deck = new Deck();
+        deck.addCards();
+        String cardA = "2 of CLUBS";
+        String cardB = "14 of CLUBS";
+        String cardC = "3 of CLUBS";
+        String cardD = "4 of CLUBS";
+        Card a = deck.getCardByString(cardA);
+        Card b = deck.getCardByString(cardB);
+        Card c = deck.getCardByString(cardC);
+        Card d = deck.getCardByString(cardD);
+        System.out.println(a.toString());
+        PlayersCards handA = new PlayersCards(deck, a, b);
+        PlayersCards handB = new PlayersCards(deck, c, d);
+        Compare compare = new Compare(handA, handB, deck);
+        compare.addWinsAndFlopsToHashMaps();
 
     }
 }

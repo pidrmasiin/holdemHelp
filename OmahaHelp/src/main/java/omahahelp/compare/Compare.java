@@ -49,7 +49,7 @@ public class Compare {
      * ja kasvatetaan vertailun mukaisesti joko ties tai aWins tai bWins
      * Integeria.
      */
-    public void helpToAddFlopsToHashMaps() {
+    public void addWinsAndFlopsToHashMaps() {
 
         int winsForA = 0;
         int winsForB = 0;

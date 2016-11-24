@@ -73,7 +73,7 @@ public class CompareTest {
         PlayersCards handA = new PlayersCards(cards, cardA, cardB);
         PlayersCards handB = new PlayersCards(cards, cardC, cardD);
         Compare compare = new Compare(handA, handB, cards);
-        compare.helpToAddFlopsToHashMaps();
+        compare.addWinsAndFlopsToHashMaps();
         assertEquals(compare.getMap().size(), 17296);
     }
 
