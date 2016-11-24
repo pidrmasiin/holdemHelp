@@ -23,22 +23,22 @@ import static org.junit.Assert.*;
  * @author petteri
  */
 public class CompareTest {
-    
+
     public CompareTest() {
     }
-    
+
     @BeforeClass
     public static void setUpClass() {
     }
-    
+
     @AfterClass
     public static void tearDownClass() {
     }
-    
+
     @Before
     public void setUp() {
     }
-    
+
     @After
     public void tearDown() {
     }
@@ -48,9 +48,8 @@ public class CompareTest {
     //
     // @Test
     // public void hello() {}
-    
-     @Test
-    public void getCardsTest(){
+    @Test
+    public void getCardsTest() {
         Deck cards = new Deck();
         cards.addCards();
         Card cardA = new Card(13, SPADES);
@@ -62,9 +61,9 @@ public class CompareTest {
         Compare compare = new Compare(handA, handB, cards);
         assertEquals(compare.getCards(), cards);
     }
-    
-     @Test
-    public void addFlopsToMapTest(){
+
+    @Test
+    public void addFlopsToMapTest() {
         Deck cards = new Deck();
         cards.addCards();
         Card cardA = new Card(13, CLUBS);
@@ -74,9 +73,8 @@ public class CompareTest {
         PlayersCards handA = new PlayersCards(cards, cardA, cardB);
         PlayersCards handB = new PlayersCards(cards, cardC, cardD);
         Compare compare = new Compare(handA, handB, cards);
-        compare.addFlopsToMap();
+        compare.helpToAddFlopsToHashMaps();
         assertEquals(compare.getMap().size(), 17296);
     }
-    
-    
+
 }

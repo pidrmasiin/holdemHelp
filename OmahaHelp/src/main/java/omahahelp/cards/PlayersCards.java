@@ -18,6 +18,7 @@ public class PlayersCards {
 
     /**
      * Asetetaan pakasta pelaajalle kortit, jos pakassa kyseiset kortit.
+     *
      * @param cards valitaan pakka, josta vedetään
      * @param a pakasta otettu kortti
      * @param b pakasta otettu kortti
@@ -32,17 +33,17 @@ public class PlayersCards {
             System.out.println("kortti pöydällä tai vastustajan kädessä");
         }
     }
-    
-    public Card getCardA(){
+
+    public Card getCardA() {
         return this.cardA;
     }
-    
-    public Card getCardB(){
+
+    public Card getCardB() {
         return this.cardB;
     }
-    
+
     @Override
-    public String toString(){
+    public String toString() {
         return this.cardA.toString() + " & " + this.cardB.toString();
     }
 

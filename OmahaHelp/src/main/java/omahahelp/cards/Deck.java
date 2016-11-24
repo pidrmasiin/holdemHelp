@@ -25,7 +25,7 @@ public class Deck {
     }
 
     /**
-     *Lisätään pakkaan kaikki 52 korttia
+     * Lisätään pakkaan kaikki 52 korttia
      */
     public void addCards() {
         for (Suit suit : Suit.values()) {
@@ -45,23 +45,26 @@ public class Deck {
     public int sum() {
         return cards.size();
     }
-    
+
     /**
      * Etsitään pakasta kortti Stringin mukaan
+     *
      * @param x halutun kortin String
      * @return haluttu kortti
      */
-    public Card getCardByString(String x){
+    public Card getCardByString(String x) {
         Card b = new Card(15, SPADES);
-        for (Card a : this.cards){
-            if(a.toString().equals(x)){
+        for (Card a : this.cards) {
+            if (a.toString().equals(x)) {
                 b = a;
             }
-        }return b;
+        }
+        return b;
     }
 
     /**
      * Haetaan tietystä kohtaa pakkaa olevan kortin String-muoto
+     *
      * @param x määritetään, mistä kohtaa kortti haetaan
      * @return palautetaan kortin String
      */
@@ -75,6 +78,7 @@ public class Deck {
 
     /**
      * Lisätään pakkaan haluttu kortti
+     *
      * @param a haluttu kortti
      */
     public void addOneCard(Card a) {
@@ -88,6 +92,7 @@ public class Deck {
     /**
      * Katsotaan sisältääkö pakka tietyn kortin, jos sisältää poistetaan
      * kyseinen kortti.
+     *
      * @param a poistettava kortti
      * @return true, jos kortti löytyi ja poistettiin
      */
@@ -103,6 +108,7 @@ public class Deck {
 
     /**
      * Poistetaan haluttu kortti pakasta
+     *
      * @param x poistettava kortti
      */
     public void eraseCards(Card x) {
@@ -112,16 +118,16 @@ public class Deck {
             System.out.println("Kortti ei ole pakassa");
         }
     }
-    
-    public void sort(){
-         Collections.sort(cards, (Card o1, Card o2) -> o2.getIdForCard() - o1.getIdForCard());
+
+    public void sort() {
+        Collections.sort(cards, (Card o1, Card o2) -> o2.getIdForCard() - o1.getIdForCard());
     }
 
     public String getString() {
         this.sort();
         String out = "";
         for (Card card : cards) {
-            out += card.toString()+ ";";
+            out += card.toString() + ";";
         }
         return out;
     }

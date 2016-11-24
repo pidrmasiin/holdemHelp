@@ -9,7 +9,7 @@ import omahahelp.cards.Card;
 import omahahelp.cards.PlayersCards;
 
 /**
- * 
+ *
  * @author petteri
  */
 public class HandsValues {

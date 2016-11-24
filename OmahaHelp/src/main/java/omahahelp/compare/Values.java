@@ -24,9 +24,10 @@ public class Values implements Comparator<Card> {
 
     /**
      * Luodaan 5-kortin pakka, jonka arvoa luokassa määritellään.
+     *
      * @param a pakan 1. kortti
      * @param b pakan 2. kortti
-     * @param c pakan 3. kortti    
+     * @param c pakan 3. kortti
      * @param d pakan 4. kortti
      * @param e pakan 5. kortti
      */
@@ -54,6 +55,7 @@ public class Values implements Comparator<Card> {
 
     /**
      * Katsotaan muodostaako pakka värin
+     *
      * @return true, jos muodostaa.
      */
     public boolean checkFlush() {
@@ -73,6 +75,7 @@ public class Values implements Comparator<Card> {
 
     /**
      * Katsotaan muodostaako pakka värisuoran
+     *
      * @return true, jos muodostaa.
      */
     public boolean checkStarightFlush() {
@@ -83,8 +86,9 @@ public class Values implements Comparator<Card> {
     }
 
     /**
-     * Katsotaan muodostaako pakka suoran. Koska ässä tuottaa ongelmia, 
+     * Katsotaan muodostaako pakka suoran. Koska ässä tuottaa ongelmia,
      * tarkastetaan onko ässää ja tarkastetaan suora sen mukaan.
+     *
      * @return true, jos muodostaa.
      */
     public boolean checkStraight() {
@@ -96,7 +100,9 @@ public class Values implements Comparator<Card> {
     }
 
     /**
-     * Järjestetään pakka pienemmästä suurimpaan ja tarkasteaan suoraa alkupäästä.
+     * Järjestetään pakka pienemmästä suurimpaan ja tarkasteaan suoraa
+     * alkupäästä.
+     *
      * @param y pakan koko, jos ässä vähennetään koosta 1.
      * @param id 0, jos ässä lisätään yksi, jotta päästään leikkuriin.
      * @return true, jos haluttu määrä kortteja muodostaa suoran.
@@ -207,7 +213,6 @@ public class Values implements Comparator<Card> {
         }
         return 0;
     }
-
 
     public int getHandValue() {
         this.value = new HandsValues(this.getType(), this.checkSames().get(0).getValue());

@@ -42,11 +42,12 @@ public class Compare {
     }
 
     /**
-     * Muodostetaan pakasta kolmen kortin pakkoja ja asetaan niitä flops-Hashmappiin 
-     * siten, että key:nä toimii pakan string-muota ja valuena pakka Deck-muodossa.
-     * Lisäksi jokaisen pakan muodostuksen yhteydessä verrataan compareHands-metodin
-     * avulla pelaajien käsien arvoja toisiinsa ja kasvatetaan vertailun mukaisesti 
-     * joko ties tai aWins tai bWins Integeria.
+     * Muodostetaan pakasta kolmen kortin pakkoja ja asetaan niitä
+     * flops-Hashmappiin siten, että key:nä toimii pakan string-muota ja valuena
+     * pakka Deck-muodossa. Lisäksi jokaisen pakan muodostuksen yhteydessä
+     * verrataan compareHands-metodin avulla pelaajien käsien arvoja toisiinsa
+     * ja kasvatetaan vertailun mukaisesti joko ties tai aWins tai bWins
+     * Integeria.
      */
     public void helpToAddFlopsToHashMaps() {
 
@@ -54,7 +55,6 @@ public class Compare {
         int winsForB = 0;
         int ties = 0;
         Values values = new Values();
-        int help = 0;
         for (int w = 0; w < this.cards.sum(); w++) {
             for (int x = 0; x < this.cards.sum(); x++) {
                 for (int z = 0; z < this.cards.sum(); z++) {
@@ -71,27 +71,15 @@ public class Compare {
                     }
                     if (deck.sum() == 3) {
                         String key = deck.getString();
-                        if (this.flops.containsKey(key)) {
-                        } else {
+                        if (!this.flops.containsKey(key)) {
                             this.flops.put(key, deck);
-                            help++;
                             this.compareHands(a, b, c, handA, handB);
+
                         }
                     }
-                    z++;
                 }
             }
         }
-    }
-
-    /**
-     * Ajetaan addFlopsToMap-metodi, sortataan pakka ja ajetaan vielä uudelleen,
-     * jotta kaikki mahdolliset flopit saadaan flops-HashMapiin.
-     */
-    public void addFlopsToMap() {
-        this.helpToAddFlopsToHashMaps();
-        this.reOrganize();
-        this.helpToAddFlopsToHashMaps();
     }
 
     public void reOrganize() {
@@ -125,7 +113,9 @@ public class Compare {
     }
 
     /**
-     * Vertaillaan käsiä Values-luokan avulla suhteessa kolmen kortin flop-pakkaan.
+     * Vertaillaan käsiä Values-luokan avulla suhteessa kolmen kortin
+     * flop-pakkaan.
+     *
      * @param a 1. flop-pakan kortti
      * @param b 2. flop-pakan kortti
      * @param c 3. flop-pakan kortti

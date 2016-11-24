@@ -82,7 +82,7 @@ public class CardsTest {
         assertEquals(cards.getCardsContainsCardandEraseCard(d), true);
         assertEquals(cards.getCardsContainsCardandEraseCard(d), false);
     }
-    
+
     @Test
     public void getIntForSuitTestAndGetIntForCardTests() {
         Card a = new Card(14, CLUBS);
@@ -98,9 +98,9 @@ public class CardsTest {
         assertEquals(c.getIntForSuit(), 10000);
         assertEquals(d.getIntForSuit(), 1000);
     }
-    
-     @Test
-    public void addOneAndGetStringTests(){
+
+    @Test
+    public void addOneAndGetStringTests() {
         Deck deck = new Deck();
         Card a = new Card(4, CLUBS);
         Card b = new Card(14, DIAMONDS);
@@ -113,8 +113,7 @@ public class CardsTest {
         assertEquals(deck.sum(), 4);
         assertEquals(deck.getString(), "14 of SPADES;2 of HEARTS;14 of DIAMONDS;4 of CLUBS;");
     }
-    
-    
+
     @Test
     public void getCardByStringTest() {
         Deck cards = new Deck();
@@ -127,12 +126,7 @@ public class CardsTest {
         assertEquals(c.toString(), cards.getCardByString(c.toString()).toString());
         assertEquals(cards.getCardsContainsCardandEraseCard(a), true);
         assertEquals(c.toString(), cards.getCardByString(c.toString()).toString());
-        
-        
+
     }
-    
-    
-    
-    
-    
+
 }

@@ -16,13 +16,13 @@ import static omahahelp.cards.Card.Suit.HEARTS;
 public class Card {
 
     /**
-     *Luodaan maat
+     * Luodaan maat
      */
     public enum Suit {
 
         CLUBS, DIAMONDS, HEARTS, SPADES
     }
-    
+
     private final Suit suit;
     private int number;
 
@@ -38,26 +38,31 @@ public class Card {
     public int getNumber() {
         return this.number;
     }
-    
+
     /**
      * Luodaan maille Integer-arvo
+     *
      * @return maiden Integer-arvo
      */
-    public int getIntForSuit(){
-        if(this.suit.equals(CLUBS)){
+    public int getIntForSuit() {
+        if (this.suit.equals(CLUBS)) {
             return 0;
-        }if(this.suit.equals(DIAMONDS)){
+        }
+        if (this.suit.equals(DIAMONDS)) {
             return 100;
-        }if(this.suit.equals(HEARTS)){
+        }
+        if (this.suit.equals(HEARTS)) {
             return 1000;
-        }return 10000;
+        }
+        return 10000;
     }
-    
+
     /**
      * Luodaan jokaiselle kortille Integer-arvo
+     *
      * @return kortin Integer-arvo
      */
-    public int getIdForCard(){
+    public int getIdForCard() {
         return this.number + this.getIntForSuit();
     }
 
