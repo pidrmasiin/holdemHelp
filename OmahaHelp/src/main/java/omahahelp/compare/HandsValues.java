@@ -9,6 +9,7 @@ import omahahelp.cards.Card;
 import omahahelp.cards.PlayersCards;
 
 /**
+ * Luokassa käytetään Values luoka apuna. Luokan avulla muodostetaan käden arvo.
  *
  * @author petteri
  */

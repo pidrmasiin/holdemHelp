@@ -12,7 +12,7 @@ import static omahahelp.cards.Card.Suit.SPADES;
 import omahahelp.cards.Deck;
 
 /**
- *
+ *Luokan avulla arvotaan pakasta kortteja
  * @author petteri
  */
 public class Draw {

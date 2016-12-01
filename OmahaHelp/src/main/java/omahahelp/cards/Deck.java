@@ -13,6 +13,7 @@ import static omahahelp.cards.Card.Suit.SPADES;
 import omahahelp.compare.HandsValues;
 
 /**
+ * Luokan avulla muodostetaan pakkoja.
  *
  * @author petteri
  */
@@ -100,6 +101,15 @@ public class Deck {
         for (int x = 0; x < this.cards.size(); x++) {
             if (this.cards.get(x).getNumber() == a.getNumber() && this.cards.get(x).getSuit() == a.getSuit()) {
                 this.eraseCards(this.getCard(x));
+                return true;
+            }
+        }
+        return false;
+    }
+
+    public boolean getContainsByString(String s) {
+        for (Card c : this.cards) {
+            if (c.toString().equals(s)) {
                 return true;
             }
         }

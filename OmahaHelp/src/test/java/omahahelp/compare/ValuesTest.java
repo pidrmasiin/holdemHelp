@@ -5,6 +5,7 @@
  */
 package omahahelp.compare;
 
+import omahahelp.cards.Card;
 import omahahelp.cards.Deck;
 import org.junit.After;
 import org.junit.AfterClass;
@@ -127,4 +128,13 @@ public class ValuesTest {
 
     }
 
+    @Test
+    public void setCardstoHand() {
+        Deck cards = new Deck();
+        cards.addCards();
+        Values values = new Values();
+        Card a = cards.getCard(0);
+        values.setCardsToHand(a, a, a, a, a);
+        assertEquals(values.getHandSum(), 5);
+    }
 }

@@ -13,6 +13,11 @@ import omahahelp.cards.Card.Suit;
 import omahahelp.cards.Deck;
 import omahahelp.deal.Draw;
 
+/**
+ * Luokan avulla muodostetaan viidenkortin pakoille arvot.
+ *
+ * @author petteri
+ */
 public class Values implements Comparator<Card> {
 
     private HandsValues value;
@@ -71,6 +76,10 @@ public class Values implements Comparator<Card> {
             return true;
         }
         return false;
+    }
+
+    public int getHandSum() {
+        return this.hand.sum();
     }
 
     /**
@@ -167,19 +176,31 @@ public class Values implements Comparator<Card> {
     }
 
     public boolean checkThreeOfKind() {
-        return this.checkSames().get(0).getType() == 3 && this.checkSames().get(1).getType() != 2;
+        if (this.checkSames().get(0).getType() == 3 && this.checkSames().get(1).getType() != 2) {
+            return true;
+        }
+        return false;
     }
 
     public boolean checkFullHouse() {
-        return this.checkSames().get(0).getType() == 3 && this.checkSames().get(1).getType() == 2;
+        if (this.checkSames().get(0).getType() == 3 && this.checkSames().get(1).getType() == 2) {
+            return true;
+        }
+        return false;
     }
 
     public boolean checkTwoPairs() {
-        return this.checkSames().get(0).getType() == 2 && this.checkSames().get(1).getType() == 2;
+        if (this.checkSames().get(0).getType() == 2 && this.checkSames().get(1).getType() == 2) {
+            return true;
+        }
+        return false;
     }
 
     public boolean checkPair() {
-        return this.checkSames().get(0).getType() == 2 && 2 != this.checkSames().get(1).getType();
+        if (this.checkSames().get(0).getType() == 2 && 2 != this.checkSames().get(1).getType()) {
+            return true;
+        }
+        return false;
     }
 
     public void organizeHand() {
@@ -214,8 +235,17 @@ public class Values implements Comparator<Card> {
         return 0;
     }
 
+    public int getNumbersSum() {
+        int x = this.hand.getCard(0).getNumber()
+                + this.hand.getCard(1).getNumber()
+                + this.hand.getCard(2).getNumber()
+                + this.hand.getCard(3).getNumber()
+                + this.hand.getCard(4).getNumber();
+        return x;
+    }
+
     public int getHandValue() {
-        this.value = new HandsValues(this.getType(), this.checkSames().get(0).getValue());
+        this.value = new HandsValues(this.getType(), this.getNumbersSum());
         return this.value.getHandValue();
     }
 

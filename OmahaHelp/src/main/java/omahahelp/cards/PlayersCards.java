@@ -8,6 +8,7 @@ package omahahelp.cards;
 import omahahelp.compare.Values;
 
 /**
+ * Luokan avulla asetetaan pelaajille kortit.
  *
  * @author petteri
  */
@@ -28,9 +29,7 @@ public class PlayersCards {
         if (cards.getCardsContainsCardandEraseCard(a) && cards.getCardsContainsCardandEraseCard(b)) {
             this.cardA = a;
             this.cardB = b;
-            System.out.println("hoid");
-        } else {
-            System.out.println("kortti pöydällä tai vastustajan kädessä");
+
         }
     }
 

@@ -73,8 +73,68 @@ public class CompareTest {
         PlayersCards handA = new PlayersCards(cards, cardA, cardB);
         PlayersCards handB = new PlayersCards(cards, cardC, cardD);
         Compare compare = new Compare(handA, handB, cards);
-        compare.addWinsAndFlopsToHashMaps();
+        compare.addWinsAndCardsToHashMaps(cards, true, false);
         assertEquals(compare.getMap().size(), 17296);
+    }
+    
+    @Test
+    public void calculateTurnTest(){
+        Deck cards = new Deck();
+        cards.addCards();
+        Card cardA = new Card(13, CLUBS);
+        Card cardB = new Card(3, SPADES);
+        Card cardC = new Card(2, HEARTS);
+        Card cardD = new Card(14, SPADES);
+        PlayersCards handA = new PlayersCards(cards, cardA, cardB);
+        PlayersCards handB = new PlayersCards(cards, cardC, cardD);
+        Compare compare = new Compare(handA, handB, cards);
+        compare.addWinsAndCardsToHashMaps(cards, false, true);
+        assertEquals(compare.getTurns().size(), 194580);
+    }
+    
+    @Test
+    public void setWinsAndTieTest(){
+        Deck cards = new Deck();
+        cards.addCards();
+        Card cardA = new Card(13, CLUBS);
+        Card cardB = new Card(3, SPADES);
+        Card cardC = new Card(2, HEARTS);
+        Card cardD = new Card(14, SPADES);
+        PlayersCards handA = new PlayersCards(cards, cardA, cardB);
+        PlayersCards handB = new PlayersCards(cards, cardC, cardD);
+        Compare compare = new Compare(handA, handB, cards);
+        compare.setWinsAndTie(1, 2);
+        assertEquals(compare.getAwins(), 0);
+        assertEquals(compare.getTies(), 0);
+        assertEquals(compare.getbWins(), 1);
+        compare.setWinsAndTie(1, 1);
+        assertEquals(compare.getTies(), 1);
+        compare.setWinsAndTie(2, 1);
+        assertEquals(compare.getAwins(), 1);
+        
+    }
+    
+    @Test
+    public void helpCompareTest(){
+        Deck cards = new Deck();
+        cards.addCards();
+        Card cardA = new Card(13, CLUBS);
+        Card cardB = new Card(3, SPADES);
+        Card cardC = new Card(2, HEARTS);
+        Card cardD = new Card(14, SPADES);
+        PlayersCards handA = new PlayersCards(cards, cardA, cardB);
+        PlayersCards handB = new PlayersCards(cards, cardC, cardD);
+        Compare compare = new Compare(handA, handB, cards);
+        int a = compare.helpCompare(1, 2);
+        
+        assertEquals(a, 2);
+        a = compare.helpCompare(a, 8);
+        assertEquals(a, 8);
+        a = compare.helpCompare(7, a);
+        assertEquals(a, 8);
+        assertEquals(a, 8);
+        a = compare.helpCompare(8, a);
+        assertEquals(a, 8);
     }
 
 }

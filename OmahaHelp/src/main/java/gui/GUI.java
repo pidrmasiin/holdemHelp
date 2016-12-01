@@ -47,6 +47,7 @@ public class GUI extends javax.swing.JFrame {
         ownWins = new javax.swing.JLabel();
         ties = new javax.swing.JLabel();
         enemysWins = new javax.swing.JLabel();
+        turnBox = new javax.swing.JRadioButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -91,6 +92,8 @@ public class GUI extends javax.swing.JFrame {
 
         enemysWins.setText("Vastustajan voitot");
 
+        turnBox.setText("turnin jälkeen");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -126,6 +129,10 @@ public class GUI extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(modelOfCard4)))
                 .addContainerGap())
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(turnBox)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         layout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {enemysCard1, enemysCard2, modelOfCard1, modelOfCard2, modelOfCard3, modelOfCard4, ownCard1, ownCard2});
@@ -149,9 +156,11 @@ public class GUI extends javax.swing.JFrame {
                     .addComponent(enemysCard2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(ownCard2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(ownCard1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGap(8, 8, 8)
+                .addComponent(turnBox)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(countOdds)
-                .addGap(44, 44, 44)
+                .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(ownWins, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(ties)
@@ -188,10 +197,21 @@ public class GUI extends javax.swing.JFrame {
         PlayersCards handA = new PlayersCards(deck, a, b);
         PlayersCards handB = new PlayersCards(deck, c, d);
         Compare compare = new Compare(handA, handB, deck);
-        compare.addWinsAndFlopsToHashMaps();
-        ownWins.setText("Voittosi: " + compare.getAwins() + "/" + compare.getMap().size());
-        ties.setText("Tasurit: " + compare.getTies() + "/" + compare.getMap().size());
-        enemysWins.setText("Vastustajan voitot:" + compare.getbWins() + "/" + compare.getMap().size());
+
+        if (!turnBox.isSelected()) {
+            compare.addWinsAndCardsToHashMaps(deck, true, false);
+            ownWins.setText("Voittosi: " + compare.getAwins() + "/" + compare.getMap().size());
+            ties.setText("Tasurit: " + compare.getTies() + "/" + compare.getMap().size());
+            enemysWins.setText("Vastustajan voitot:" + compare.getbWins() + "/" + compare.getMap().size());
+        }
+
+        if (turnBox.isSelected()) {
+            compare.addWinsAndCardsToHashMaps(deck, false, true);
+            compare.calculateTurn();
+            ownWins.setText("Voittosi: " + compare.getAwins() + "/" + compare.getTurns().size());
+            ties.setText("Tasurit: " + compare.getTies() + "/" + compare.getTurns().size());
+            enemysWins.setText("Vastustajan voitot:" + compare.getbWins() + "/" + compare.getTurns().size());
+        }
 
     }//GEN-LAST:event_countOddsActionPerformed
 
@@ -244,5 +264,6 @@ public class GUI extends javax.swing.JFrame {
     private javax.swing.JTextField ownCard2;
     private javax.swing.JLabel ownWins;
     private javax.swing.JLabel ties;
+    private javax.swing.JRadioButton turnBox;
     // End of variables declaration//GEN-END:variables
 }

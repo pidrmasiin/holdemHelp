@@ -10,6 +10,7 @@ import static omahahelp.cards.Card.Suit.DIAMONDS;
 import static omahahelp.cards.Card.Suit.HEARTS;
 
 /**
+ * Luokan avulla muodostetaan kortteja.
  *
  * @author petteri
  */
