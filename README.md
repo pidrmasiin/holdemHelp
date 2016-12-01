@@ -7,7 +7,7 @@ Ainakin alussa asetettujen hold'em käsien vertailun uskon pystyväni hoitamaan.
 
 [Htmlpreview Checkstyle](https://htmlpreview.github.io/?https://github.com/pidrmasiin/omahahelp/blob/master/dokumentaatio/checkstyle.html)
 
-[Htmlpreview pit](https://htmlpreview.github.io/?https://raw.githubusercontent.com/pidrmasiin/omahahelp/master/dokumentaatio/pit-reports/201612012029/omahahelp.compare/index.html)
+[Htmlpreview pit](https://htmlpreview.github.io/?https://github.com/pidrmasiin/omahahelp/blob/master/dokumentaatio/pit-reports/201612012029/index.html)
 
 
 **Dokumentaatio**
