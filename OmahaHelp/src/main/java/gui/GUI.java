@@ -199,14 +199,14 @@ public class GUI extends javax.swing.JFrame {
         Compare compare = new Compare(handA, handB, deck);
 
         if (!turnBox.isSelected()) {
-            compare.addWinsAndCardsToHashMaps(deck, true, false);
+            compare.addWinsAndCardsToHashMaps(true, false);
             ownWins.setText("Voittosi: " + compare.getAwins() + "/" + compare.getMap().size());
             ties.setText("Tasurit: " + compare.getTies() + "/" + compare.getMap().size());
             enemysWins.setText("Vastustajan voitot:" + compare.getbWins() + "/" + compare.getMap().size());
         }
 
         if (turnBox.isSelected()) {
-            compare.addWinsAndCardsToHashMaps(deck, false, true);
+            compare.addWinsAndCardsToHashMaps(false, true);
             compare.calculateTurn();
             ownWins.setText("Voittosi: " + compare.getAwins() + "/" + compare.getTurns().size());
             ties.setText("Tasurit: " + compare.getTies() + "/" + compare.getTurns().size());

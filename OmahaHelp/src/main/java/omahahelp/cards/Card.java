@@ -17,7 +17,7 @@ import static omahahelp.cards.Card.Suit.HEARTS;
 public class Card {
 
     /**
-     * Luodaan maat
+     * Luodaan maat.
      */
     public enum Suit {
 
@@ -27,6 +27,11 @@ public class Card {
     private final Suit suit;
     private int number;
 
+    /**
+     * Asetetaan kortille numero ja maa.
+     * @param number numero
+     * @param suit maa
+     */
     public Card(int number, Suit suit) {
         this.number = number;
         this.suit = suit;
@@ -41,7 +46,7 @@ public class Card {
     }
 
     /**
-     * Luodaan maille Integer-arvo
+     * Luodaan maille Integer-arvo.
      *
      * @return maiden Integer-arvo
      */
@@ -59,7 +64,7 @@ public class Card {
     }
 
     /**
-     * Luodaan jokaiselle kortille Integer-arvo
+     * Luodaan jokaiselle kortille Integer-arvo.
      *
      * @return kortin Integer-arvo
      */

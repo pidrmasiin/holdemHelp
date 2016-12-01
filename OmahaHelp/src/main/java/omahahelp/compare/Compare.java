@@ -15,7 +15,7 @@ import omahahelp.cards.PlayersCards;
 
 /**
  * Luokan avulla lasketaan kumpi pelaajista johtaa kunkin pelin osa-alueen
- * jälkeen
+ * jälkeen.
  *
  * @author petteri
  */
@@ -30,6 +30,12 @@ public class Compare {
     private PlayersCards handA;
     private PlayersCards handB;
 
+    /**
+     * Asetetaam omat ja vastustajan kortit ja pakka.
+     * @param handA omat kortit
+     * @param handB vastustajan kortit
+     * @param cards pakka
+     */
     public Compare(PlayersCards handA, PlayersCards handB, Deck cards) {
         this.handA = handA;
         this.handB = handB;
@@ -47,31 +53,30 @@ public class Compare {
     }
 
     /**
-     * Muodostetaan pakasta kolmen kortin pakkoja ja asetaan niitä
+     * Muodostetaan pakasta  pakkoja ja asetaan niitä
      * flops-Hashmappiin siten, että key:nä toimii pakan string-muota ja valuena
-     * pakka Deck-muodossa. Lisäksi jokaisen pakan muodostuksen yhteydessä
-     * verrataan compareHands-metodin avulla pelaajien käsien arvoja toisiinsa
-     * ja kasvatetaan vertailun mukaisesti joko ties tai aWins tai bWins
-     * Integeria.
+     * pakka Deck-muodossa. 
+     * @param flop true, jos asetetaan floppia
+     * @param turn true, jos asetetaan turnia
      */
-    public void addWinsAndCardsToHashMaps(Deck all, boolean flop, boolean turn) {
+    public void addWinsAndCardsToHashMaps(boolean flop, boolean turn) {
         this.getMap().clear();
         this.aWins = 0;
         this.bWins = 0;
         this.ties = 0;
-        for (int w = 0; w < all.sum(); w++) {
-            for (int x = 1; x < all.sum(); x++) {
+        for (int w = 0; w < cards.sum(); w++) {
+            for (int x = 1; x < cards.sum(); x++) {
 
-                for (int z = 2; z < all.sum(); z++) {
+                for (int z = 2; z < cards.sum(); z++) {
 
                     if (flop) {
-                        this.addWins(all, x, z, w, turn, flop, 0, 0);
+                        this.addWins(x, z, w, turn, flop, 0, 0);
                     }
                     if (turn) {
-                        for (int q = 3; q < all.sum(); q++) {
+                        for (int q = 3; q < cards.sum(); q++) {
 
                             if (!flop) {
-                                this.addWins(all, x, z, w, turn, flop, q, 0);
+                                this.addWins(x, z, w, turn, flop, q, 0);
                             }
 //                            if (turn && flop) {
 //
@@ -93,13 +98,25 @@ public class Compare {
         }
     }
 
-    public void addWins(Deck q, int x, int z, int w, boolean turn, boolean flop, int t, int k) {
+    /**
+     * Apu korttien lisäämiseksi mappiin. Katsotaan sisältääkö mappi jo turnin 
+     * tai riverin, jos ei asetetaan se mappiin. Flopin yhteydessä myös verrataan
+     * korttien arvoja.
+     * @param x tämän mukaan haetaan 1. kortti pakasta
+     * @param z tämän mukaan haetaan 2. kortti pakasta
+     * @param w tämän mukaan haetaan 3. kortti pakasta
+     * @param turn true, jos asetetaan turnia
+     * @param flop true, jos asetetaan floppia.
+     * @param t tämän mukaan haetaan 4. kortti pakasta, jos turnista kyse
+     * @param k tämän mukaan haetaan 5. kortti pakasta, jos riveristä kyse
+     */
+    public void addWins(int x, int z, int w, boolean turn, boolean flop, int t, int k) {
         Deck deck = new Deck();
-        Card a = q.getCard(x);
-        Card b = q.getCard(z);
-        Card c = q.getCard(w);
-        Card d = q.getCard(t);
-        Card e = q.getCard(k);
+        Card a = cards.getCard(x);
+        Card b = cards.getCard(z);
+        Card c = cards.getCard(w);
+        Card d = cards.getCard(t);
+        Card e = cards.getCard(k);
 
         deck.addOneCard(a);
         if (!deck.getContainsByString(b.toString())) {
@@ -137,6 +154,10 @@ public class Compare {
         }
     }
 
+    /**
+     * Käydään kaikki mahdolliset viiden kortin kombinaatiot läpi ja katsotaan
+     * kumpi käsistä voittaa.
+     */
     public void calculateTurn() {
 
         Values values = new Values();
@@ -177,6 +198,13 @@ public class Compare {
         }
     }
 
+    /**
+     * Loin tällasen, että oisin saanu testien rivikattavuutta lisättyä, mutta
+     * ei se oikein auttanu.
+     * @param a
+     * @param b
+     * @return
+     */
     public Integer helpCompare(int a, int b) {
         if (a < b) {
             return b;

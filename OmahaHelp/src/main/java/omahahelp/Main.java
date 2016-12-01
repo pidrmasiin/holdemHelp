@@ -42,7 +42,7 @@ public class Main {
         PlayersCards handA = new PlayersCards(deck, a, b);
         PlayersCards handB = new PlayersCards(deck, c, d);
         Compare compare = new Compare(handA, handB, deck);
-        compare.addWinsAndCardsToHashMaps(deck, false, true);
+        compare.addWinsAndCardsToHashMaps(false, true);
         System.out.println(compare.getAwins());
 
     }

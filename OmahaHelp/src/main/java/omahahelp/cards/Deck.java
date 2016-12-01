@@ -19,14 +19,18 @@ import omahahelp.compare.HandsValues;
  */
 public class Deck {
 
+
     public ArrayList<Card> cards;
 
+    /**
+     *Luodaan pakka.
+     */
     public Deck() {
         this.cards = new ArrayList<Card>();
     }
 
     /**
-     * Lisätään pakkaan kaikki 52 korttia
+     * Lisätään pakkaan kaikki 52 korttia.
      */
     public void addCards() {
         for (Suit suit : Suit.values()) {
@@ -48,7 +52,7 @@ public class Deck {
     }
 
     /**
-     * Etsitään pakasta kortti Stringin mukaan
+     * Etsitään pakasta kortti Stringin mukaan.
      *
      * @param x halutun kortin String
      * @return haluttu kortti
@@ -64,7 +68,7 @@ public class Deck {
     }
 
     /**
-     * Haetaan tietystä kohtaa pakkaa olevan kortin String-muoto
+     * Haetaan tietystä kohtaa pakkaa olevan kortin String-muoto.
      *
      * @param x määritetään, mistä kohtaa kortti haetaan
      * @return palautetaan kortin String
@@ -78,7 +82,7 @@ public class Deck {
     }
 
     /**
-     * Lisätään pakkaan haluttu kortti
+     * Lisätään pakkaan haluttu kortti.
      *
      * @param a haluttu kortti
      */
@@ -117,7 +121,7 @@ public class Deck {
     }
 
     /**
-     * Poistetaan haluttu kortti pakasta
+     * Poistetaan haluttu kortti pakasta.
      *
      * @param x poistettava kortti
      */

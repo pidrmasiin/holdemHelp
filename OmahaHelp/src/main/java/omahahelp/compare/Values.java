@@ -59,7 +59,7 @@ public class Values implements Comparator<Card> {
     }
 
     /**
-     * Katsotaan muodostaako pakka värin
+     * Katsotaan muodostaako pakka värin.
      *
      * @return true, jos muodostaa.
      */
@@ -83,7 +83,7 @@ public class Values implements Comparator<Card> {
     }
 
     /**
-     * Katsotaan muodostaako pakka värisuoran
+     * Katsotaan muodostaako pakka värisuoran.
      *
      * @return true, jos muodostaa.
      */

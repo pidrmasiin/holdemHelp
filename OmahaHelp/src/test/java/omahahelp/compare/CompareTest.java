@@ -73,7 +73,7 @@ public class CompareTest {
         PlayersCards handA = new PlayersCards(cards, cardA, cardB);
         PlayersCards handB = new PlayersCards(cards, cardC, cardD);
         Compare compare = new Compare(handA, handB, cards);
-        compare.addWinsAndCardsToHashMaps(cards, true, false);
+        compare.addWinsAndCardsToHashMaps(true, false);
         assertEquals(compare.getMap().size(), 17296);
     }
     
@@ -88,7 +88,7 @@ public class CompareTest {
         PlayersCards handA = new PlayersCards(cards, cardA, cardB);
         PlayersCards handB = new PlayersCards(cards, cardC, cardD);
         Compare compare = new Compare(handA, handB, cards);
-        compare.addWinsAndCardsToHashMaps(cards, false, true);
+        compare.addWinsAndCardsToHashMaps(false, true);
         assertEquals(compare.getTurns().size(), 194580);
     }
     
