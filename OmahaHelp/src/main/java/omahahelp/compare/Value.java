@@ -18,13 +18,14 @@ import omahahelp.deal.Draw;
  *
  * @author petteri
  */
-public class Values implements Comparator<Card> {
+public class Value implements Comparator<Card> {
 
-    private HandsValues value;
+    private HandsValue value;
     private Deck hand;
 
-    public Values() {
+    public Value() {
         this.hand = new Deck();
+        this.value = new HandsValue(0, 0);
     }
 
     /**
@@ -45,6 +46,16 @@ public class Values implements Comparator<Card> {
         this.hand.getCards().add(e);
     }
 
+    public void setFiveCardsDeckToHand(Deck deck) {
+        Deck here = deck;
+        this.hand.getCards().clear();
+        this.hand.getCards().add(here.getCard(0));
+        this.hand.getCards().add(here.getCard(1));
+        this.hand.getCards().add(here.getCard(2));
+        this.hand.getCards().add(here.getCard(3));
+        this.hand.getCards().add(here.getCard(4));
+    }
+
     /**
      * Arvotaan kortit 5-kortin pakkaan.
      */
@@ -58,6 +69,10 @@ public class Values implements Comparator<Card> {
         this.hand.getCards().add(draw.drawCard());
     }
 
+    public Deck getDeck() {
+        return this.hand;
+    }
+
     /**
      * Katsotaan muodostaako pakka värin.
      *
@@ -66,7 +81,7 @@ public class Values implements Comparator<Card> {
     public boolean checkFlush() {
         Suit suit = this.hand.getCard(0).getSuit();
         int id = 0;
-        for (int idx = 0; idx < this.hand.sum(); idx++) {
+        for (int idx = 0; idx < this.hand.size(); idx++) {
             suit = this.hand.getCard(idx).getSuit();
             if (suit != this.hand.getCard(0).getSuit()) {
                 id = 1;
@@ -79,7 +94,7 @@ public class Values implements Comparator<Card> {
     }
 
     public int getHandSum() {
-        return this.hand.sum();
+        return this.hand.size();
     }
 
     /**
@@ -103,9 +118,9 @@ public class Values implements Comparator<Card> {
     public boolean checkStraight() {
         this.organizeHand();
         if (hand.getCard(0).getNumber() == 2 && hand.getCard(4).getNumber() == 14) {
-            return this.highStraigth(this.hand.sum() - 1, 1);
+            return this.highStraigth(this.hand.size() - 1, 1);
         }
-        return this.highStraigth(this.hand.sum(), 0);
+        return this.highStraigth(this.hand.size(), 0);
     }
 
     /**
@@ -136,18 +151,18 @@ public class Values implements Comparator<Card> {
     public ArrayList<Integer> helpToCheckSames() {
         this.organizeHand();
         ArrayList help = new ArrayList<>();
-        for (int idx = 0; idx < this.hand.sum(); idx++) {
+        for (int idx = 0; idx < this.hand.size(); idx++) {
             help.add(this.hand.getCard(idx).getNumber());
         }
         return help;
     }
 
-    public ArrayList<HandsValues> checkSames() {
+    public ArrayList<HandsValue> checkSames() {
         int sames = 0;
         this.organizeHand();
         ArrayList help = new ArrayList<>();
         help = this.helpToCheckSames();
-        ArrayList out = new ArrayList<HandsValues>();
+        ArrayList out = new ArrayList<HandsValue>();
         int y = 4;
         for (int x = 0; x < 5; x++) {
             int check = (int) help.get(y);
@@ -156,7 +171,7 @@ public class Values implements Comparator<Card> {
                     sames++;
                 }
             }
-            HandsValues hand = new HandsValues(sames, check);
+            HandsValue hand = new HandsValue(sames, check);
             if (out.isEmpty()) {
                 out.add(hand);
             }
@@ -167,7 +182,7 @@ public class Values implements Comparator<Card> {
             y--;
 
         }
-        Collections.sort(out, (HandsValues o1, HandsValues o2) -> o2.getType() - o1.getType());
+        Collections.sort(out, (HandsValue o1, HandsValue o2) -> o2.getType() - o1.getType());
         return out;
     }
 
@@ -206,51 +221,62 @@ public class Values implements Comparator<Card> {
     public void organizeHand() {
         Collections.sort(this.hand.getCards(), this);
     }
+    
+    public HandsValue getHandsValue(){
+        return this.value;
+    }
 
-    public Integer getType() {
+    public void setType() {
         if (this.checkStarightFlush()) {
-            return 800;
+            this.value.addValueToValue(8000000);
         }
         if (this.checkFourofKind()) {
-            return 700;
+            this.value.addValueToValue(7000000);
         }
         if (this.checkFullHouse()) {
-            return 600;
+            this.value.addValueToValue(6000000);
         }
         if (this.checkFlush()) {
-            return 500;
+            this.value.addValueToValue(5000000);
         }
         if (this.checkStraight()) {
-            return 400;
+            this.value.addValueToValue(4000000);
         }
         if (this.checkThreeOfKind()) {
-            return 300;
+            this.value.addValueToValue(3000000);
         }
         if (this.checkTwoPairs()) {
-            return 200;
+            this.value.addValueToValue(2000000);
         }
         if (this.checkPair()) {
-            return 100;
+            this.value.addValueToValue(1000000);
         }
-        return 0;
+
     }
 
-    public int getNumbersSum() {
-        int x = this.hand.getCard(0).getNumber()
-                + this.hand.getCard(1).getNumber()
-                + this.hand.getCard(2).getNumber()
-                + this.hand.getCard(3).getNumber()
-                + this.hand.getCard(4).getNumber();
-        return x;
-    }
-
-    public int getHandValue() {
-        this.value = new HandsValues(this.getType(), this.getNumbersSum());
-        return this.value.getHandValue();
+    public void setValue() {
+        for (int x = 0; x < this.checkSames().size(); x++) {
+            if (x == 0) {
+                this.value.addValueToValue(this.checkSames().get(x).getValue() + 100000);
+            }
+            if (x == 1) {
+                this.value.addValueToValue(this.checkSames().get(x).getValue() + 10000);
+            }
+            if (x == 2) {
+                this.value.addValueToValue(this.checkSames().get(x).getValue() + 1000);
+            }
+            if (x == 3) {
+                this.value.addValueToValue(this.checkSames().get(x).getValue() + 100);
+            }
+            if (x == 4) {
+                this.value.addValueToValue(this.checkSames().get(x).getValue());
+            }
+        }
     }
 
     @Override
     public int compare(Card o1, Card o2) {
         return o1.getNumber() - o2.getNumber();
     }
+
 }

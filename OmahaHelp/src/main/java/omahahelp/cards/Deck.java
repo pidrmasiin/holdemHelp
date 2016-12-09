@@ -10,7 +10,7 @@ import java.util.Collections;
 import omahahelp.cards.Card;
 import omahahelp.cards.Card.Suit;
 import static omahahelp.cards.Card.Suit.SPADES;
-import omahahelp.compare.HandsValues;
+
 
 /**
  * Luokan avulla muodostetaan pakkoja.
@@ -42,12 +42,18 @@ public class Deck {
         }
 
     }
+    
+    public void addDeck(Deck deck){
+        for(Card card : deck.cards){
+            this.addOneCard(card);
+        }
+    }
 
     public ArrayList getCards() {
         return this.cards;
     }
 
-    public int sum() {
+    public int size() {
         return cards.size();
     }
 

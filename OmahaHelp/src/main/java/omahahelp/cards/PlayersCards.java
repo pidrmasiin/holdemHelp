@@ -5,7 +5,7 @@
  */
 package omahahelp.cards;
 
-import omahahelp.compare.Values;
+import omahahelp.compare.Value;
 
 /**
  * Luokan avulla asetetaan pelaajille kortit.

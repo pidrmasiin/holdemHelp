@@ -13,8 +13,8 @@ import static omahahelp.cards.Card.Suit.SPADES;
 import omahahelp.cards.Deck;
 import omahahelp.cards.PlayersCards;
 import omahahelp.compare.Compare;
-import omahahelp.compare.HandsValues;
-import omahahelp.compare.Values;
+import omahahelp.compare.HandsValue;
+import omahahelp.compare.Value;
 import omahahelp.deal.Draw;
 
 /**
@@ -28,12 +28,13 @@ public class Main {
      */
     public static void main(String[] args) {
         // TODO code application logic here
+
         Deck deck = new Deck();
         deck.addCards();
-        String cardA = "2 of CLUBS";
-        String cardB = "14 of CLUBS";
-        String cardC = "3 of CLUBS";
-        String cardD = "4 of CLUBS";
+        String cardA = "2 of DIAMONDS";
+        String cardB = "2 of SPADES";
+        String cardC = "2 of CLUBS";
+        String cardD = "2 of HEARTS";
         Card a = deck.getCardByString(cardA);
         Card b = deck.getCardByString(cardB);
         Card c = deck.getCardByString(cardC);
@@ -41,9 +42,24 @@ public class Main {
         System.out.println(a.toString());
         PlayersCards handA = new PlayersCards(deck, a, b);
         PlayersCards handB = new PlayersCards(deck, c, d);
-        Compare compare = new Compare(handA, handB, deck);
-        compare.addWinsAndCardsToHashMaps(false, true);
-        System.out.println(compare.getAwins());
+        Compare compare = new Compare(deck);
+//        compare.setHands(handA, handB);
+        compare.addCardsToFlopHashMap();
+        compare.addTurnsToMap();
+        System.out.println(compare.getTurns().size() + "moo");
+        
+//        compare.compareTurns();
+//        System.out.println("");
+//        System.out.println(compare.getAwins() + "/" + compare.getTurns().size());
+//        System.out.println(compare.getbWins() + "/" + compare.getTurns().size());
+//        System.out.println(compare.getTies() + "/" + compare.getTurns().size());
+//      so
+     
+        compare.addRiversToMap();
+        System.out.println(compare.getRiversMap().size());
+        
+//        compare.makeMapOfAll5CardsCombinations();
+        
 
     }
 }

@@ -49,7 +49,7 @@ public class CardsTest {
     public void sumRight() {
         Deck cards = new Deck();
         cards.addCards();
-        assertEquals(cards.sum(), 52);
+        assertEquals(cards.size(), 52);
     }
 
     @Test
@@ -68,7 +68,7 @@ public class CardsTest {
         Deck cards = new Deck();
         cards.addCards();
         PlayersCards pCards = new PlayersCards(cards, cards.getCard(1), cards.getCard(3));
-        assertEquals(cards.sum(), 50);
+        assertEquals(cards.size(), 50);
     }
 
     @Test
@@ -110,7 +110,7 @@ public class CardsTest {
         deck.addOneCard(b);
         deck.addOneCard(c);
         deck.addOneCard(d);
-        assertEquals(deck.sum(), 4);
+        assertEquals(deck.size(), 4);
         assertEquals(deck.getString(), "14 of SPADES;2 of HEARTS;14 of DIAMONDS;4 of CLUBS;");
     }
 

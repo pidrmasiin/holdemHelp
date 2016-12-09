@@ -13,18 +13,24 @@ import omahahelp.cards.PlayersCards;
  *
  * @author petteri
  */
-public class HandsValues {
+public class HandsValue {
 
     private int value;
     private int type;
 
-    public HandsValues(int x, int y) {
+    public HandsValue(int x, int y) {
         this.type = x;
         this.value = y;
     }
 
     public int getType() {
         return this.type;
+    }
+    
+    
+    
+    public void addValueToValue(int x){
+        this.value = this.value + x;
     }
 
     public int getValue() {

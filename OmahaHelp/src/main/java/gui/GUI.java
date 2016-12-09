@@ -9,7 +9,7 @@ import omahahelp.cards.Card;
 import omahahelp.cards.Deck;
 import omahahelp.cards.PlayersCards;
 import omahahelp.compare.Compare;
-import omahahelp.compare.Values;
+import omahahelp.compare.Value;
 
 /**
  *
@@ -48,6 +48,7 @@ public class GUI extends javax.swing.JFrame {
         ties = new javax.swing.JLabel();
         enemysWins = new javax.swing.JLabel();
         turnBox = new javax.swing.JRadioButton();
+        download = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -93,6 +94,11 @@ public class GUI extends javax.swing.JFrame {
         enemysWins.setText("Vastustajan voitot");
 
         turnBox.setText("turnin jälkeen");
+        turnBox.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                turnBoxActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -101,17 +107,6 @@ public class GUI extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(countOdds, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addGroup(layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(instructionsToSetCards)
-                        .addGap(0, 0, Short.MAX_VALUE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(26, 26, 26)
-                        .addComponent(ownWins, javax.swing.GroupLayout.PREFERRED_SIZE, 206, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(ties, javax.swing.GroupLayout.PREFERRED_SIZE, 117, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(enemysWins, javax.swing.GroupLayout.PREFERRED_SIZE, 241, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(ownCard1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -127,12 +122,29 @@ public class GUI extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(modelOfCard1)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(modelOfCard4)))
+                        .addComponent(modelOfCard4))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addContainerGap()
+                                .addComponent(instructionsToSetCards))
+                            .addGroup(layout.createSequentialGroup()
+                                .addContainerGap()
+                                .addComponent(turnBox)))
+                        .addGap(0, 0, Short.MAX_VALUE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(24, 24, 24)
+                        .addComponent(ownWins, javax.swing.GroupLayout.PREFERRED_SIZE, 206, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(download, javax.swing.GroupLayout.PREFERRED_SIZE, 175, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(0, 0, Short.MAX_VALUE))
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(ties, javax.swing.GroupLayout.PREFERRED_SIZE, 117, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 14, Short.MAX_VALUE)
+                                .addComponent(enemysWins, javax.swing.GroupLayout.PREFERRED_SIZE, 241, javax.swing.GroupLayout.PREFERRED_SIZE)))))
                 .addContainerGap())
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(turnBox)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         layout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {enemysCard1, enemysCard2, modelOfCard1, modelOfCard2, modelOfCard3, modelOfCard4, ownCard1, ownCard2});
@@ -161,11 +173,13 @@ public class GUI extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(countOdds)
                 .addGap(18, 18, 18)
+                .addComponent(download, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(ownWins, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(ties)
                     .addComponent(enemysWins, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(58, Short.MAX_VALUE))
+                .addContainerGap(89, Short.MAX_VALUE))
         );
 
         layout.linkSize(javax.swing.SwingConstants.VERTICAL, new java.awt.Component[] {enemysWins, ownWins, ties});
@@ -196,24 +210,33 @@ public class GUI extends javax.swing.JFrame {
         Card d = deck.getCardByString(cardD);
         PlayersCards handA = new PlayersCards(deck, a, b);
         PlayersCards handB = new PlayersCards(deck, c, d);
-        Compare compare = new Compare(handA, handB, deck);
-
+        Compare compare = new Compare(deck);
+        compare.setHands(handA, handB);
+        compare.addCardsToFlopHashMap();
         if (!turnBox.isSelected()) {
-            compare.addWinsAndCardsToHashMaps(true, false);
+            
             ownWins.setText("Voittosi: " + compare.getAwins() + "/" + compare.getMap().size());
             ties.setText("Tasurit: " + compare.getTies() + "/" + compare.getMap().size());
             enemysWins.setText("Vastustajan voitot:" + compare.getbWins() + "/" + compare.getMap().size());
         }
 
         if (turnBox.isSelected()) {
-            compare.addWinsAndCardsToHashMaps(false, true);
-            compare.calculateTurn();
+            compare.addTurnsToMap();
+            compare.compareTurns();
             ownWins.setText("Voittosi: " + compare.getAwins() + "/" + compare.getTurns().size());
             ties.setText("Tasurit: " + compare.getTies() + "/" + compare.getTurns().size());
             enemysWins.setText("Vastustajan voitot:" + compare.getbWins() + "/" + compare.getTurns().size());
         }
 
     }//GEN-LAST:event_countOddsActionPerformed
+
+    private void turnBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_turnBoxActionPerformed
+        // TODO add your handling code here:
+        if(this.turnBox.isSelected()){
+            this.countOdds.setText("Suhteet turnin jälkeen");
+            this.download.setText("Tässä kestää");
+        }
+    }//GEN-LAST:event_turnBoxActionPerformed
 
     /**
      * @param args the command line arguments
@@ -252,6 +275,7 @@ public class GUI extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton countOdds;
+    private javax.swing.JLabel download;
     private javax.swing.JTextField enemysCard1;
     private javax.swing.JTextField enemysCard2;
     private javax.swing.JLabel enemysWins;

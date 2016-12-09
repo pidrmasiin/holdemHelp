@@ -50,7 +50,7 @@ public class ValuesTest {
     public void flushCheckTest() {
         Deck cards = new Deck();
         cards.addCards();
-        Values values = new Values();
+        Value values = new Value();
         values.setCardsToHand(cards.getCard(9), cards.getCard(1), cards.getCard(2), cards.getCard(3), cards.getCard(4));
         assertEquals(values.checkFlush(), true);
         values.setCardsToHand(cards.getCard(9), cards.getCard(35), cards.getCard(2), cards.getCard(3), cards.getCard(4));
@@ -61,7 +61,7 @@ public class ValuesTest {
     public void straightCheckTest() {
         Deck cards = new Deck();
         cards.addCards();
-        Values values = new Values();
+        Value values = new Value();
         values.setCardsToHand(cards.getCard(1), cards.getCard(3), cards.getCard(5), cards.getCard(2), cards.getCard(4));
         assertEquals(values.checkStraight(), true);
         values.setCardsToHand(cards.getCard(46), cards.getCard(3), cards.getCard(5), cards.getCard(2), cards.getCard(4));
@@ -76,7 +76,7 @@ public class ValuesTest {
     public void fourOfKindCheckTest() {
         Deck cards = new Deck();
         cards.addCards();
-        Values values = new Values();
+        Value values = new Value();
         values.setCardsToHand(cards.getCard(1), cards.getCard(3), cards.getCard(5), cards.getCard(2), cards.getCard(4));
         assertEquals(values.checkFourofKind(), false);
         values.setCardsToHand(cards.getCard(46), cards.getCard(0), cards.getCard(12), cards.getCard(25), cards.getCard(38));
@@ -90,7 +90,7 @@ public class ValuesTest {
     public void threeOfKindCheckTest() {
         Deck cards = new Deck();
         cards.addCards();
-        Values values = new Values();
+        Value values = new Value();
         values.setCardsToHand(cards.getCard(46), cards.getCard(0), cards.getCard(12), cards.getCard(25), cards.getCard(38));
         assertEquals(values.checkThreeOfKind(), true);
         values.setCardsToHand(cards.getCard(13), cards.getCard(0), cards.getCard(12), cards.getCard(25), cards.getCard(38));
@@ -104,7 +104,7 @@ public class ValuesTest {
     public void twoPairsTest() {
         Deck cards = new Deck();
         cards.addCards();
-        Values values = new Values();
+        Value values = new Value();
         values.setCardsToHand(cards.getCard(2), cards.getCard(18), cards.getCard(5), cards.getCard(15), cards.getCard(9));
         assertEquals(values.checkTwoPairs(), true);
         values.setCardsToHand(cards.getCard(13), cards.getCard(0), cards.getCard(12), cards.getCard(25), cards.getCard(38));
@@ -118,7 +118,7 @@ public class ValuesTest {
     public void pairTest() {
         Deck cards = new Deck();
         cards.addCards();
-        Values values = new Values();
+        Value values = new Value();
         values.setCardsToHand(cards.getCard(2), cards.getCard(18), cards.getCard(5), cards.getCard(15), cards.getCard(9));
         assertEquals(values.checkPair(), false);
         values.setCardsToHand(cards.getCard(13), cards.getCard(45), cards.getCard(0), cards.getCard(1), cards.getCard(2));
@@ -132,7 +132,7 @@ public class ValuesTest {
     public void setCardstoHand() {
         Deck cards = new Deck();
         cards.addCards();
-        Values values = new Values();
+        Value values = new Value();
         Card a = cards.getCard(0);
         values.setCardsToHand(a, a, a, a, a);
         assertEquals(values.getHandSum(), 5);

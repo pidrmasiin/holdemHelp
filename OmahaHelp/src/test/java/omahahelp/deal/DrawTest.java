@@ -50,7 +50,7 @@ public class DrawTest {
         cards.addCards();
         Draw draw = new Draw(cards);
         draw.drawCard();
-        assertEquals(cards.sum(), 51);
+        assertEquals(cards.size(), 51);
     }
 
     @Test
@@ -59,7 +59,7 @@ public class DrawTest {
         cards.addCards();
         Draw draw = new Draw(cards);
         draw.drawFlop();
-        assertEquals(cards.sum(), 49);
+        assertEquals(cards.size(), 49);
     }
 
     @Test

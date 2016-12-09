@@ -7,6 +7,7 @@ package omahahelp.compare;
 
 import omahahelp.cards.Card;
 import static omahahelp.cards.Card.Suit.CLUBS;
+import static omahahelp.cards.Card.Suit.DIAMONDS;
 import static omahahelp.cards.Card.Suit.HEARTS;
 import static omahahelp.cards.Card.Suit.SPADES;
 import omahahelp.cards.Deck;
@@ -58,7 +59,8 @@ public class CompareTest {
         Card cardD = new Card(14, SPADES);
         PlayersCards handA = new PlayersCards(cards, cardA, cardB);
         PlayersCards handB = new PlayersCards(cards, cardC, cardD);
-        Compare compare = new Compare(handA, handB, cards);
+        Compare compare = new Compare(cards);
+        compare.setHands(handA, handB);
         assertEquals(compare.getCards(), cards);
     }
 
@@ -72,13 +74,15 @@ public class CompareTest {
         Card cardD = new Card(14, SPADES);
         PlayersCards handA = new PlayersCards(cards, cardA, cardB);
         PlayersCards handB = new PlayersCards(cards, cardC, cardD);
-        Compare compare = new Compare(handA, handB, cards);
-        compare.addWinsAndCardsToHashMaps(true, false);
+        Compare compare = new Compare(cards);
+        compare.setHands(handA, handB);
+        compare.addCardsToFlopHashMap(cards, true);
+
         assertEquals(compare.getMap().size(), 17296);
     }
-    
+
     @Test
-    public void calculateTurnTest(){
+    public void calculateTurnTest() {
         Deck cards = new Deck();
         cards.addCards();
         Card cardA = new Card(13, CLUBS);
@@ -87,13 +91,15 @@ public class CompareTest {
         Card cardD = new Card(14, SPADES);
         PlayersCards handA = new PlayersCards(cards, cardA, cardB);
         PlayersCards handB = new PlayersCards(cards, cardC, cardD);
-        Compare compare = new Compare(handA, handB, cards);
-        compare.addWinsAndCardsToHashMaps(false, true);
+        Compare compare = new Compare(cards);
+        compare.setHands(handA, handB);
+        compare.addCardsToFlopHashMap(cards,true);
+        compare.addTurnsToMap(compare.getMap(),true);
         assertEquals(compare.getTurns().size(), 194580);
     }
-    
+
     @Test
-    public void setWinsAndTieTest(){
+    public void setWinsAndTieTest() {
         Deck cards = new Deck();
         cards.addCards();
         Card cardA = new Card(13, CLUBS);
@@ -102,39 +108,53 @@ public class CompareTest {
         Card cardD = new Card(14, SPADES);
         PlayersCards handA = new PlayersCards(cards, cardA, cardB);
         PlayersCards handB = new PlayersCards(cards, cardC, cardD);
-        Compare compare = new Compare(handA, handB, cards);
-        compare.setWinsAndTie(1, 2);
+        Compare compare = new Compare(cards);
+        compare.setWinsAndTies(2);
         assertEquals(compare.getAwins(), 0);
         assertEquals(compare.getTies(), 0);
         assertEquals(compare.getbWins(), 1);
-        compare.setWinsAndTie(1, 1);
+        compare.setWinsAndTies(0);
         assertEquals(compare.getTies(), 1);
-        compare.setWinsAndTie(2, 1);
+        compare.setWinsAndTies(1);
         assertEquals(compare.getAwins(), 1);
-        
-    }
-    
-    @Test
-    public void helpCompareTest(){
-        Deck cards = new Deck();
-        cards.addCards();
-        Card cardA = new Card(13, CLUBS);
-        Card cardB = new Card(3, SPADES);
-        Card cardC = new Card(2, HEARTS);
-        Card cardD = new Card(14, SPADES);
-        PlayersCards handA = new PlayersCards(cards, cardA, cardB);
-        PlayersCards handB = new PlayersCards(cards, cardC, cardD);
-        Compare compare = new Compare(handA, handB, cards);
-        int a = compare.helpCompare(1, 2);
-        
-        assertEquals(a, 2);
-        a = compare.helpCompare(a, 8);
-        assertEquals(a, 8);
-        a = compare.helpCompare(7, a);
-        assertEquals(a, 8);
-        assertEquals(a, 8);
-        a = compare.helpCompare(8, a);
-        assertEquals(a, 8);
+
     }
 
+    
+        @Test
+    public void compareTurnsTest(){
+    Deck cards = new Deck();
+        cards.addCards();
+        Card cardA = new Card(2, CLUBS);
+        Card cardB = new Card(2, SPADES);
+        Card cardC = new Card(2, HEARTS);
+        Card cardD = new Card(2, DIAMONDS);
+        PlayersCards handA = new PlayersCards(cards, cardA, cardB);
+        PlayersCards handB = new PlayersCards(cards, cardC, cardD);
+        Compare compare = new Compare(cards);
+        compare.setHands(handA, handB);
+        compare.addCardsToFlopHashMap(cards, true);
+        
+        compare.compareTurns();
+        assertEquals(compare.getAwins(), 500);
+    }
+
+//    @Test
+//    public void setRiversTest(){
+//        Deck cards = new Deck();
+//        cards.addCards();
+//        Card cardA = new Card(13, CLUBS);
+//        Card cardB = new Card(3, SPADES);
+//        Card cardC = new Card(2, HEARTS);
+//        Card cardD = new Card(14, SPADES);
+//        PlayersCards handA = new PlayersCards(cards, cardA, cardB);
+//        PlayersCards handB = new PlayersCards(cards, cardC, cardD);
+//        Compare compare = new Compare(cards);
+//        compare.setHands(handA, handB);
+//        compare.addCardsToFlopHashMap();
+//        compare.addTurnsToMap();
+//        compare.addRiversToMap();
+//        assertEquals(compare.getRiversMap().size(),1712304);
+//    }
+//    
 }

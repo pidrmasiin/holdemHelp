@@ -1,3 +1,6 @@
+**Joudun tyytymään alussa asetettujen hold'em käsien vertailuun, joka sekin tuottaa hieman hankaluuksia.**
+Turnin ja riverin jälkeisten suhteiden laskeminen on nimittäin pirun hidasta
+
 **Aihe**
 
 Omaha-avustaja, mutta voi olla, että joudun tyytymään vastaavan hold'em-avustajaan. Katsotaan mihin taidot riittää. Toteutetaan siis järjestelmä, jonka avulla voidaan laskea todennäköisyys voitolle
