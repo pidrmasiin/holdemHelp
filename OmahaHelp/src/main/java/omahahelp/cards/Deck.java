@@ -95,6 +95,16 @@ public class Deck {
     public void addOneCard(Card a) {
         this.cards.add(a);
     }
+    
+    public void addAndErase(Card a, int x){
+        this.cards.remove(x);
+        this.cards.add(a);
+    }
+    
+    public void eraseByString(String x){
+        Card a = this.getCardByString(x);
+        this.eraseCards(a);
+    }
 
     public void erase() {
         this.cards.clear();

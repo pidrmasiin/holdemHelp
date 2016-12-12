@@ -21,6 +21,7 @@ public class GUI extends javax.swing.JFrame {
      * Creates new form GUI
      */
     public GUI() {
+
         initComponents();
 
     }
@@ -47,8 +48,17 @@ public class GUI extends javax.swing.JFrame {
         ownWins = new javax.swing.JLabel();
         ties = new javax.swing.JLabel();
         enemysWins = new javax.swing.JLabel();
-        turnBox = new javax.swing.JRadioButton();
-        download = new javax.swing.JLabel();
+        flopLabel = new javax.swing.JLabel();
+        flopCard3 = new javax.swing.JTextField();
+        flopCard2 = new javax.swing.JTextField();
+        flopCard1 = new javax.swing.JTextField();
+        modelOfCard5 = new javax.swing.JLabel();
+        modelOfCard6 = new javax.swing.JLabel();
+        modelOfCard7 = new javax.swing.JLabel();
+        turnButton = new javax.swing.JButton();
+        wrongText = new javax.swing.JLabel();
+        jSeparator1 = new javax.swing.JSeparator();
+        blindTurnButton = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -83,7 +93,7 @@ public class GUI extends javax.swing.JFrame {
 
         modelOfCard2.setText("Korttisi (x of SUIT)");
 
-        modelOfCard3.setText("Korttisi (x of SUIT)");
+        modelOfCard3.setText("Kortti(x of SUIT)");
 
         modelOfCard4.setText("Vastus(x of SUIT)");
 
@@ -93,10 +103,46 @@ public class GUI extends javax.swing.JFrame {
 
         enemysWins.setText("Vastustajan voitot");
 
-        turnBox.setText("turnin jälkeen");
-        turnBox.addActionListener(new java.awt.event.ActionListener() {
+        flopLabel.setText("Floppi");
+
+        flopCard3.setText("3 of HEARTS");
+        flopCard3.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                turnBoxActionPerformed(evt);
+                flopCard3ActionPerformed(evt);
+            }
+        });
+
+        flopCard2.setText("3 of DIAMONDS");
+        flopCard2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                flopCard2ActionPerformed(evt);
+            }
+        });
+
+        flopCard1.setText("3 of CLUBS");
+        flopCard1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                flopCard1ActionPerformed(evt);
+            }
+        });
+
+        modelOfCard5.setText("Korttisi (x of SUIT)");
+
+        modelOfCard6.setText("Kortti (x of SUIT)");
+
+        modelOfCard7.setText("Kortti (x of SUIT)");
+
+        turnButton.setText("Aseta floppi ja näytä suhteet");
+        turnButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                turnButtonActionPerformed(evt);
+            }
+        });
+
+        blindTurnButton.setText("HIDASTA PUUHAA ! Näytä suhteet turnin jälkeen, kun floppia ei tiedetä ");
+        blindTurnButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                blindTurnButtonActionPerformed(evt);
             }
         });
 
@@ -116,38 +162,61 @@ public class GUI extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(enemysCard2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(modelOfCard3)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(modelOfCard2)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(modelOfCard1)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(modelOfCard4))
+                        .addContainerGap()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(modelOfCard5)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(modelOfCard2)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(modelOfCard1)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(modelOfCard4))
+                            .addComponent(turnButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
                                 .addContainerGap()
                                 .addComponent(instructionsToSetCards))
                             .addGroup(layout.createSequentialGroup()
-                                .addContainerGap()
-                                .addComponent(turnBox)))
-                        .addGap(0, 0, Short.MAX_VALUE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(24, 24, 24)
-                        .addComponent(ownWins, javax.swing.GroupLayout.PREFERRED_SIZE, 206, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addGap(60, 60, 60)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 655, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addComponent(flopLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 57, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addGroup(layout.createSequentialGroup()
+                                                .addComponent(flopCard3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                .addGap(18, 18, 18)
+                                                .addComponent(flopCard2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                .addGap(18, 18, 18)
+                                                .addComponent(flopCard1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                            .addGroup(layout.createSequentialGroup()
+                                                .addComponent(modelOfCard6)
+                                                .addGap(18, 18, 18)
+                                                .addComponent(modelOfCard3)
+                                                .addGap(18, 18, 18)
+                                                .addComponent(modelOfCard7))))))
                             .addGroup(layout.createSequentialGroup()
-                                .addComponent(download, javax.swing.GroupLayout.PREFERRED_SIZE, 175, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(0, 0, Short.MAX_VALUE))
-                            .addGroup(layout.createSequentialGroup()
+                                .addGap(29, 29, 29)
+                                .addComponent(ownWins, javax.swing.GroupLayout.PREFERRED_SIZE, 206, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(ties, javax.swing.GroupLayout.PREFERRED_SIZE, 117, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 14, Short.MAX_VALUE)
-                                .addComponent(enemysWins, javax.swing.GroupLayout.PREFERRED_SIZE, 241, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(enemysWins, javax.swing.GroupLayout.PREFERRED_SIZE, 241, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGap(0, 6, Short.MAX_VALUE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addComponent(blindTurnButton, javax.swing.GroupLayout.PREFERRED_SIZE, 503, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap())
+            .addGroup(layout.createSequentialGroup()
+                .addGap(197, 197, 197)
+                .addComponent(wrongText, javax.swing.GroupLayout.PREFERRED_SIZE, 366, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
-        layout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {enemysCard1, enemysCard2, modelOfCard1, modelOfCard2, modelOfCard3, modelOfCard4, ownCard1, ownCard2});
+        layout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {enemysCard1, enemysCard2, flopCard1, flopCard2, flopCard3, modelOfCard1, modelOfCard2, modelOfCard3, modelOfCard4, modelOfCard6, modelOfCard7, ownCard1, ownCard2});
 
         layout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {enemysWins, ownWins, ties});
 
@@ -160,26 +229,41 @@ public class GUI extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(modelOfCard1)
                     .addComponent(modelOfCard2)
-                    .addComponent(modelOfCard3)
-                    .addComponent(modelOfCard4))
+                    .addComponent(modelOfCard4)
+                    .addComponent(modelOfCard5))
                 .addGap(9, 9, 9)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(enemysCard1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(enemysCard2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(ownCard2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(ownCard1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(8, 8, 8)
-                .addComponent(turnBox)
+                .addGap(3, 3, 3)
+                .addComponent(wrongText, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(countOdds)
-                .addGap(18, 18, 18)
-                .addComponent(download, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
+                .addComponent(countOdds, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(8, 8, 8)
+                .addComponent(blindTurnButton)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(ownWins, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(ties)
                     .addComponent(enemysWins, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(89, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(modelOfCard6)
+                    .addComponent(modelOfCard3)
+                    .addComponent(modelOfCard7))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(flopLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(flopCard3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(flopCard2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(flopCard1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(turnButton)
+                .addContainerGap(75, Short.MAX_VALUE))
         );
 
         layout.linkSize(javax.swing.SwingConstants.VERTICAL, new java.awt.Component[] {enemysWins, ownWins, ties});
@@ -189,6 +273,7 @@ public class GUI extends javax.swing.JFrame {
 
     private void ownCard1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ownCard1ActionPerformed
         // TODO add your handling code here:
+
     }//GEN-LAST:event_ownCard1ActionPerformed
 
     private void ownCard2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ownCard2ActionPerformed
@@ -199,44 +284,211 @@ public class GUI extends javax.swing.JFrame {
         // TODO add your handling code here:
         Deck deck = new Deck();
         deck.addCards();
-
+        Boolean help = true;
         String cardA = ownCard1.getText();
         String cardB = ownCard2.getText();
         String cardC = enemysCard1.getText();
         String cardD = enemysCard2.getText();
-        Card a = deck.getCardByString(cardA);
-        Card b = deck.getCardByString(cardB);
-        Card c = deck.getCardByString(cardC);
-        Card d = deck.getCardByString(cardD);
-        PlayersCards handA = new PlayersCards(deck, a, b);
-        PlayersCards handB = new PlayersCards(deck, c, d);
-        Compare compare = new Compare(deck);
-        compare.setHands(handA, handB);
-        compare.addCardsToFlopHashMap();
-        if (!turnBox.isSelected()) {
-            
-            ownWins.setText("Voittosi: " + compare.getAwins() + "/" + compare.getMap().size());
-            ties.setText("Tasurit: " + compare.getTies() + "/" + compare.getMap().size());
-            enemysWins.setText("Vastustajan voitot:" + compare.getbWins() + "/" + compare.getMap().size());
-        }
 
-        if (turnBox.isSelected()) {
-            compare.addTurnsToMap();
-            compare.compareTurns();
-            ownWins.setText("Voittosi: " + compare.getAwins() + "/" + compare.getTurns().size());
-            ties.setText("Tasurit: " + compare.getTies() + "/" + compare.getTurns().size());
-            enemysWins.setText("Vastustajan voitot:" + compare.getbWins() + "/" + compare.getTurns().size());
+        Card a = deck.getCardByString(cardA);
+        if (a.getNumber() == 15) {
+            this.ownCard1.setText("Vika tässä");
+            help = false;
+        }
+        PlayersCards handA = new PlayersCards(deck, a);
+
+        Card b = deck.getCardByString(cardB);
+        if (b.getNumber() == 15) {
+            this.ownCard2.setText("Vika tässä");
+            help = false;
+        }
+        handA.setCardB(deck, b);
+
+        Card c = deck.getCardByString(cardC);
+        if (c.getNumber() == 15) {
+            this.enemysCard1.setText("Vika tässä");
+            help = false;
+        }
+        PlayersCards handB = new PlayersCards(deck, c);
+
+        Card d = deck.getCardByString(cardD);
+        if (d.getNumber() == 15) {
+            this.enemysCard2.setText("Vika tässä");
+            help = false;
+        }
+        handB.setCardB(deck, d);
+
+        if (help) {
+
+            Compare compare = new Compare(deck);
+            compare.setHands(handA, handB);
+            compare.addCardsToFlopHashMap();
+
+            ownWins.setText("Johdat: " + compare.getAwins() + "/" + compare.getMap().size());
+            ties.setText("Tilanne tasan: " + compare.getTies() + "/" + compare.getMap().size());
+            enemysWins.setText("Vastustaja johtaa:" + compare.getbWins() + "/" + compare.getMap().size());
+            this.wrongText.setText("");
+
+        } else {
+            this.wrongText.setText("Korttia ei pakassa tai kirjoitit sen väärin");
+            this.ownWins.setText("Teit");
+            this.ties.setText("jotain");
+            this.enemysWins.setText("väärin");
         }
 
     }//GEN-LAST:event_countOddsActionPerformed
 
-    private void turnBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_turnBoxActionPerformed
+    private void flopCard3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_flopCard3ActionPerformed
         // TODO add your handling code here:
-        if(this.turnBox.isSelected()){
-            this.countOdds.setText("Suhteet turnin jälkeen");
-            this.download.setText("Tässä kestää");
+    }//GEN-LAST:event_flopCard3ActionPerformed
+
+    private void flopCard2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_flopCard2ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_flopCard2ActionPerformed
+
+    private void flopCard1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_flopCard1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_flopCard1ActionPerformed
+
+    private void blindTurnButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_blindTurnButtonActionPerformed
+        // TODO add your handling code here:
+        Deck deck = new Deck();
+        deck.addCards();
+        Boolean help = true;
+        String cardA = ownCard1.getText();
+        String cardB = ownCard2.getText();
+        String cardC = enemysCard1.getText();
+        String cardD = enemysCard2.getText();
+
+        Card a = deck.getCardByString(cardA);
+        if (a.getNumber() == 15) {
+            this.ownCard1.setText("Vika tässä");
+            help = false;
         }
-    }//GEN-LAST:event_turnBoxActionPerformed
+        PlayersCards handA = new PlayersCards(deck, a);
+
+        Card b = deck.getCardByString(cardB);
+        if (b.getNumber() == 15) {
+            this.ownCard2.setText("Vika tässä");
+            help = false;
+        }
+        handA.setCardB(deck, b);
+
+        Card c = deck.getCardByString(cardC);
+        if (c.getNumber() == 15) {
+            this.enemysCard1.setText("Vika tässä");
+            help = false;
+        }
+        PlayersCards handB = new PlayersCards(deck, c);
+
+        Card d = deck.getCardByString(cardD);
+        if (d.getNumber() == 15) {
+            this.enemysCard2.setText("Vika tässä");
+            help = false;
+        }
+        handB.setCardB(deck, d);
+
+        if (help) {
+
+            Compare compare = new Compare(deck);
+            compare.setHands(handA, handB);
+            compare.addCardsToFlopHashMap();
+            compare.addTurnsToMap();
+            compare.addWinsAndTiesAfterTurnWhenFlopBlind();
+            ownWins.setText("Voittosi: " + compare.getAwins() + "/" + compare.getTurns().size());
+            ties.setText("Tasurit: " + compare.getTies() + "/" + compare.getTurns().size());
+            enemysWins.setText("Vastustajan voitot:" + compare.getbWins() + "/" + compare.getTurns().size());
+        } else {
+            this.wrongText.setText("Korttia ei pakassa tai kirjoitit sen väärin");
+            this.ownWins.setText("Teit");
+            this.ties.setText("jotain");
+            this.enemysWins.setText("väärin");
+        }
+    }//GEN-LAST:event_blindTurnButtonActionPerformed
+
+    private void turnButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_turnButtonActionPerformed
+        // TODO add your handling code here:
+        Deck deck = new Deck();
+        deck.addCards();
+        Boolean help = true;
+        String cardA = ownCard1.getText();
+        String cardB = ownCard2.getText();
+        String cardC = enemysCard1.getText();
+        String cardD = enemysCard2.getText();
+        String flopA = flopCard1.getText();
+        String flopB = flopCard2.getText();
+        String flopC = flopCard3.getText();
+
+        
+        Card a = deck.getCardByString(cardA);
+        if (a.getNumber() == 15) {
+            this.ownCard1.setText("Vika tässä");
+            help = false;
+        }
+        PlayersCards handA = new PlayersCards(deck, a);
+
+        Card b = deck.getCardByString(cardB);
+        if (b.getNumber() == 15) {
+            this.ownCard2.setText("Vika tässä");
+            help = false;
+        }
+        handA.setCardB(deck, b);
+
+        Card c = deck.getCardByString(cardC);
+        if (c.getNumber() == 15) {
+            this.enemysCard1.setText("Vika tässä");
+            help = false;
+        }
+        PlayersCards handB = new PlayersCards(deck, c);
+
+        Card d = deck.getCardByString(cardD);
+        if (d.getNumber() == 15) {
+            this.enemysCard2.setText("Vika tässä");
+            help = false;
+        }
+        handB.setCardB(deck, d);
+        
+        Card e = deck.getCardByString(flopA);
+        if (e.getNumber() == 15) {
+            this.flopCard1.setText("Vika tässä?");
+            help = false;
+        }if(help){
+            deck.eraseByString(e.toString());
+        }
+        
+
+        Card f = deck.getCardByString(flopB);
+        if (f.getNumber() == 15) {
+            this.flopCard2.setText("Vika tässä?");
+            help = false;
+        }if(help){
+            deck.eraseByString(f.toString());
+        }
+
+        Card g = deck.getCardByString(flopC);
+        if (g.getNumber() == 15) {
+            this.flopCard3.setText("Vika tässä?");
+            help = false;
+        }if(help){
+            deck.eraseByString(g.toString());
+        }
+
+
+        if (help) {
+           
+            Compare compare = new Compare(deck);
+            compare.setHands(handA, handB);
+            compare.calculateAfterTurn(e, f, g);
+            ownWins.setText("Voittosi: " + compare.getAwins() + "/" + compare.getCards().size());
+            ties.setText("Tasurit: " + compare.getTies() + "/" + compare.getCards().size());
+            enemysWins.setText("Vastustajan voitot:" + compare.getbWins() + "/" + compare.getCards().size());
+        } else {
+            this.wrongText.setText("Korttia ei pakassa tai kirjoitit sen väärin");
+            this.ownWins.setText("Teit");
+            this.ties.setText("jotain");
+            this.enemysWins.setText("väärin");
+        }
+    }//GEN-LAST:event_turnButtonActionPerformed
 
     /**
      * @param args the command line arguments
@@ -274,20 +526,29 @@ public class GUI extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton blindTurnButton;
     private javax.swing.JButton countOdds;
-    private javax.swing.JLabel download;
     private javax.swing.JTextField enemysCard1;
     private javax.swing.JTextField enemysCard2;
     private javax.swing.JLabel enemysWins;
+    private javax.swing.JTextField flopCard1;
+    private javax.swing.JTextField flopCard2;
+    private javax.swing.JTextField flopCard3;
+    private javax.swing.JLabel flopLabel;
     private javax.swing.JLabel instructionsToSetCards;
+    private javax.swing.JSeparator jSeparator1;
     private javax.swing.JLabel modelOfCard1;
     private javax.swing.JLabel modelOfCard2;
     private javax.swing.JLabel modelOfCard3;
     private javax.swing.JLabel modelOfCard4;
+    private javax.swing.JLabel modelOfCard5;
+    private javax.swing.JLabel modelOfCard6;
+    private javax.swing.JLabel modelOfCard7;
     private javax.swing.JTextField ownCard1;
     private javax.swing.JTextField ownCard2;
     private javax.swing.JLabel ownWins;
     private javax.swing.JLabel ties;
-    private javax.swing.JRadioButton turnBox;
+    private javax.swing.JButton turnButton;
+    private javax.swing.JLabel wrongText;
     // End of variables declaration//GEN-END:variables
 }

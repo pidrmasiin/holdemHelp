@@ -14,6 +14,8 @@ import java.util.SortedSet;
 import java.util.TreeMap;
 import java.util.TreeSet;
 import omahahelp.cards.Card;
+import static omahahelp.cards.Card.Suit.DIAMONDS;
+import static omahahelp.cards.Card.Suit.SPADES;
 import omahahelp.cards.Deck;
 import omahahelp.cards.PlayersCards;
 
@@ -98,7 +100,7 @@ public class Compare {
                             if (!flops.containsKey(key)) {
                                 flops.put(key, deck);
 
-//                                this.setWinsAndTies(this.compareFlop(a, b, c, handA, handB));
+                                this.setWinsAndTies(this.compareFlop(a, b, c, handA, handB));
                             }
                         }
                     }
@@ -113,6 +115,7 @@ public class Compare {
 
     public void addTurnsToMap() {
 
+        int y = 0;
         for (int x = 3; x < cards.size(); x++) {
 
             for (Deck deck : flops.values()) {
@@ -125,6 +128,7 @@ public class Compare {
                 if (!deck.getContainsByString(cards.getCardString(x))) {
 
                     copy.addOneCard(cards.getCard(x));
+
                     turns.put(copy.getString(), copy);
 
                 }
@@ -135,82 +139,95 @@ public class Compare {
 
     }
 
-    public void compareTurns() {
+    public void calculateAfterTurn(Card a, Card b, Card c) {
         this.aWins = 0;
         this.bWins = 0;
         this.ties = 0;
+ 
+        Deck deck = new Deck();
+        deck.addOneCard(a);
+        deck.addOneCard(b);
+        deck.addOneCard(c);
+        for (Card x : (ArrayList<Card>) this.cards.getCards()) {
+            deck.addOneCard(x);
 
-        for (Deck deck : turns.values()) {
-            Value one = this.helpToCompare(handA, deck);
-            Value two = this.helpToCompare(handB, deck);
-
-            this.setWinsAndTies(this.compareValues(one, two));
+            this.setTurnWinsAndTies(deck);
+            deck.eraseByString(x.toString());
 
         }
 
     }
 
-    public Value helpToCompare(PlayersCards choose, Deck turn) {
-        Value one = new Value();
-        Value compare = new Value();
-
-        Deck a = new Deck();
-        a.addDeck(turn);
-        a.addOneCard(choose.getCardA());
-
-        one.setFiveCardsDeckToHand(a);
-        a.eraseCards(choose.getCardA());
-
-        a.addOneCard(choose.getCardB());
-        compare.setFiveCardsDeckToHand(a);
-
-        if (this.compareValues(one, compare) == 2) {
-            one = compare;
-        }
-        a.addOneCard(choose.getCardA());
-        for (int x = 0; x < turn.size(); x++) {
-            a.eraseCards(turn.getCard(x));
-            compare.setFiveCardsDeckToHand(a);
-            if (this.compareValues(one, compare) == 2) {
-                one = compare;
-            }
-            a.addOneCard(turn.getCard(x));
-        }
-        return one;
-
-    }
-
-    public void addRiversToMap() {
-        Value val = new Value();
-
+    public void addWinsAndTiesAfterTurnWhenFlopBlind() {
+        this.aWins = 0;
+        this.bWins = 0;
+        this.ties = 0;
+        int x = 0;
         int y = 0;
-        for (int x = 5; x < cards.size(); x++) {
+        for (Deck deck : this.turns.values()) {
 
-            for (Deck deck : turns.values()) {
-
-                Deck copy = new Deck();
-                copy.addOneCard(deck.getCard(0));
-                copy.addOneCard(deck.getCard(1));
-                copy.addOneCard(deck.getCard(2));
-                copy.addOneCard(deck.getCard(3));
-
-                if (!copy.getContainsByString(cards.getCardString(x))) {
-
-                    copy.addOneCard(cards.getCard(x));
-                    val.setFiveCardsDeckToHand(copy);
-                    val.setType();
-                    val.setValue();
-                    int key = val.getHandsValue().getHandValue();
-                    if (!rivers.containsKey(key)) {
-                        rivers.put(key, copy);
-                    }
-
-                }
-
-            }
-
-            System.out.println(x);
+            this.setTurnWinsAndTies(deck);
+           if(x>2000){
+               y++;
+               x=0;
+               System.out.println(y + "/" + 100);
+           }
+           x++;
+            
         }
+    }
+
+    public void setTurnWinsAndTies(Deck deck) {
+
+        Value one = this.compareTurns(deck, handA);
+        Value two = this.compareTurns(deck, handB);
+        
+        if (one.getValue() > two.getValue()) {
+            this.aWins++;
+        }
+        if (one.getValue() < two.getValue()) {
+            this.bWins++;
+        }
+        if (one.getValue() == two.getValue()) {
+            this.ties++;
+        }
+
+    }
+
+    public Value compareTurns(Deck deck, PlayersCards hand) {
+
+        Value out = new Value();
+        out.setCardsToHand(deck.getCard(0), deck.getCard(1), deck.getCard(2), deck.getCard(3), hand.getCardA());
+
+        Value comp = new Value();
+        comp.setCardsToHand(deck.getCard(0), deck.getCard(1), deck.getCard(2), deck.getCard(3), hand.getCardB());
+
+        if (this.compareValues(out, comp) == 2) {
+            out.setFiveCardsDeckToHand(comp.getDeck());
+
+        }
+
+        comp.setCardsToHand(deck.getCard(0), deck.getCard(1), deck.getCard(2), hand.getCardB(), hand.getCardA());
+        if (this.compareValues(out, comp) == 2) {
+            out.setFiveCardsDeckToHand(comp.getDeck());
+        }
+
+        comp.setCardsToHand(deck.getCard(0), deck.getCard(1), hand.getCardB(), deck.getCard(3), hand.getCardA());
+        if (this.compareValues(out, comp) == 2) {
+            out.setFiveCardsDeckToHand(comp.getDeck());
+        }
+
+        comp.setCardsToHand(deck.getCard(0), hand.getCardB(), deck.getCard(2), deck.getCard(3), hand.getCardA());
+        if (this.compareValues(out, comp) == 2) {
+            out.setFiveCardsDeckToHand(comp.getDeck());
+        }
+
+        comp.setCardsToHand(hand.getCardB(), deck.getCard(1), deck.getCard(2), deck.getCard(3), hand.getCardA());
+        if (this.compareValues(out, comp) == 2) {
+            out.setFiveCardsDeckToHand(comp.getDeck());
+        }
+
+        return out;
     }
 
     public HashMap<Integer, Deck> getRiversMap() {
@@ -285,24 +302,28 @@ public class Compare {
     }
 
     public Integer compareValues(Value a, Value b) {
-        a.setType();
-        b.setType();
-        int va = a.getHandsValue().getType();
-        int vb = b.getHandsValue().getType();
-        if (va == vb) {
-            for (int x = 0; x < a.checkSames().size(); x++) {
-                if (a.checkSames().get(x).getValue() != b.checkSames().get(x).getValue()) {
-                    va = a.checkSames().get(x).getValue();
-                    vb = b.checkSames().get(x).getValue();
-                    break;
-                }
 
-            }
-        }
-        if (va == vb) {
+//        int va = a.getType();
+//        int vb = b.getType();
+//
+//        if (va == vb) {
+//            for (int x = 0; x < a.checkSames().size(); x++) {
+//
+//                if (a.checkSames().get(x).getValue() != b.checkSames().get(x).getValue()) {
+//                    
+//                    va = a.checkSames().get(x).getValue();
+//                    vb = b.checkSames().get(x).getValue();
+//                    System.out.println(va);
+//                    System.out.println(vb);
+//                    break;
+//                }
+//
+//            }
+//        }
+        if (a.getValue() == b.getValue()) {
             return 0;
         }
-        if (va > vb) {
+        if (a.getValue() > b.getValue()) {
             return 1;
         }
         return 2;

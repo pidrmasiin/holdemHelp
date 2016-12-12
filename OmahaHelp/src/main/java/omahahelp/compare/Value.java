@@ -79,17 +79,19 @@ public class Value implements Comparator<Card> {
      * @return true, jos muodostaa.
      */
     public boolean checkFlush() {
-        Suit suit = this.hand.getCard(0).getSuit();
-        int id = 0;
-        for (int idx = 0; idx < this.hand.size(); idx++) {
-            suit = this.hand.getCard(idx).getSuit();
-            if (suit != this.hand.getCard(0).getSuit()) {
-                id = 1;
+
+            Suit suit = this.hand.getCard(0).getSuit();
+            int id = 0;
+            for (int idx = 0; idx < this.hand.size(); idx++) {
+                suit = this.hand.getCard(idx).getSuit();
+                if (suit != this.hand.getCard(0).getSuit()) {
+                    id = 1;
+                }
             }
-        }
-        if (id == 0) {
-            return true;
-        }
+            if (id == 0) {
+                return true;
+            }
+        
         return false;
     }
 
@@ -221,57 +223,68 @@ public class Value implements Comparator<Card> {
     public void organizeHand() {
         Collections.sort(this.hand.getCards(), this);
     }
-    
-    public HandsValue getHandsValue(){
+
+    public HandsValue getHandsValue() {
         return this.value;
     }
 
-    public void setType() {
+    public int getType() {
         if (this.checkStarightFlush()) {
-            this.value.addValueToValue(8000000);
+            return 8000000;
         }
         if (this.checkFourofKind()) {
-            this.value.addValueToValue(7000000);
+            return 7000000;
         }
         if (this.checkFullHouse()) {
-            this.value.addValueToValue(6000000);
+            return 6000000;
         }
         if (this.checkFlush()) {
-            this.value.addValueToValue(5000000);
+            return 5000000;
         }
         if (this.checkStraight()) {
-            this.value.addValueToValue(4000000);
+            return 4000000;
         }
         if (this.checkThreeOfKind()) {
-            this.value.addValueToValue(3000000);
+            return 3000000;
         }
         if (this.checkTwoPairs()) {
-            this.value.addValueToValue(2000000);
+            return 2000000;
         }
         if (this.checkPair()) {
-            this.value.addValueToValue(1000000);
+            return 1000000;
         }
+        return 0;
 
     }
 
     public void setValue() {
         for (int x = 0; x < this.checkSames().size(); x++) {
             if (x == 0) {
-                this.value.addValueToValue(this.checkSames().get(x).getValue() + 100000);
-            }
-            if (x == 1) {
                 this.value.addValueToValue(this.checkSames().get(x).getValue() + 10000);
             }
-            if (x == 2) {
+            if (x == 1) {
                 this.value.addValueToValue(this.checkSames().get(x).getValue() + 1000);
             }
-            if (x == 3) {
+            if (x == 2) {
                 this.value.addValueToValue(this.checkSames().get(x).getValue() + 100);
+            }
+            if (x == 3) {
+                this.value.addValueToValue(this.checkSames().get(x).getValue() + 10);
             }
             if (x == 4) {
                 this.value.addValueToValue(this.checkSames().get(x).getValue());
             }
         }
+    }
+    
+
+
+    public int getValue() {
+        this.value.erase();
+        int x = this.getType();
+        this.value.addValueToValue(x);
+        this.setValue();
+        return this.value.getHandValue();
     }
 
     @Override

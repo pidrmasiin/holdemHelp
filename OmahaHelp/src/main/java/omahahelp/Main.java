@@ -43,7 +43,7 @@ public class Main {
         PlayersCards handA = new PlayersCards(deck, a, b);
         PlayersCards handB = new PlayersCards(deck, c, d);
         Compare compare = new Compare(deck);
-//        compare.setHands(handA, handB);
+        compare.setHands(handA, handB);
         compare.addCardsToFlopHashMap();
         compare.addTurnsToMap();
         System.out.println(compare.getTurns().size() + "moo");

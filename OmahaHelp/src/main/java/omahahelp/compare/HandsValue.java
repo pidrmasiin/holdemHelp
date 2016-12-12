@@ -26,10 +26,13 @@ public class HandsValue {
     public int getType() {
         return this.type;
     }
-    
-    
-    
-    public void addValueToValue(int x){
+
+    public void erase() {
+        this.type = 0;
+        this.value = 0;
+    }
+
+    public void addValueToValue(int x) {
         this.value = this.value + x;
     }
 
