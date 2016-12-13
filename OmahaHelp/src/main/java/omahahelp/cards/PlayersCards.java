@@ -32,18 +32,19 @@ public class PlayersCards {
 
         }
     }
-     public PlayersCards(Deck cards, Card a){
-         if (cards.getCardsContainsCardandEraseCard(a)) {
+
+    public PlayersCards(Deck cards, Card a) {
+        if (cards.getCardsContainsCardandEraseCard(a)) {
             this.cardA = a;
         }
-     }
-     
-     public void setCardB(Deck cards, Card b){
-         if(cards.getCardsContainsCardandEraseCard(b)){
-             this.cardB = b;
-         }
-         
-     }
+    }
+
+    public void setCardB(Deck cards, Card b) {
+        if (cards.getCardsContainsCardandEraseCard(b)) {
+            this.cardB = b;
+        }
+
+    }
 
     public Card getCardA() {
         return this.cardA;

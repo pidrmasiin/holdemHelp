@@ -29,6 +29,7 @@ public class Card {
 
     /**
      * Asetetaan kortille numero ja maa.
+     *
      * @param number numero
      * @param suit maa
      */

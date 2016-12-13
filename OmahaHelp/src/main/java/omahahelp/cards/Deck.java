@@ -11,7 +11,6 @@ import omahahelp.cards.Card;
 import omahahelp.cards.Card.Suit;
 import static omahahelp.cards.Card.Suit.SPADES;
 
-
 /**
  * Luokan avulla muodostetaan pakkoja.
  *
@@ -19,11 +18,10 @@ import static omahahelp.cards.Card.Suit.SPADES;
  */
 public class Deck {
 
-
     public ArrayList<Card> cards;
 
     /**
-     *Luodaan pakka.
+     * Luodaan pakka.
      */
     public Deck() {
         this.cards = new ArrayList<Card>();
@@ -42,9 +40,13 @@ public class Deck {
         }
 
     }
-    
-    public void addDeck(Deck deck){
-        for(Card card : deck.cards){
+
+    /**
+     * Lisätään joki Deck-pakka tähän Deck-pakkaan. 
+     * @param deck pakka, joka lisätään.
+     */
+    public void addDeck(Deck deck) {
+        for (Card card : deck.cards) {
             this.addOneCard(card);
         }
     }
@@ -95,13 +97,14 @@ public class Deck {
     public void addOneCard(Card a) {
         this.cards.add(a);
     }
-    
-    public void addAndErase(Card a, int x){
+
+
+    public void addAndErase(Card a, int x) {
         this.cards.remove(x);
         this.cards.add(a);
     }
-    
-    public void eraseByString(String x){
+
+    public void eraseByString(String x) {
         Card a = this.getCardByString(x);
         this.eraseCards(a);
     }

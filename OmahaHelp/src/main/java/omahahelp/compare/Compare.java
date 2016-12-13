@@ -41,8 +41,6 @@ public class Compare {
     /**
      * Asetetaam omat ja vastustajan kortit ja pakka.
      *
-     * @param handA omat kortit
-     * @param handB vastustajan kortit
      * @param cards pakka
      */
     public Compare(Deck cards) {
@@ -58,6 +56,12 @@ public class Compare {
 
     }
 
+    /**
+     * Asetataan kädet, joita vertaillaan.
+     *
+     * @param handA
+     * @param handB
+     */
     public void setHands(PlayersCards handA, PlayersCards handB) {
         this.handA = handA;
         this.handB = handB;
@@ -67,16 +71,11 @@ public class Compare {
         return this.cards;
     }
 
-    public HashMap<String, Integer> getAll5Combos() {
-        return this.all5CardsCombos;
-    }
-
     /**
      * Muodostetaan pakasta pakkoja ja asetaan niitä flops-Hashmappiin siten,
-     * että key:nä toimii pakan string-muota ja valuena pakka Deck-muodossa.
+     * että key:nä toimii pakan string-muota ja valuena flop-pakka
+     * Deck-muodossa.
      *
-     * @param flop true, jos asetetaan floppia
-     * @param turn true, jos asetetaan turnia
      */
     public void addCardsToFlopHashMap() {
 
@@ -113,6 +112,10 @@ public class Compare {
 
     }
 
+    /**
+     * Lisätään turnit mappiin siten, että keyna toimii pakan String-muoto ja
+     * valuena 4-kortin pakka Deckinä.
+     */
     public void addTurnsToMap() {
 
         int y = 0;
@@ -139,11 +142,19 @@ public class Compare {
 
     }
 
+    /**
+     * Käydään läpi kaikki mahdolliset turnit ja tarkastetaan aina pelin
+     * tilanne.
+     *
+     * @param a flopin 1. kortti.
+     * @param b flopin 2. kortti.
+     * @param c flopin 3. kortti.
+     */
     public void calculateAfterTurn(Card a, Card b, Card c) {
         this.aWins = 0;
         this.bWins = 0;
         this.ties = 0;
- 
+
         Deck deck = new Deck();
         deck.addOneCard(a);
         deck.addOneCard(b);
@@ -158,6 +169,10 @@ public class Compare {
 
     }
 
+    /**
+     * Käydään läpi kaikki mahdolliset turnMappiin asetetut pakat ja
+     * tarkastetaan pelin tilanne.
+     */
     public void addWinsAndTiesAfterTurnWhenFlopBlind() {
         this.aWins = 0;
         this.bWins = 0;
@@ -167,21 +182,27 @@ public class Compare {
         for (Deck deck : this.turns.values()) {
 
             this.setTurnWinsAndTies(deck);
-           if(x>2000){
-               y++;
-               x=0;
-               System.out.println(y + "/" + 100);
-           }
-           x++;
-            
+            if (x > 2000) {
+                y++;
+                x = 0;
+                System.out.println(y + "/" + 100);
+            }
+            x++;
+
         }
     }
 
+    /**
+     * Verrataan kahta kättä ja asetaan voittoja ja tasapelejä käsien vahvuuden
+     * mukaan.
+     *
+     * @param deck pöydällä olevat kortit.
+     */
     public void setTurnWinsAndTies(Deck deck) {
 
         Value one = this.compareTurns(deck, handA);
         Value two = this.compareTurns(deck, handB);
-        
+
         if (one.getValue() > two.getValue()) {
             this.aWins++;
         }
@@ -194,6 +215,14 @@ public class Compare {
 
     }
 
+    /**
+     * Etsitään vahvin viiden kortin yhdistelmä pöydällä ja kädessä olevista
+     * korteista.
+     *
+     * @param deck pöydällä olevat kortit.
+     * @param hand käsi
+     * @return palautetaan Value, joka sisältää suurimman arvon saaneet kortit.
+     */
     public Value compareTurns(Deck deck, PlayersCards hand) {
 
         Value out = new Value();
@@ -230,10 +259,11 @@ public class Compare {
         return out;
     }
 
-    public HashMap<Integer, Deck> getRiversMap() {
-        return this.rivers;
-    }
-
+    /**
+     * Käytetään apumetodina laskettaessa käsien suhteita.
+     *
+     * @param x riippuen x:n arvosta lisätään voittoja tai tasapeli.
+     */
     public void setWinsAndTies(int x) {
         if (x == 0) {
             this.ties++;
@@ -289,6 +319,7 @@ public class Compare {
      * @param c 3. flop-pakan kortti
      * @param d 1. pelaajan käsi
      * @param e 2. pelaajan käsi
+     * @return
      */
     public Integer compareFlop(Card a, Card b, Card c, PlayersCards d, PlayersCards e) {
 
@@ -301,6 +332,14 @@ public class Compare {
 
     }
 
+    /**
+     * Vertaillaan kahta Value-luokkaa
+     *
+     * @param a ensimmäinen value
+     * @param b toinen value
+     * @return palautetaan 1, jos a vahvempi, palautetaan 2, jos b vahvempi.
+     * palautetaan 0, jos a & b yhtä vahvat.
+     */
     public Integer compareValues(Value a, Value b) {
 
 //        int va = a.getType();

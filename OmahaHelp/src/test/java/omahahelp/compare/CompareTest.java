@@ -76,7 +76,7 @@ public class CompareTest {
         PlayersCards handB = new PlayersCards(cards, cardC, cardD);
         Compare compare = new Compare(cards);
         compare.setHands(handA, handB);
-        compare.addCardsToFlopHashMap(cards, true);
+        compare.addCardsToFlopHashMap();
 
         assertEquals(compare.getMap().size(), 17296);
     }
@@ -93,8 +93,8 @@ public class CompareTest {
         PlayersCards handB = new PlayersCards(cards, cardC, cardD);
         Compare compare = new Compare(cards);
         compare.setHands(handA, handB);
-        compare.addCardsToFlopHashMap(cards,true);
-        compare.addTurnsToMap(compare.getMap(),true);
+        compare.addCardsToFlopHashMap();
+        compare.addTurnsToMap();
         assertEquals(compare.getTurns().size(), 194580);
     }
 
@@ -121,23 +121,24 @@ public class CompareTest {
     }
 
     
-        @Test
-    public void compareTurnsTest(){
-    Deck cards = new Deck();
-        cards.addCards();
-        Card cardA = new Card(2, CLUBS);
-        Card cardB = new Card(2, SPADES);
-        Card cardC = new Card(2, HEARTS);
-        Card cardD = new Card(2, DIAMONDS);
-        PlayersCards handA = new PlayersCards(cards, cardA, cardB);
-        PlayersCards handB = new PlayersCards(cards, cardC, cardD);
-        Compare compare = new Compare(cards);
-        compare.setHands(handA, handB);
-        compare.addCardsToFlopHashMap(cards, true);
-        
-        compare.compareTurns();
-        assertEquals(compare.getAwins(), 500);
-    }
+//        @Test
+//    public void compareTurnsTest(){
+//    Deck cards = new Deck();
+//        cards.addCards();
+//        Card cardA = new Card(2, CLUBS);
+//        Card cardB = new Card(2, SPADES);
+//        Card cardC = new Card(2, HEARTS);
+//        Card cardD = new Card(2, DIAMONDS);
+//        PlayersCards handA = new PlayersCards(cards, cardA, cardB);
+//        PlayersCards handB = new PlayersCards(cards, cardC, cardD);
+//        Compare compare = new Compare(cards);
+//        compare.setHands(handA, handB);
+//        compare.addCardsToFlopHashMap();
+//        
+//        compare.addTurnsToMap();
+//        compare.addWinsAndTiesAfterTurnWhenFlopBlind();
+//        assertEquals(compare.getAwins(), 990);
+//    }
 
 //    @Test
 //    public void setRiversTest(){

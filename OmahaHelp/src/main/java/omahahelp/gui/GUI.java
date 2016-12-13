@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package gui;
+package omahahelp.gui;
 
 import omahahelp.cards.Card;
 import omahahelp.cards.Deck;
@@ -395,9 +395,9 @@ public class GUI extends javax.swing.JFrame {
             compare.addCardsToFlopHashMap();
             compare.addTurnsToMap();
             compare.addWinsAndTiesAfterTurnWhenFlopBlind();
-            ownWins.setText("Voittosi: " + compare.getAwins() + "/" + compare.getTurns().size());
-            ties.setText("Tasurit: " + compare.getTies() + "/" + compare.getTurns().size());
-            enemysWins.setText("Vastustajan voitot:" + compare.getbWins() + "/" + compare.getTurns().size());
+            ownWins.setText("Johdat: " + compare.getAwins() + "/" + compare.getTurns().size());
+            ties.setText("Tilanne tasan: " + compare.getTies() + "/" + compare.getTurns().size());
+            enemysWins.setText("Vastustaja johtaa:" + compare.getbWins() + "/" + compare.getTurns().size());
         } else {
             this.wrongText.setText("Korttia ei pakassa tai kirjoitit sen väärin");
             this.ownWins.setText("Teit");
@@ -479,9 +479,9 @@ public class GUI extends javax.swing.JFrame {
             Compare compare = new Compare(deck);
             compare.setHands(handA, handB);
             compare.calculateAfterTurn(e, f, g);
-            ownWins.setText("Voittosi: " + compare.getAwins() + "/" + compare.getCards().size());
-            ties.setText("Tasurit: " + compare.getTies() + "/" + compare.getCards().size());
-            enemysWins.setText("Vastustajan voitot:" + compare.getbWins() + "/" + compare.getCards().size());
+            ownWins.setText("Johdat: " + compare.getAwins() + "/" + compare.getCards().size());
+            ties.setText("Tilanne tasan: " + compare.getTies() + "/" + compare.getCards().size());
+            enemysWins.setText("Vastustaja johtaa:" + compare.getbWins() + "/" + compare.getCards().size());
         } else {
             this.wrongText.setText("Korttia ei pakassa tai kirjoitit sen väärin");
             this.ownWins.setText("Teit");

@@ -80,18 +80,18 @@ public class Value implements Comparator<Card> {
      */
     public boolean checkFlush() {
 
-            Suit suit = this.hand.getCard(0).getSuit();
-            int id = 0;
-            for (int idx = 0; idx < this.hand.size(); idx++) {
-                suit = this.hand.getCard(idx).getSuit();
-                if (suit != this.hand.getCard(0).getSuit()) {
-                    id = 1;
-                }
+        Suit suit = this.hand.getCard(0).getSuit();
+        int id = 0;
+        for (int idx = 0; idx < this.hand.size(); idx++) {
+            suit = this.hand.getCard(idx).getSuit();
+            if (suit != this.hand.getCard(0).getSuit()) {
+                id = 1;
             }
-            if (id == 0) {
-                return true;
-            }
-        
+        }
+        if (id == 0) {
+            return true;
+        }
+
         return false;
     }
 
@@ -276,8 +276,6 @@ public class Value implements Comparator<Card> {
             }
         }
     }
-    
-
 
     public int getValue() {
         this.value.erase();
