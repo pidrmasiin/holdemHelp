@@ -419,7 +419,6 @@ public class GUI extends javax.swing.JFrame {
         String flopB = flopCard2.getText();
         String flopC = flopCard3.getText();
 
-        
         Card a = deck.getCardByString(cardA);
         if (a.getNumber() == 15) {
             this.ownCard1.setText("Vika tässä");
@@ -447,21 +446,22 @@ public class GUI extends javax.swing.JFrame {
             help = false;
         }
         handB.setCardB(deck, d);
-        
+
         Card e = deck.getCardByString(flopA);
         if (e.getNumber() == 15) {
             this.flopCard1.setText("Vika tässä?");
             help = false;
-        }if(help){
+        }
+        if (help) {
             deck.eraseByString(e.toString());
         }
-        
 
         Card f = deck.getCardByString(flopB);
         if (f.getNumber() == 15) {
             this.flopCard2.setText("Vika tässä?");
             help = false;
-        }if(help){
+        }
+        if (help) {
             deck.eraseByString(f.toString());
         }
 
@@ -469,13 +469,13 @@ public class GUI extends javax.swing.JFrame {
         if (g.getNumber() == 15) {
             this.flopCard3.setText("Vika tässä?");
             help = false;
-        }if(help){
+        }
+        if (help) {
             deck.eraseByString(g.toString());
         }
 
-
         if (help) {
-           
+
             Compare compare = new Compare(deck);
             compare.setHands(handA, handB);
             compare.calculateAfterTurn(e, f, g);
