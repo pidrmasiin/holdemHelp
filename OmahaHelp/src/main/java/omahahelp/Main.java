@@ -31,37 +31,40 @@ public class Main {
         // TODO code application logic here
 
 
-//        Deck deck = new Deck();
-//        deck.addCards();
-//        String cardA = "2 of DIAMONDS";
-//        String cardB = "2 of SPADES";
-//        String cardC = "2 of CLUBS";
-//        String cardD = "2 of HEARTS";
-//        Card a = deck.getCardByString(cardA);
-//        Card b = deck.getCardByString(cardB);
-//        Card c = deck.getCardByString(cardC);
-//        Card d = deck.getCardByString(cardD);
-//        System.out.println(a.toString());
-//        PlayersCards handA = new PlayersCards(deck, a, b);
-//        PlayersCards handB = new PlayersCards(deck, c, d);
-//        Compare compare = new Compare(deck);
-//        compare.setHands(handA, handB);
-//        compare.addCardsToFlopHashMap();
-//        compare.addTurnsToMap();
-//        System.out.println(compare.getTurns().size() + "moo");
-//        
-////        compare.compareTurns();
-////        System.out.println("");
-////        System.out.println(compare.getAwins() + "/" + compare.getTurns().size());
-////        System.out.println(compare.getbWins() + "/" + compare.getTurns().size());
-////        System.out.println(compare.getTies() + "/" + compare.getTurns().size());
-////      so
-//     
-//        compare.addCardsToFlopHashMap();
-//        System.out.println(compare.getRiversMap().size());
-//        
-////        compare.makeMapOfAll5CardsCombinations();
-//        
+        Deck deck = new Deck();
+        deck.addCards();
+        String cardA = "2 of DIAMONDS";
+        String cardB = "3 of SPADES";
+        String cardC = "2 of CLUBS";
+        String cardD = "2 of HEARTS";
+        Card a = deck.getCardByString(cardA);
+        Card b = deck.getCardByString(cardB);
+        Card c = deck.getCardByString(cardC);
+        Card d = deck.getCardByString(cardD);
+        
+        String cardQ = "13 of CLUBS";
+       
+        String cardW = "3 of CLUBS";
+        String cardE = "3 of HEARTS";
+        
+        Card q = deck.getCardByString(cardQ);
+        Card w = deck.getCardByString(cardW);
+        Card e = deck.getCardByString(cardE);
+        
+     
+        PlayersCards handA = new PlayersCards(deck, a, b);
+        PlayersCards handB = new PlayersCards(deck, c, d);
+        
+        Value aa = new Value();
+        Value bb = new Value();
+        
+        aa.setCardsToHand(a, b, q, w, e);
+        bb.setCardsToHand(d, c, q, w, e);
+        
+        System.out.println(aa.getValue());
+        System.out.println(bb.getValue());
+        
+        
 
     }
 }

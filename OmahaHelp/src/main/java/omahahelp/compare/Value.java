@@ -230,51 +230,72 @@ public class Value implements Comparator<Card> {
 
     public int getType() {
         if (this.checkStarightFlush()) {
-            return 8000000;
+            return 900000000;
         }
         if (this.checkFourofKind()) {
-            return 7000000;
+            return 800000000;
         }
         if (this.checkFullHouse()) {
-            return 6000000;
+            return 700000000;
         }
         if (this.checkFlush()) {
-            return 5000000;
+            return 600000000;
         }
         if (this.checkStraight()) {
-            return 4000000;
+            return 500000000;
         }
         if (this.checkThreeOfKind()) {
-            return 3000000;
+            return 400000000;
         }
         if (this.checkTwoPairs()) {
-            return 2000000;
+            return 300000000;
         }
         if (this.checkPair()) {
-            return 1000000;
+            return 200000000;
         }
         return 0;
 
     }
 
-    public void setValue() {
+    public ArrayList<Integer> makeOrganizedArray() {
+        ArrayList<Integer> out = new ArrayList<>();
         for (int x = 0; x < this.checkSames().size(); x++) {
-            if (x == 0) {
-                this.value.addValueToValue(this.checkSames().get(x).getValue() + 10000);
-            }
-            if (x == 1) {
-                this.value.addValueToValue(this.checkSames().get(x).getValue() + 1000);
-            }
-            if (x == 2) {
-                this.value.addValueToValue(this.checkSames().get(x).getValue() + 100);
-            }
-            if (x == 3) {
-                this.value.addValueToValue(this.checkSames().get(x).getValue() + 10);
-            }
-            if (x == 4) {
-                this.value.addValueToValue(this.checkSames().get(x).getValue());
+            for (int y = 0; y < this.checkSames().get(x).getType(); y++) {
+               
+                out.add(this.checkSames().get(x).getValue());
             }
         }
+        return out;
+    }
+
+    public void setValue() {
+        ArrayList<Integer> out = this.makeOrganizedArray();
+
+        for (int x = 0; x <out.size(); x++) {
+
+            if (x == 0) {
+                this.value.addValueToValue(out.get(x) * 10000000);
+             
+            }
+            if (x == 1) {
+                this.value.addValueToValue(out.get(x) * 100000);
+                
+
+            }
+            if (x == 2) {
+                this.value.addValueToValue(out.get(x) * 1000);
+               
+            }
+            if (x == 3) {
+                this.value.addValueToValue(out.get(x) * 10);
+                
+            }
+            if (x == 4) {
+                this.value.addValueToValue(out.get(x));
+              
+            }
+        }
+
     }
 
     public int getValue() {
