@@ -281,7 +281,7 @@
     </Component>
     <Component class="javax.swing.JButton" name="turnButton">
       <Properties>
-        <Property name="text" type="java.lang.String" value="Aseta floppi ja n&#xe4;yt&#xe4; suhteet"/>
+        <Property name="text" type="java.lang.String" value="Aseta floppi ja n&#xe4;yt&#xe4; suhteet ennen riveria"/>
       </Properties>
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="turnButtonActionPerformed"/>
@@ -293,7 +293,7 @@
     </Component>
     <Component class="javax.swing.JButton" name="blindTurnButton">
       <Properties>
-        <Property name="text" type="java.lang.String" value="HIDASTA PUUHAA ! N&#xe4;yt&#xe4; suhteet turnin j&#xe4;lkeen, kun floppia ei tiedet&#xe4; "/>
+        <Property name="text" type="java.lang.String" value="HIDASTA PUUHAA ! N&#xe4;yt&#xe4; suhteet turnilla, kun floppia ei tiedet&#xe4; "/>
       </Properties>
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="blindTurnButtonActionPerformed"/>

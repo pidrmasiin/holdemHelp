@@ -178,16 +178,14 @@ public class Compare {
         this.bWins = 0;
         this.ties = 0;
         int x = 0;
-        int y = 0;
+      
         for (Deck deck : this.turns.values()) {
 
             this.setTurnWinsAndTies(deck);
-            if (x > 2000) {
-                y++;
-                x = 0;
-                System.out.println(y + "/" + 100);
-            }
-            x++;
+            
+                System.out.println(x + "/" + 195480);
+                x++;
+           
 
         }
     }

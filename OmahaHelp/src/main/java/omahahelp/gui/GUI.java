@@ -132,14 +132,14 @@ public class GUI extends javax.swing.JFrame {
 
         modelOfCard7.setText("Kortti (x of SUIT)");
 
-        turnButton.setText("Aseta floppi ja näytä suhteet");
+        turnButton.setText("Aseta floppi ja näytä suhteet ennen riveria");
         turnButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 turnButtonActionPerformed(evt);
             }
         });
 
-        blindTurnButton.setText("HIDASTA PUUHAA ! Näytä suhteet turnin jälkeen, kun floppia ei tiedetä ");
+        blindTurnButton.setText("HIDASTA PUUHAA ! Näytä suhteet turnilla, kun floppia ei tiedetä ");
         blindTurnButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 blindTurnButtonActionPerformed(evt);
