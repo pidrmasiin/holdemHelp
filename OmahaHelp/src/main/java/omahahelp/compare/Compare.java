@@ -307,10 +307,7 @@ public class Compare {
         return aWins;
     }
 
-    /**
-     *
-     * @return
-     */
+
     public int getBWins() {
         return bWins;
     }

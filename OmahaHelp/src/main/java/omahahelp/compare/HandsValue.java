@@ -18,6 +18,11 @@ public class HandsValue {
     private int value;
     private int type;
 
+    /**
+     * Luodaan HandsValue.
+     * @param x kädelle tyyppi eli pari, kolmoset, suora jne. Intinä, mitä isompi sen parempi.
+     * @param y käden numerot.
+     */
     public HandsValue(int x, int y) {
         this.type = x;
         this.value = y;
@@ -27,11 +32,19 @@ public class HandsValue {
         return this.type;
     }
 
+    /**
+     * Asetetaan tyyppi ja numerot nolliksi.
+     */
     public void erase() {
         this.type = 0;
         this.value = 0;
     }
 
+    /**
+     *Lisätään valueen jokin numero.
+     * @param x käytännössä tämä on kortin numero kerrottuna sen merkittävyydellä,
+     * joka määritellään Value-luokassa metodissa setValue.
+     */
     public void addValueToValue(int x) {
         this.value = this.value + x;
     }

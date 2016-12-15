@@ -23,6 +23,9 @@ public class Value implements Comparator<Card> {
     private HandsValue value;
     private Deck hand;
 
+    /**
+     * Luodaan Value.
+     */
     public Value() {
         this.hand = new Deck();
         this.value = new HandsValue(0, 0);
@@ -213,10 +216,18 @@ public class Value implements Comparator<Card> {
         return out;
     }
 
+    /**
+     * Katsotaan onko neloset.
+     * @return true, jos neloset.
+     */
     public boolean checkFourofKind() {
         return this.checkSames().get(0).getType() == 4;
     }
 
+    /**
+     * Katsotaan onko kolmoset.
+     * @return true, jos kolmoset.
+     */
     public boolean checkThreeOfKind() {
         if (this.checkSames().get(0).getType() == 3 && this.checkSames().get(1).getType() != 2) {
             return true;
@@ -224,6 +235,10 @@ public class Value implements Comparator<Card> {
         return false;
     }
 
+    /**
+     * Katsotaan onko täyskäsi.
+     * @return true, jos täyskäsi.
+     */
     public boolean checkFullHouse() {
         if (this.checkSames().get(0).getType() == 3 && this.checkSames().get(1).getType() == 2) {
             return true;
@@ -231,6 +246,10 @@ public class Value implements Comparator<Card> {
         return false;
     }
 
+    /**
+     * Katsotaan onko kaksiparia.
+     * @return true, jos kaksiparia.
+     */
     public boolean checkTwoPairs() {
         if (this.checkSames().get(0).getType() == 2 && this.checkSames().get(1).getType() == 2) {
             return true;
@@ -238,6 +257,10 @@ public class Value implements Comparator<Card> {
         return false;
     }
 
+    /**
+     * Katsotaan, onko pari.
+     * @return true, jos pari.
+     */
     public boolean checkPair() {
         if (this.checkSames().get(0).getType() == 2 && 2 != this.checkSames().get(1).getType()) {
             return true;
@@ -245,6 +268,9 @@ public class Value implements Comparator<Card> {
         return false;
     }
 
+    /**
+     * Järjestetään käsi.
+     */
     public void organizeHand() {
         Collections.sort(this.hand.getCards(), this);
     }
