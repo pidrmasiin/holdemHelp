@@ -176,7 +176,7 @@
     </Component>
     <Component class="javax.swing.JButton" name="countOdds">
       <Properties>
-        <Property name="text" type="java.lang.String" value="N&#xe4;yt&#xe4; suhteet flopin j&#xe4;lkeen"/>
+        <Property name="text" type="java.lang.String" value="N&#xe4;yt&#xe4; suhteet flopilla, kun floppia ei tiedet&#xe4;"/>
       </Properties>
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="countOddsActionPerformed"/>

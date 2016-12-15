@@ -46,6 +46,11 @@ public class Value implements Comparator<Card> {
         this.hand.getCards().add(e);
     }
 
+    /**
+     * Asetetaan 5 kortin pakka, jonka arvoa lasketaan.
+     *
+     * @param deck 5-kortin pakka.
+     */
     public void setFiveCardsDeckToHand(Deck deck) {
         Deck here = deck;
         this.hand.getCards().clear();
@@ -56,18 +61,18 @@ public class Value implements Comparator<Card> {
         this.hand.getCards().add(here.getCard(4));
     }
 
-    /**
-     * Arvotaan kortit 5-kortin pakkaan.
-     */
-    public void drawCardsToHand() {
-        this.hand.getCards().clear();
-        Deck cards = new Deck();
-        cards.addCards();
-        Draw draw = new Draw(cards);
-        this.hand.getCards().addAll(draw.drawFlop());
-        this.hand.getCards().add(draw.drawCard());
-        this.hand.getCards().add(draw.drawCard());
-    }
+//    /**
+//     * Arvotaan kortit 5-kortin pakkaan.
+//     */
+//    public void drawCardsToHand() {
+//        this.hand.getCards().clear();
+//        Deck cards = new Deck();
+//        cards.addCards();
+//        Draw draw = new Draw(cards);
+//        this.hand.getCards().addAll(draw.drawFlop());
+//        this.hand.getCards().add(draw.drawCard());
+//        this.hand.getCards().add(draw.drawCard());
+//    }
 
     public Deck getDeck() {
         return this.hand;
@@ -95,6 +100,10 @@ public class Value implements Comparator<Card> {
         return false;
     }
 
+    /**
+     * Pakan koko.
+     * @return palauttaa pakan koon.
+     */
     public int getHandSum() {
         return this.hand.size();
     }
@@ -150,6 +159,11 @@ public class Value implements Comparator<Card> {
         return false;
     }
 
+    /**
+     * Apumetodi, jossa pakka järjestetään. Luultavasti tyhmä metodi.
+     *
+     * @return palauttaa järjestetyn pakan.
+     */
     public ArrayList<Integer> helpToCheckSames() {
         this.organizeHand();
         ArrayList help = new ArrayList<>();
@@ -159,6 +173,17 @@ public class Value implements Comparator<Card> {
         return help;
     }
 
+    /**
+     * Luodaan lista lista, jossa kortit on järjestetty siten, että listan
+     * ensimäisenä on sellaisen kortin numero, jota arvioitava pakka sisältää
+     * eniten. Jos siis arvioitavassa pakassa on esimerkiksi kortteja, joiden
+     * numeroarvo on 2, 2, 3, 4, 3, metodi luo listan, jossa jossa ensimmäisenä
+     * on HandsValue (2, 3), jossa 2 kuvaa, sitä montako korttia ja 3, mitä
+     * numeroa. Tulostus olisi siis muotoa. 2x3, 2x2, 1x4
+     *
+     * @return ArrayListin, joka kuvaa montako mitäkin korttia on suuruus
+     * järjestyksessä.
+     */
     public ArrayList<HandsValue> checkSames() {
         int sames = 0;
         this.organizeHand();
@@ -224,10 +249,18 @@ public class Value implements Comparator<Card> {
         Collections.sort(this.hand.getCards(), this);
     }
 
+    /**
+     * Palautaa käden arvon Int-muodossa, mitä isompi parempi.
+     * @return käden arvo.
+     */
     public HandsValue getHandsValue() {
         return this.value;
     }
-
+    
+    /**
+     * Asetetaan kädelle arvo sen tyypin mukaan. Mitä isompi parempi.
+     * @return palauttaa käden tyypin Int:nä
+     */
     public int getType() {
         if (this.checkStarightFlush()) {
             return 900000000;
@@ -257,47 +290,59 @@ public class Value implements Comparator<Card> {
 
     }
 
+    /**
+     * Luodaan lista, jonka ensimmäisenä on pakan merkitsevin kortti.
+     * @return palauttaa ArrayListin, jossa pakka merkitsevyys järjestyksessä.
+     */
     public ArrayList<Integer> makeOrganizedArray() {
         ArrayList<Integer> out = new ArrayList<>();
         for (int x = 0; x < this.checkSames().size(); x++) {
             for (int y = 0; y < this.checkSames().get(x).getType(); y++) {
-               
+
                 out.add(this.checkSames().get(x).getValue());
             }
         }
         return out;
     }
 
+    /**
+     *Asettaa kädelle arvon numeroiden mukaan. Ensin pakka järjestetään siten, 
+     * että merkitsevin kortti on ensimmäisenä. Sitten merkitsevyyden mukaan lisätään
+     * arvoa. 
+     */
     public void setValue() {
         ArrayList<Integer> out = this.makeOrganizedArray();
 
-        for (int x = 0; x <out.size(); x++) {
+        for (int x = 0; x < out.size(); x++) {
 
             if (x == 0) {
                 this.value.addValueToValue(out.get(x) * 10000000);
-             
+
             }
             if (x == 1) {
                 this.value.addValueToValue(out.get(x) * 100000);
-                
 
             }
             if (x == 2) {
                 this.value.addValueToValue(out.get(x) * 1000);
-               
+
             }
             if (x == 3) {
                 this.value.addValueToValue(out.get(x) * 10);
-                
+
             }
             if (x == 4) {
                 this.value.addValueToValue(out.get(x));
-              
+
             }
         }
 
     }
 
+    /**
+     * Luodaan kädelle arvo ja palautetaan se. Mitä isompi, sen parempi.
+     * @return käden arvo int:nä.
+     */
     public int getValue() {
         this.value.erase();
         int x = this.getType();

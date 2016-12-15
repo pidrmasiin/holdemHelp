@@ -6,6 +6,10 @@
 package omahahelp.compare;
 
 import omahahelp.cards.Card;
+import static omahahelp.cards.Card.Suit.CLUBS;
+import static omahahelp.cards.Card.Suit.DIAMONDS;
+import static omahahelp.cards.Card.Suit.HEARTS;
+import static omahahelp.cards.Card.Suit.SPADES;
 import omahahelp.cards.Deck;
 import org.junit.After;
 import org.junit.AfterClass;
@@ -70,6 +74,7 @@ public class ValuesTest {
         assertEquals(values.checkStraight(), true);
         values.setCardsToHand(cards.getCard(14), cards.getCard(2), cards.getCard(13), cards.getCard(16), cards.getCard(30));
         assertEquals(values.checkStraight(), true);
+        
     }
 
     @Test
@@ -136,5 +141,113 @@ public class ValuesTest {
         Card a = cards.getCard(0);
         values.setCardsToHand(a, a, a, a, a);
         assertEquals(values.getHandSum(), 5);
+
     }
+
+    @Test
+    public void setFiveCardstoHandTest() {
+        Deck cards = new Deck();
+        cards.addCards();
+        Card a = cards.getCard(0);
+        Deck deck = new Deck();
+        deck.addOneCard(a);
+        deck.addOneCard(a);
+        deck.addOneCard(a);
+        deck.addOneCard(a);
+        deck.addOneCard(a);
+
+        Value values = new Value();
+
+        values.setFiveCardsDeckToHand(deck);
+        assertEquals(values.getHandSum(), 5);
+
+    }
+
+    @Test
+    public void getStraigtFlushTest() {
+        Card a = new Card(14, CLUBS);
+        Card b = new Card(3, CLUBS);
+        Card c = new Card(4, CLUBS);
+        Card d = new Card(5, CLUBS);
+        Card e = new Card(2, CLUBS);
+        Value values = new Value();
+        values.setCardsToHand(a, b, c, d, e);
+        assertEquals(values.getType(), 900000000);
+        assertEquals(values.checkStarightFlush(), true);
+    }
+
+    @Test
+    public void getFourofKindTest() {
+        Card a = new Card(14, CLUBS);
+        Card b = new Card(14, DIAMONDS);
+        Card c = new Card(14, HEARTS);
+        Card d = new Card(14, SPADES);
+        Card e = new Card(6, CLUBS);
+        Value values = new Value();
+        values.setCardsToHand(a, b, c, d, e);
+        assertEquals(values.getType(), 800000000);
+    }
+
+    @Test
+    public void getFullHouseTest() {
+        Card a = new Card(14, CLUBS);
+        Card b = new Card(14, DIAMONDS);
+        Card c = new Card(14, HEARTS);
+        Card d = new Card(6, SPADES);
+        Card e = new Card(6, CLUBS);
+        Value values = new Value();
+        values.setCardsToHand(a, b, c, d, e);
+        assertEquals(values.getType(), 700000000);
+        assertEquals(values.checkFullHouse(), true);
+    }
+
+    @Test
+    public void getFlushTest() {
+        Card a = new Card(7, CLUBS);
+        Card b = new Card(3, CLUBS);
+        Card c = new Card(4, CLUBS);
+        Card d = new Card(5, CLUBS);
+        Card e = new Card(2, CLUBS);
+        Value values = new Value();
+        values.setCardsToHand(a, b, c, d, e);
+        assertEquals(values.getType(), 600000000);
+        
+    }
+
+    @Test
+    public void getStraightTest() {
+        Card a = new Card(7, CLUBS);
+        Card b = new Card(3, CLUBS);
+        Card c = new Card(4, CLUBS);
+        Card d = new Card(5, CLUBS);
+        Card e = new Card(6, SPADES);
+        Value values = new Value();
+        values.setCardsToHand(a, b, c, d, e);
+        assertEquals(values.getType(), 500000000);
+    }
+
+    @Test
+    public void getPairTest() {
+        Card a = new Card(7, CLUBS);
+        Card b = new Card(3, CLUBS);
+        Card c = new Card(4, CLUBS);
+        Card d = new Card(5, CLUBS);
+        Card e = new Card(7, SPADES);
+        Value values = new Value();
+        values.setCardsToHand(a, b, c, d, e);
+        assertEquals(values.getType(), 200000000);
+    }
+
+    @Test
+    public void getNothingTest() {
+        Card a = new Card(7, CLUBS);
+        Card b = new Card(3, CLUBS);
+        Card c = new Card(4, CLUBS);
+        Card d = new Card(5, CLUBS);
+        Card e = new Card(9, SPADES);
+        Value values = new Value();
+        values.setCardsToHand(a, b, c, d, e);
+        assertEquals(values.getType(), 0);
+    }
+
 }

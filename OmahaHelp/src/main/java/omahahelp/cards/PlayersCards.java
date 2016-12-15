@@ -33,12 +33,22 @@ public class PlayersCards {
         }
     }
 
+    /**
+     * Luodaan käsi yhdellä kortilla.
+     * @param cards pakka, josta käsi luodaan.
+     * @param a kortti, joka asetetaan käteen, jos löytyy pakasta.
+     */
     public PlayersCards(Deck cards, Card a) {
         if (cards.getCardsContainsCardandEraseCard(a)) {
             this.cardA = a;
         }
     }
 
+    /**
+     * Asetetaan käteen toinen kortti pakasta.
+     * @param cards pakka, josta kortti asetetaan.
+     * @param b kortti, joka asetetaan, jos löytyy pakasta.
+     */
     public void setCardB(Deck cards, Card b) {
         if (cards.getCardsContainsCardandEraseCard(b)) {
             this.cardB = b;

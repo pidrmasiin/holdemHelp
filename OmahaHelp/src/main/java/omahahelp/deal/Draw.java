@@ -12,17 +12,29 @@ import static omahahelp.cards.Card.Suit.SPADES;
 import omahahelp.cards.Deck;
 
 /**
- *Luokan avulla arvotaan pakasta kortteja.
+ * Luokan avulla arvotaan pakasta kortteja.
+ *
  * @author petteri
  */
 public class Draw {
 
+    /**
+     *Alustus.
+     */
     public Deck cards;
 
+    /**
+     * Alustus.
+     * @param cards lisätään pakka.
+     */
     public Draw(Deck cards) {
         this.cards = cards;
     }
 
+    /**
+     *Arvotaan kortti pakasta.
+     * @return palauttaa arvotun kortin.
+     */
     public Card drawCard() {
         Card a = new Card(15, SPADES);
         Random randomGenerator = new Random();
@@ -39,6 +51,10 @@ public class Draw {
         }
     }
 
+    /**
+     * Arpoo flopin
+     * @return palauttaa arvotun flopin.
+     */
     public ArrayList<Card> drawFlop() {
         ArrayList<Card> flop = new ArrayList<>();
         flop.add(this.drawCard());

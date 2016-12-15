@@ -60,6 +60,7 @@ public class Main {
         
         aa.setCardsToHand(a, b, q, w, e);
         bb.setCardsToHand(d, c, q, w, e);
+        System.out.println(aa.checkSames().get(1).toString());
         
         System.out.println(aa.getValue());
         System.out.println(bb.getValue());

@@ -35,14 +35,13 @@ public class Deck {
             for (int x = 2; x < 15; x++) {
                 Card card = new Card(x, suit);
                 this.cards.add(card);
-
             }
         }
-
     }
 
     /**
-     * Lisätään joki Deck-pakka tähän Deck-pakkaan. 
+     * Lisätään joki Deck-pakka tähän Deck-pakkaan.
+     *
      * @param deck pakka, joka lisätään.
      */
     public void addDeck(Deck deck) {
@@ -85,6 +84,12 @@ public class Deck {
         return cards.get(x).toString();
     }
 
+    /**
+     * Etsitään korttia.
+     *
+     * @param x arvo, josta haetaan kortti
+     * @return palauttaa kohdasta x noudetut kortin
+     */
     public Card getCard(int x) {
         return cards.get(x);
     }
@@ -98,17 +103,30 @@ public class Deck {
         this.cards.add(a);
     }
 
-
+    /**
+     * Poistetaan ja lisätään kortti.
+     *
+     * @param a lisää kyseisin kortin pakkaa
+     * @param x poistaa kohdasta x kortin
+     */
     public void addAndErase(Card a, int x) {
         this.cards.remove(x);
         this.cards.add(a);
     }
 
+    /**
+     * Poistaa stringinä annetun kortin pakasta.
+     *
+     * @param x kortin string-muoto
+     */
     public void eraseByString(String x) {
         Card a = this.getCardByString(x);
         this.eraseCards(a);
     }
 
+    /**
+     * Tyhjentää pakan.
+     */
     public void erase() {
         this.cards.clear();
     }
@@ -130,6 +148,12 @@ public class Deck {
         return false;
     }
 
+    /**
+     * Käy pakan String-muodot läpi ja poistaa jos löytyy.
+     *
+     * @param s Poistettavan kortin String-muoto.
+     * @return true, jos löytyi ja poistettiin.
+     */
     public boolean getContainsByString(String s) {
         for (Card c : this.cards) {
             if (c.toString().equals(s)) {
@@ -152,10 +176,18 @@ public class Deck {
         }
     }
 
+    /**
+     * Järjestää pakan.
+     */
     public void sort() {
         Collections.sort(cards, (Card o1, Card o2) -> o2.getIdForCard() - o1.getIdForCard());
     }
 
+    /**
+     * ToString.
+     *
+     * @return Palauttaa String-muodon.
+     */
     public String getString() {
         this.sort();
         String out = "";
@@ -164,5 +196,4 @@ public class Deck {
         }
         return out;
     }
-
 }

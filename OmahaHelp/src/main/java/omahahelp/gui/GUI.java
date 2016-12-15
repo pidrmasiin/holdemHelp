@@ -71,7 +71,7 @@ public class GUI extends javax.swing.JFrame {
 
         enemysCard1.setText("2 of DIAMONDS");
 
-        countOdds.setText("Näytä suhteet flopin jälkeen");
+        countOdds.setText("Näytä suhteet flopilla, kun floppia ei tiedetä");
         countOdds.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 countOddsActionPerformed(evt);
@@ -326,7 +326,7 @@ public class GUI extends javax.swing.JFrame {
 
             ownWins.setText("Johdat: " + compare.getAwins() + "/" + compare.getMap().size());
             ties.setText("Tilanne tasan: " + compare.getTies() + "/" + compare.getMap().size());
-            enemysWins.setText("Vastustaja johtaa:" + compare.getbWins() + "/" + compare.getMap().size());
+            enemysWins.setText("Vastustaja johtaa:" + compare.getBWins() + "/" + compare.getMap().size());
             this.wrongText.setText("");
 
         } else {
@@ -397,7 +397,7 @@ public class GUI extends javax.swing.JFrame {
             compare.addWinsAndTiesAfterTurnWhenFlopBlind();
             ownWins.setText("Johdat: " + compare.getAwins() + "/" + compare.getTurns().size());
             ties.setText("Tilanne tasan: " + compare.getTies() + "/" + compare.getTurns().size());
-            enemysWins.setText("Vastustaja johtaa:" + compare.getbWins() + "/" + compare.getTurns().size());
+            enemysWins.setText("Vastustaja johtaa:" + compare.getBWins() + "/" + compare.getTurns().size());
         } else {
             this.wrongText.setText("Korttia ei pakassa tai kirjoitit sen väärin");
             this.ownWins.setText("Teit");
@@ -481,7 +481,7 @@ public class GUI extends javax.swing.JFrame {
             compare.calculateAfterTurn(e, f, g);
             ownWins.setText("Johdat: " + compare.getAwins() + "/" + compare.getCards().size());
             ties.setText("Tilanne tasan: " + compare.getTies() + "/" + compare.getCards().size());
-            enemysWins.setText("Vastustaja johtaa:" + compare.getbWins() + "/" + compare.getCards().size());
+            enemysWins.setText("Vastustaja johtaa:" + compare.getBWins() + "/" + compare.getCards().size());
         } else {
             this.wrongText.setText("Korttia ei pakassa tai kirjoitit sen väärin");
             this.ownWins.setText("Teit");

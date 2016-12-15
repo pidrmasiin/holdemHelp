@@ -59,8 +59,8 @@ public class Compare {
     /**
      * Asetataan kädet, joita vertaillaan.
      *
-     * @param handA
-     * @param handB
+     * @param handA 1. käsi.
+     * @param handB 2. käsi.
      */
     public void setHands(PlayersCards handA, PlayersCards handB) {
         this.handA = handA;
@@ -151,9 +151,7 @@ public class Compare {
      * @param c flopin 3. kortti.
      */
     public void calculateAfterTurn(Card a, Card b, Card c) {
-        this.aWins = 0;
-        this.bWins = 0;
-        this.ties = 0;
+        this.setWinsAndTieZero();
 
         Deck deck = new Deck();
         deck.addOneCard(a);
@@ -177,15 +175,11 @@ public class Compare {
         this.aWins = 0;
         this.bWins = 0;
         this.ties = 0;
-        int x = 0;
-      
+   
+
         for (Deck deck : this.turns.values()) {
 
             this.setTurnWinsAndTies(deck);
-            
-                System.out.println(x + "/" + 195480);
-                x++;
-           
 
         }
     }
@@ -211,6 +205,15 @@ public class Compare {
             this.ties++;
         }
 
+    }
+
+    /**
+     * Asetetaan voitot ja tasurit nolliksi.
+     */
+    public void setWinsAndTieZero() {
+        this.aWins = 0;
+        this.bWins = 0;
+        this.ties = 0;
     }
 
     /**
@@ -274,13 +277,18 @@ public class Compare {
         }
     }
 
+
     public HashMap<String, Deck> getTurns() {
         return this.turns;
     }
 
+    /**
+     * Järjestää pakan.
+     */
     public void reOrganize() {
         this.cards.sort();
     }
+
 
     public HashMap getMap() {
         return this.flops;
@@ -299,13 +307,12 @@ public class Compare {
         return aWins;
     }
 
-    public int getbWins() {
+    /**
+     *
+     * @return
+     */
+    public int getBWins() {
         return bWins;
-    }
-
-    public String getOddsForAwins() {
-        DecimalFormat x = new DecimalFormat("#.##");
-        return (x.format((double) this.aWins / (double) this.flops.size() * 100));
     }
 
     /**
@@ -317,7 +324,8 @@ public class Compare {
      * @param c 3. flop-pakan kortti
      * @param d 1. pelaajan käsi
      * @param e 2. pelaajan käsi
-     * @return
+     * @return palautetaan 1, jos käsi 1 voittaa, ja 2, jos käsi 2. Nolla jos kädet
+     * yhtä vahvat.
      */
     public Integer compareFlop(Card a, Card b, Card c, PlayersCards d, PlayersCards e) {
 
@@ -331,7 +339,7 @@ public class Compare {
     }
 
     /**
-     * Vertaillaan kahta Value-luokkaa
+     * Vertaillaan kahta Value-luokkaa.
      *
      * @param a ensimmäinen value
      * @param b toinen value
@@ -340,23 +348,6 @@ public class Compare {
      */
     public Integer compareValues(Value a, Value b) {
 
-//        int va = a.getType();
-//        int vb = b.getType();
-//
-//        if (va == vb) {
-//            for (int x = 0; x < a.checkSames().size(); x++) {
-//
-//                if (a.checkSames().get(x).getValue() != b.checkSames().get(x).getValue()) {
-//                    
-//                    va = a.checkSames().get(x).getValue();
-//                    vb = b.checkSames().get(x).getValue();
-//                    System.out.println(va);
-//                    System.out.println(vb);
-//                    break;
-//                }
-//
-//            }
-//        }
         if (a.getValue() == b.getValue()) {
             return 0;
         }

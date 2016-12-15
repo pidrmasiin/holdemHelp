@@ -50,6 +50,7 @@
                         <param>omahahelp.compare.*</param>
                         <param>omahahelp.deal.*</param>
                     </targetTests>
+                    <timeoutConstant>10000</timeoutConstant>
                 </configuration>
             </plugin>
             

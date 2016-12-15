@@ -99,30 +99,77 @@ public class CompareTest {
     }
 
     @Test
+    public void setWinsAndTieZeroTest() {
+        Deck cards = new Deck();
+        cards.addCards();
+      
+        Compare compare = new Compare(cards);
+        compare.setWinsAndTieZero();
+        compare.setWinsAndTies(2);
+        assertEquals(compare.getAwins(), 0);
+        assertEquals(compare.getTies(), 0);
+        assertEquals(compare.getBWins(), 1);
+        compare.setWinsAndTies(0);
+        assertEquals(compare.getTies(), 1);
+        compare.setWinsAndTies(1);
+        assertEquals(compare.getAwins(), 1);
+        compare.setWinsAndTieZero();
+        
+        assertEquals(compare.getAwins(), 0);
+        assertEquals(compare.getBWins(), 0);
+        assertEquals(compare.getTies(), 0);
+
+    }
+    
+    @Test
     public void setWinsAndTieTest() {
         Deck cards = new Deck();
         cards.addCards();
         Card cardA = new Card(13, CLUBS);
         Card cardB = new Card(3, SPADES);
-        Card cardC = new Card(2, HEARTS);
-        Card cardD = new Card(14, SPADES);
+        Card cardC = new Card(13, HEARTS);
+        Card cardD = new Card(2, SPADES);
         PlayersCards handA = new PlayersCards(cards, cardA, cardB);
         PlayersCards handB = new PlayersCards(cards, cardC, cardD);
         Compare compare = new Compare(cards);
-        compare.setWinsAndTies(2);
-        assertEquals(compare.getAwins(), 0);
-        assertEquals(compare.getTies(), 0);
-        assertEquals(compare.getbWins(), 1);
-        compare.setWinsAndTies(0);
-        assertEquals(compare.getTies(), 1);
-        compare.setWinsAndTies(1);
+        compare.setHands(handA, handB);
+       
+        
+        Deck deck = new Deck();
+        
+        deck.addOneCard(new Card(3, CLUBS));
+        deck.addOneCard(new Card(3, HEARTS));
+        deck.addOneCard(new Card(3, DIAMONDS));
+        deck.addOneCard(new Card(5, CLUBS));
+        
+        compare.setTurnWinsAndTies(deck);
         assertEquals(compare.getAwins(), 1);
+        assertEquals(compare.getBWins(), 0);
+        
+        deck.erase();
+        deck.addOneCard(new Card(2, CLUBS));
+        deck.addOneCard(new Card(2, HEARTS));
+        deck.addOneCard(new Card(2, DIAMONDS));
+        deck.addOneCard(new Card(5, CLUBS));
+        compare.setTurnWinsAndTies(deck);
+        assertEquals(compare.getBWins(), 1);
+        assertEquals(compare.getAwins(), 1);
+        
+        deck.erase();
+        deck.addOneCard(new Card(12, CLUBS));
+        deck.addOneCard(new Card(11, HEARTS));
+        deck.addOneCard(new Card(10, DIAMONDS));
+        deck.addOneCard(new Card(9, CLUBS));
+        compare.setTurnWinsAndTies(deck);
+        assertEquals(compare.getTies(), 1);
 
     }
-
     
+    
+    
+
 //        @Test
-//    public void compareTurnsTest(){
+//    public void compareTurnsCalculateTest(){
 //    Deck cards = new Deck();
 //        cards.addCards();
 //        Card cardA = new Card(2, CLUBS);
@@ -139,23 +186,75 @@ public class CompareTest {
 //        compare.addWinsAndTiesAfterTurnWhenFlopBlind();
 //        assertEquals(compare.getAwins(), 990);
 //    }
+    @Test
+    public void CalculateAfterTurnTest() {
+        Deck deck = new Deck();
+        deck.addCards();
+        String cardA = "2 of DIAMONDS";
+        String cardB = "3 of SPADES";
+        String cardC = "2 of CLUBS";
+        String cardD = "2 of HEARTS";
+        Card a = deck.getCardByString(cardA);
+        Card b = deck.getCardByString(cardB);
+        Card c = deck.getCardByString(cardC);
+        Card d = deck.getCardByString(cardD);
 
-//    @Test
-//    public void setRiversTest(){
-//        Deck cards = new Deck();
-//        cards.addCards();
-//        Card cardA = new Card(13, CLUBS);
-//        Card cardB = new Card(3, SPADES);
-//        Card cardC = new Card(2, HEARTS);
-//        Card cardD = new Card(14, SPADES);
-//        PlayersCards handA = new PlayersCards(cards, cardA, cardB);
-//        PlayersCards handB = new PlayersCards(cards, cardC, cardD);
-//        Compare compare = new Compare(cards);
-//        compare.setHands(handA, handB);
-//        compare.addCardsToFlopHashMap();
-//        compare.addTurnsToMap();
-//        compare.addRiversToMap();
-//        assertEquals(compare.getRiversMap().size(),1712304);
-//    }
-//    
+        String cardQ = "13 of CLUBS";
+
+        String cardW = "3 of CLUBS";
+        String cardE = "3 of HEARTS";
+
+        Card q = deck.getCardByString(cardQ);
+        Card w = deck.getCardByString(cardW);
+        Card e = deck.getCardByString(cardE);
+
+        PlayersCards handA = new PlayersCards(deck, a, b);
+        PlayersCards handB = new PlayersCards(deck, c, d);
+
+        Value aa = new Value();
+        Value bb = new Value();
+
+        aa.setCardsToHand(a, b, q, w, e);
+        bb.setCardsToHand(d, c, q, w, e);
+
+        assertEquals(aa.getValue(), 430303132);
+        assertEquals(bb.getValue(), 330302033);
+    }
+
+    public void compareTurnsTest() {
+        Deck deck = new Deck();
+        deck.addCards();
+        String cardA = "3 of DIAMONDS";
+        String cardB = "3 of SPADES";
+        String cardC = "2 of CLUBS";
+        String cardD = "2 of HEARTS";
+        Card a = deck.getCardByString(cardA);
+        Card b = deck.getCardByString(cardB);
+        Card c = deck.getCardByString(cardC);
+        Card d = deck.getCardByString(cardD);
+
+        String cardQ = "14 of CLUBS";
+
+        String cardW = "3 of CLUBS";
+        String cardE = "3 of HEARTS";
+        Deck turn = new Deck();
+        
+        Card q = deck.getCardByString(cardQ);
+        Card w = deck.getCardByString(cardW);
+        Card e = deck.getCardByString(cardE);
+        turn.addOneCard(q);
+        turn.addOneCard(w);
+        turn.addOneCard(e);
+        turn.addOneCard(c);
+
+        PlayersCards handA = new PlayersCards(deck, a, b);
+        PlayersCards handB = new PlayersCards(deck, c, d);
+        Compare compare = new Compare(deck);
+        compare.setHands(handA, handB);
+        Value one = compare.compareTurns(deck, handB);
+        assertEquals(one.getType(), 800000000);
+        
+
+    }
+
 }
