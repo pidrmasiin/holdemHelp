@@ -2,7 +2,9 @@
 ```
 -Suhteet flopilla, kun floppia ei tiedetä.
 ```
+```
 -Suhteet turnilla, kun floppia eikä turnia tiedetä.
+```
 ```
 -Suhteet turnilla, kun floppi tiedetään.
 ```
@@ -16,7 +18,7 @@ Ainakin alussa asetettujen hold'em käsien vertailun uskon pystyväni hoitamaan.
 
 [Htmlpreview Checkstyle](https://htmlpreview.github.io/?https://github.com/pidrmasiin/omahahelp/blob/master/dokumentaatio/checkstyle.html)
 
-[Htmlpreview pit](https://htmlpreview.github.io/?https://github.com/pidrmasiin/omahahelp/blob/master/dokumentaatio/pit-reports/201612012029/index.html)
+[Htmlpreview pit](https://htmlpreview.github.io/?https://github.com/pidrmasiin/omahahelp/blob/master/dokumentaatio/pit-report/index.html)
 
 
 **Dokumentaatio**
