@@ -39,4 +39,4 @@ HandsValues-luokka toimii Values-luokan apuna pokerikäsien arvojen asettamiseen
 
 **Luokkakaavio**: 
 
-![Luokkakaavio](https://github.com/pidrmasiin/omahahelp/blob/master/dokumentaatio/Luokkakaavio.png?raw=true)
+![Luokkakaavio](https://github.com/pidrmasiin/omahahelp/blob/master/dokumentaatio/Luokkakaavio.png)
