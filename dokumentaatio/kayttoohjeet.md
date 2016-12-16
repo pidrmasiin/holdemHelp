@@ -2,6 +2,8 @@
 
 Alla on kuvankaappaus ohjelmasta. Siitä voi tarkistaa kuvauksen mukaisesti, mihin mitäkin tulee syöttää ja mihin laskenta tulostuu.
 
+![Luokkakaavio](https://github.com/pidrmasiin/omahahelp/blob/master/dokumentaatio/Kuvakaappaus-ohjelmasta.png)
+
 ```
 Kun käyttäjä haluaa tietää suhteet flopilla, kun floppia ei tiedetä:
 ```
@@ -16,14 +18,13 @@ Kun käyttäjä on syöttänyt omat ja vastustajan kortit, hän voi painaa nappi
 ```
 Kun käyttäjä haluaa tietää suhteet turnilla, kun floppia eikä turnia tiedetä:
 ```
-Käyttäjä asettaa omat ja vastustajan kortit kuten tapauksessa "Kun käyttäjä haluaa tietää suhteet flopilla, kun floppia ei tiedetä" ja painaa nappia "HIDASTA PUUHAA! Näytä suhteet turnilla, kun floppia ei tiedetä". Ohjelma laskee suhteet kuten "Kun käyttäjä haluaa tietää suhteet flopilla, kun floppia ei tiedetä" -kohdassa ja näyttää tuloksen samassa paikassa.
+Käyttäjä asettaa omat ja vastustajan kortit kuten tapauksessa "Kun käyttäjä haluaa tietää suhteet flopilla, kun floppia ei tiedetä" ja painaa nappia "HIDASTA PUUHAA! Näytä suhteet turnilla, kun floppia ei tiedetä". Ohjelma laskee suhteet kuten "Kun käyttäjä haluaa tietää suhteet flopilla, kun floppia ei tiedetä" -kohdassa ja näyttää tuloksen samassa paikassa. Varautuksen sanan, että tässä kestää kauan!
 ```
 Kun käyttäjä haluaa tietää suhteet turnilla, kun floppi tiedetään:
 ```
 Käyttäjä asettaa flopin samalla kaavalla kuin asettaisi omia tai vastustajan kortteja. Taas on huomioitava, että pelissä on kutakin korttia vain yksi kappale. Painamalla nappia "Aseta floppi ja näytä suhteet ennen riveriä" ohjelma käy läpi kaikki mahdolliset turnit ja katsoo aina kumpi käsi on vahvempi tai ovatko ne yhtä vahvoja. Tulos näytetään taas kohdissa "Voittosi", "Tasurit" ja "Vastustajan voitot"
 
 
-**Kuvankaappaus ohjelmasta:**
 
-![Luokkakaavio](https://github.com/pidrmasiin/omahahelp/blob/master/dokumentaatio/Kuvakaappaus-ohjelmasta.png)
+
 
