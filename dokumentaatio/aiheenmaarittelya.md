@@ -4,7 +4,9 @@ Taitaa jäädä tohon hold'em käsien vertailuun alussa.
 ```
 -Suhteet flopilla, kun floppia ei tiedetä.
 ```
+```
 -Suhteet turnilla, kun floppia eikä turnia tiedetä.
+```
 ```
 -Suhteet turnilla, kun floppi tiedetään.
 ```
@@ -23,15 +25,21 @@ Taitaa jäädä tohon hold'em käsien vertailuun alussa.
 ```
 Card-luokka hoitaa kortit.
 ```
+```
 Deck-luokassa muodostetaan kortti pakkoja. Luokassa oma metodi, jossa luodaan 52 erilaisen Card:in pakka. Metodeja korttien poistamiseen yms.
+```
 ```
 Draw-luokka arpoo kortteja pakasta, mutta luokkaa ei käytetä tässä vaiheessa.
 ```
+```
 PlayersCards-luokassa asetaan pelaajien käsiin Card-luokan mukaiset kortit ja poistetaan 52 Card:n Deck:stä.
+```
 ```
 Compare-luokka laskee kumpi PlayersCards-luokan käsistä on johdolla kussakin pelin tilanteessa.
 ```
+```
 Values-luokassa luokan avulla luodaan pokerikäsille arvot.
+```
 ```
 HandsValues-luokka toimii Values-luokan apuna pokerikäsien arvojen asettamiseen. 
 ```
