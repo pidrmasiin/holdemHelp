@@ -398,6 +398,8 @@ public class GUI extends javax.swing.JFrame {
             ownWins.setText("Johdat: " + compare.getAwins() + "/" + compare.getTurns().size());
             ties.setText("Tilanne tasan: " + compare.getTies() + "/" + compare.getTurns().size());
             enemysWins.setText("Vastustaja johtaa:" + compare.getBWins() + "/" + compare.getTurns().size());
+            this.wrongText.setText("");
+
         } else {
             this.wrongText.setText("Korttia ei pakassa tai kirjoitit sen väärin");
             this.ownWins.setText("Teit");
@@ -482,8 +484,10 @@ public class GUI extends javax.swing.JFrame {
             ownWins.setText("Johdat: " + compare.getAwins() + "/" + compare.getCards().size());
             ties.setText("Tilanne tasan: " + compare.getTies() + "/" + compare.getCards().size());
             enemysWins.setText("Vastustaja johtaa:" + compare.getBWins() + "/" + compare.getCards().size());
+            this.wrongText.setText("");
         } else {
             this.wrongText.setText("Korttia ei pakassa tai kirjoitit sen väärin");
+
             this.ownWins.setText("Teit");
             this.ties.setText("jotain");
             this.enemysWins.setText("väärin");

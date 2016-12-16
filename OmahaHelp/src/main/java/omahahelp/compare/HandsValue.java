@@ -20,7 +20,9 @@ public class HandsValue {
 
     /**
      * Luodaan HandsValue.
-     * @param x kädelle tyyppi eli pari, kolmoset, suora jne. Intinä, mitä isompi sen parempi.
+     *
+     * @param x kädelle tyyppi eli pari, kolmoset, suora jne. Intinä, mitä
+     * isompi sen parempi.
      * @param y käden numerot.
      */
     public HandsValue(int x, int y) {
@@ -41,9 +43,10 @@ public class HandsValue {
     }
 
     /**
-     *Lisätään valueen jokin numero.
-     * @param x käytännössä tämä on kortin numero kerrottuna sen merkittävyydellä,
-     * joka määritellään Value-luokassa metodissa setValue.
+     * Lisätään valueen jokin numero.
+     *
+     * @param x käytännössä tämä on kortin numero kerrottuna sen
+     * merkittävyydellä, joka määritellään Value-luokassa metodissa setValue.
      */
     public void addValueToValue(int x) {
         this.value = this.value + x;

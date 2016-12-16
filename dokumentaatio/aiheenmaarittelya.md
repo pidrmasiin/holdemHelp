@@ -1,9 +1,13 @@
 Taitaa jäädä tohon hold'em käsien vertailuun alussa.
 
-**Aihe**: , Hold'em-avustajaan. Katsotaan mihin taidot riittää. Toteutetaan siis järjestelmä, jonka avulla voidaan laskea todennäköisyys voitolle
- [omahassa](https://fi.wikipedia.org/wiki/Omaha_hold_%E2%80%99em) tai [hold'emissä](https://fi.wikipedia.org/wiki/Texas_hold_%E2%80%99em), kun vastustajan kortit arvataan. Arvausta olisi hyvä pystyä vaihtamaan pelin edetessä. 
-
-Ainakin alussa asetettujen hold'em käsien vertailun uskon pystyväni hoitamaan. 
+**Aihe**: Ohjelma, joka laskee suhteita voitolle [hold'emissä](https://fi.wikipedia.org/wiki/Texas_hold_%E2%80%99em), kun vastustajan käsi arvataan. Laskentaa on seuraavissa tilanteissa:**
+```
+-Suhteet flopilla, kun floppia ei tiedetä.
+```
+-Suhteet turnilla, kun floppia eikä turnia tiedetä.
+```
+-Suhteet turnilla, kun floppi tiedetään.
+```
 
 **Käyttäjät**: Minä. Ehkä.
 
@@ -11,6 +15,8 @@ Ainakin alussa asetettujen hold'em käsien vertailun uskon pystyväni hoitamaan.
 ```
 -Omien korttien lisääminen
 -Vastustajan korttien lisääminen
+-Flopin asettaminen
+-Laskettavan tilanteen valitseminen
 ```
 
 **Kuvaus rakenteesta**:

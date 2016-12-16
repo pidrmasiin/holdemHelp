@@ -94,6 +94,16 @@ public class Deck {
         return cards.get(x);
     }
 
+    public Card deckContainsAce() {
+        Card b = new Card(15, SPADES);
+        for (Card a : this.cards) {
+            if (a.getNumber() == 14) {
+                return a;
+            }
+        }
+        return b;
+    }
+
     /**
      * Lisätään pakkaan haluttu kortti.
      *
@@ -171,8 +181,6 @@ public class Deck {
     public void eraseCards(Card x) {
         if (this.cards.contains(x)) {
             cards.remove(x);
-        } else {
-            System.out.println("Kortti ei ole pakassa");
         }
     }
 

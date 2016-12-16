@@ -35,6 +35,7 @@ public class PlayersCards {
 
     /**
      * Luodaan käsi yhdellä kortilla.
+     *
      * @param cards pakka, josta käsi luodaan.
      * @param a kortti, joka asetetaan käteen, jos löytyy pakasta.
      */
@@ -46,6 +47,7 @@ public class PlayersCards {
 
     /**
      * Asetetaan käteen toinen kortti pakasta.
+     *
      * @param cards pakka, josta kortti asetetaan.
      * @param b kortti, joka asetetaan, jos löytyy pakasta.
      */

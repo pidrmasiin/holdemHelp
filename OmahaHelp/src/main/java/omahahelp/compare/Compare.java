@@ -175,12 +175,20 @@ public class Compare {
         this.aWins = 0;
         this.bWins = 0;
         this.ties = 0;
-   
 
+        int x = 0;
+        int y = 5;
         for (Deck deck : this.turns.values()) {
 
-            this.setTurnWinsAndTies(deck);
+            if (x > 2000) {
+                System.out.println(y + "/" + 100);
+                y++;
+                x = 0;
 
+            }
+
+            this.setTurnWinsAndTies(deck);
+            x++;
         }
     }
 
@@ -240,21 +248,25 @@ public class Compare {
         comp.setCardsToHand(deck.getCard(0), deck.getCard(1), deck.getCard(2), hand.getCardB(), hand.getCardA());
         if (this.compareValues(out, comp) == 2) {
             out.setFiveCardsDeckToHand(comp.getDeck());
+
         }
 
         comp.setCardsToHand(deck.getCard(0), deck.getCard(1), hand.getCardB(), deck.getCard(3), hand.getCardA());
         if (this.compareValues(out, comp) == 2) {
             out.setFiveCardsDeckToHand(comp.getDeck());
+
         }
 
         comp.setCardsToHand(deck.getCard(0), hand.getCardB(), deck.getCard(2), deck.getCard(3), hand.getCardA());
         if (this.compareValues(out, comp) == 2) {
             out.setFiveCardsDeckToHand(comp.getDeck());
+
         }
 
         comp.setCardsToHand(hand.getCardB(), deck.getCard(1), deck.getCard(2), deck.getCard(3), hand.getCardA());
         if (this.compareValues(out, comp) == 2) {
             out.setFiveCardsDeckToHand(comp.getDeck());
+
         }
 
         return out;
@@ -277,7 +289,6 @@ public class Compare {
         }
     }
 
-
     public HashMap<String, Deck> getTurns() {
         return this.turns;
     }
@@ -288,7 +299,6 @@ public class Compare {
     public void reOrganize() {
         this.cards.sort();
     }
-
 
     public HashMap getMap() {
         return this.flops;
@@ -307,7 +317,6 @@ public class Compare {
         return aWins;
     }
 
-
     public int getBWins() {
         return bWins;
     }
@@ -321,8 +330,8 @@ public class Compare {
      * @param c 3. flop-pakan kortti
      * @param d 1. pelaajan käsi
      * @param e 2. pelaajan käsi
-     * @return palautetaan 1, jos käsi 1 voittaa, ja 2, jos käsi 2. Nolla jos kädet
-     * yhtä vahvat.
+     * @return palautetaan 1, jos käsi 1 voittaa, ja 2, jos käsi 2. Nolla jos
+     * kädet yhtä vahvat.
      */
     public Integer compareFlop(Card a, Card b, Card c, PlayersCards d, PlayersCards e) {
 

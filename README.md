@@ -1,7 +1,13 @@
-**Joudun tyytymään alussa asetettujen hold'em käsien vertailuun, joka sekin tuottaa hieman hankaluuksia.**
-Turnin ja riverin jälkeisten suhteiden laskeminen on nimittäin pirun hidasta
+**Toteutin siis ohjelman, joka laskee suhteita voitolle [hold'emissä](https://fi.wikipedia.org/wiki/Texas_hold_%E2%80%99em), kun vastustajan käsi arvataan. Laskentaa on seuraavissa tilanteissa:**
+```
+-Suhteet flopilla, kun floppia ei tiedetä.
+```
+-Suhteet turnilla, kun floppia eikä turnia tiedetä.
+```
+-Suhteet turnilla, kun floppi tiedetään.
+```
 
-**Aihe**
+**Alkuperäinen suunnitelma, johon saatan palata, jos siltä tuntuu:**
 
 Omaha-avustaja, mutta voi olla, että joudun tyytymään vastaavan hold'em-avustajaan. Katsotaan mihin taidot riittää. Toteutetaan siis järjestelmä, jonka avulla voidaan laskea todennäköisyys voitolle
  [omahassa](https://fi.wikipedia.org/wiki/Omaha_hold_%E2%80%99em) tai [hold'emissä](https://fi.wikipedia.org/wiki/Texas_hold_%E2%80%99em), kun vastustajan kortit arvataan. Arvausta olisi hyvä pystyä vaihtamaan pelin edetessä.

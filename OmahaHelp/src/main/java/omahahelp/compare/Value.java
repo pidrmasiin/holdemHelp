@@ -10,6 +10,10 @@ import java.util.Collections;
 import java.util.Comparator;
 import omahahelp.cards.Card;
 import omahahelp.cards.Card.Suit;
+import static omahahelp.cards.Card.Suit.CLUBS;
+import static omahahelp.cards.Card.Suit.DIAMONDS;
+import static omahahelp.cards.Card.Suit.HEARTS;
+import static omahahelp.cards.Card.Suit.SPADES;
 import omahahelp.cards.Deck;
 import omahahelp.deal.Draw;
 
@@ -22,6 +26,7 @@ public class Value implements Comparator<Card> {
 
     private HandsValue value;
     private Deck hand;
+    private Boolean smallStraight;
 
     /**
      * Luodaan Value.
@@ -29,6 +34,7 @@ public class Value implements Comparator<Card> {
     public Value() {
         this.hand = new Deck();
         this.value = new HandsValue(0, 0);
+        this.smallStraight = false;
     }
 
     /**
@@ -76,7 +82,6 @@ public class Value implements Comparator<Card> {
 //        this.hand.getCards().add(draw.drawCard());
 //        this.hand.getCards().add(draw.drawCard());
 //    }
-
     public Deck getDeck() {
         return this.hand;
     }
@@ -105,6 +110,7 @@ public class Value implements Comparator<Card> {
 
     /**
      * Pakan koko.
+     *
      * @return palauttaa pakan koon.
      */
     public int getHandSum() {
@@ -132,6 +138,7 @@ public class Value implements Comparator<Card> {
     public boolean checkStraight() {
         this.organizeHand();
         if (hand.getCard(0).getNumber() == 2 && hand.getCard(4).getNumber() == 14) {
+            this.smallStraight = true;
             return this.highStraigth(this.hand.size() - 1, 1);
         }
         return this.highStraigth(this.hand.size(), 0);
@@ -218,6 +225,7 @@ public class Value implements Comparator<Card> {
 
     /**
      * Katsotaan onko neloset.
+     *
      * @return true, jos neloset.
      */
     public boolean checkFourofKind() {
@@ -226,6 +234,7 @@ public class Value implements Comparator<Card> {
 
     /**
      * Katsotaan onko kolmoset.
+     *
      * @return true, jos kolmoset.
      */
     public boolean checkThreeOfKind() {
@@ -237,6 +246,7 @@ public class Value implements Comparator<Card> {
 
     /**
      * Katsotaan onko täyskäsi.
+     *
      * @return true, jos täyskäsi.
      */
     public boolean checkFullHouse() {
@@ -248,6 +258,7 @@ public class Value implements Comparator<Card> {
 
     /**
      * Katsotaan onko kaksiparia.
+     *
      * @return true, jos kaksiparia.
      */
     public boolean checkTwoPairs() {
@@ -259,6 +270,7 @@ public class Value implements Comparator<Card> {
 
     /**
      * Katsotaan, onko pari.
+     *
      * @return true, jos pari.
      */
     public boolean checkPair() {
@@ -277,14 +289,16 @@ public class Value implements Comparator<Card> {
 
     /**
      * Palautaa käden arvon Int-muodossa, mitä isompi parempi.
+     *
      * @return käden arvo.
      */
     public HandsValue getHandsValue() {
         return this.value;
     }
-    
+
     /**
      * Asetetaan kädelle arvo sen tyypin mukaan. Mitä isompi parempi.
+     *
      * @return palauttaa käden tyypin Int:nä
      */
     public int getType() {
@@ -318,6 +332,7 @@ public class Value implements Comparator<Card> {
 
     /**
      * Luodaan lista, jonka ensimmäisenä on pakan merkitsevin kortti.
+     *
      * @return palauttaa ArrayListin, jossa pakka merkitsevyys järjestyksessä.
      */
     public ArrayList<Integer> makeOrganizedArray() {
@@ -332,14 +347,20 @@ public class Value implements Comparator<Card> {
     }
 
     /**
-     *Asettaa kädelle arvon numeroiden mukaan. Ensin pakka järjestetään siten, 
-     * että merkitsevin kortti on ensimmäisenä. Sitten merkitsevyyden mukaan lisätään
-     * arvoa. 
+     * Asettaa kädelle arvon numeroiden mukaan. Ensin pakka järjestetään siten,
+     * että merkitsevin kortti on ensimmäisenä. Sitten merkitsevyyden mukaan
+     * lisätään arvoa.
      */
     public void setValue() {
         ArrayList<Integer> out = this.makeOrganizedArray();
-
-        for (int x = 0; x < out.size(); x++) {
+        int x = 0;
+        Card a = new Card(15, CLUBS);
+        if (this.smallStraight) {
+            a = this.hand.deckContainsAce();
+            hand.eraseByString(a.toString());
+            x++;
+        }
+        while (x < out.size()) {
 
             if (x == 0) {
                 this.value.addValueToValue(out.get(x) * 10000000);
@@ -361,12 +382,17 @@ public class Value implements Comparator<Card> {
                 this.value.addValueToValue(out.get(x));
 
             }
+            x++;
+        }
+        if (this.smallStraight) {
+            hand.addOneCard(a);
         }
 
     }
 
     /**
      * Luodaan kädelle arvo ja palautetaan se. Mitä isompi, sen parempi.
+     *
      * @return käden arvo int:nä.
      */
     public int getValue() {
