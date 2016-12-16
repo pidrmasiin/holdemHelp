@@ -16,12 +16,16 @@ Omaha-avustaja, mutta voi olla, että joudun tyytymään vastaavan hold'em-avust
 
 Ainakin alussa asetettujen hold'em käsien vertailun uskon pystyväni hoitamaan. 
 
+
+
+
+**Dokumentaatio**
+
 [Htmlpreview Checkstyle](https://htmlpreview.github.io/?https://github.com/pidrmasiin/omahahelp/blob/master/dokumentaatio/checkstyle.html)
 
 [Htmlpreview pit](https://htmlpreview.github.io/?https://github.com/pidrmasiin/omahahelp/blob/master/dokumentaatio/pit-report/index.html)
 
-
-**Dokumentaatio**
+[Käyttö-ohjeeet] (https://github.com/pidrmasiin/omahahelp/blob/master/dokumentaatio/kayttoohjeet.md)
 
 [Aiheenmäärittelyä](https://github.com/pidrmasiin/omahahelp/blob/master/dokumentaatio/aiheenmaarittelya.md)
 
