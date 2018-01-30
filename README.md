@@ -1,4 +1,4 @@
-**Toteutin siis ohjelman, joka laskee suhteita voitolle [hold'emissä](https://fi.wikipedia.org/wiki/Texas_hold_%E2%80%99em), kun vastustajan käsi arvataan. Laskentaa on seuraavissa tilanteissa:**
+**Javalla toteutettu ohjelma, joka laskee suhteita voitolle [hold'emissä](https://fi.wikipedia.org/wiki/Texas_hold_%E2%80%99em), kun vastustajan käsi arvataan. Laskentaa on seuraavissa tilanteissa:**
 ```
 -Suhteet flopilla, kun floppia ei tiedetä.
 ```
